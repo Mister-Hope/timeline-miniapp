@@ -1,0 +1,149 @@
+root: true
+
+env:
+  es6: true
+
+globals:
+  wx: readonly
+  getApp: readonly
+  getCurrentPages: readonly
+  App: readonly
+  Page: readonly
+  Component: readonly
+  getRegExp: readonly
+
+extends:
+  - eslint:recommended
+  - plugin:prettier/recommended
+
+plugins:
+  - prettier
+
+ignorePatterns:
+  - dist/
+
+rules:
+  eqeqeq: error
+  line-comment-position: error
+  no-duplicate-imports: error
+  object-shorthand: error
+  padding-line-between-statements:
+    - error
+    - blankLine: always
+      prev: "*"
+      next: return
+    - blankLine: always
+      prev:
+        - const
+        - let
+      next: "*"
+    - blankLine: any
+      prev:
+        - const
+        - let
+      next:
+        - const
+        - let
+  prefer-destructuring: error
+  prefer-template: error
+
+overrides:
+  - files:
+      - "*.wxs"
+
+    globals:
+      getDate: readonly
+
+    env:
+      es6: false
+      node: true
+
+    rules:
+      func-names:
+        - error
+        - "never"
+
+      func-style:
+        - error
+        - "declaration"
+
+      no-var:
+        - off
+
+      object-shorthand:
+        - error
+        - "never"
+
+      prefer-destructuring:
+        - off
+
+      prefer-template:
+        - off
+
+  - files:
+      - "*.ts"
+
+    extends:
+      - plugin:@typescript-eslint/eslint-recommended
+      - plugin:@typescript-eslint/recommended
+      - "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      - prettier/@typescript-eslint
+
+    plugins:
+      - "@typescript-eslint"
+
+    parserOptions:
+      parser: "@typescript-eslint/parser"
+      project:
+        - "./tsconfig.json"
+
+    rules:
+      "@typescript-eslint/explicit-function-return-type":
+        - warn
+        - allowTypedFunctionExpressions: true
+
+      "@typescript-eslint/naming-convention":
+        - warn
+        - selector: default
+          format:
+            - camelCase
+          leadingUnderscore: allow
+          trailingUnderscore: allow
+
+        - selector: variable
+          format:
+            - camelCase
+            - UPPER_CASE
+          leadingUnderscore: allow
+          trailingUnderscore: allow
+
+        - selector: typeLike
+          format:
+            - PascalCase
+
+      "@typescript-eslint/no-explicit-any":
+        - warn
+        - ignoreRestArgs: true
+
+      "@typescript-eslint/no-floating-promises":
+        - off
+
+      "@typescript-eslint/no-unsafe-member-access":
+        - warn
+
+      "@typescript-eslint/unbound-method":
+        - off
+
+  - files:
+      - "**/test/**/*.spec.js"
+      - "**/test/**/*.spec.ts"
+
+    env:
+      jest: true
+      node: true
+
+  - files:
+      - "gulpfile.js"
+
+    env:
+      node: true

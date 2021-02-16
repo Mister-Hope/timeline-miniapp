@@ -1,0 +1,62 @@
+{
+  "name": "music",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "app/",
+    "cloud/*"
+  ],
+  "scripts": {
+    "build": "gulp build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "commit": "git cz",
+    "lint": "yarn run lint:prettier --write && yarn run lint:wxs --write && yarn run lint:wxml --write && yarn run lint:eslint --fix && yarn run lint:style --fix",
+    "lint:check": "yarn run lint:prettier && yarn run lint:wxs && yarn run lint:wxml && yarn run lint:eslint && yarn run lint:style",
+    "lint:eslint": "eslint --ext .ts,.wxs .",
+    "lint:style": "stylelint **/*.scss",
+    "lint:prettier": "prettier --check .",
+    "lint:wxml": "prettier --check --parser html **/*.wxml",
+    "lint:wxs": "prettier --check --parser babel-flow **/*.wxs",
+    "packages:check-update": "ncu --deep --timeout 600000",
+    "packages:update": "ncu -u --deep --timeout 600000 && yarn install && yarn upgrade",
+    "postinstall": "husky install",
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "@types/node": "14.14.28",
+    "@typescript-eslint/eslint-plugin": "4.15.1",
+    "@typescript-eslint/parser": "4.15.1",
+    "eslint": "7.20.0",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "gulp": "4.0.2",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "4.1.0",
+    "gulp-typescript": "6.0.0-alpha.1",
+    "husky": "5.0.9",
+    "lint-staged": "10.5.4",
+    "miniprogram-api-typings": "3.2.2",
+    "npm-check-updates": "11.1.4",
+    "prettier": "2.2.1",
+    "sass": "1.32.7",
+    "stylelint": "13.10.0",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-order": "4.1.0",
+    "stylelint-scss": "3.19.0",
+    "typescript": "4.1.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,ts,json,yaml,.md}": "prettier --write",
+    "*.wxss": "stylelint --fix",
+    "*.wxml": "prettier --parser html --write",
+    "*.wxs": "prettier --parser babel-flow --write"
+  }
+}

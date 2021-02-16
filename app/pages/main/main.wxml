@@ -1,0 +1,21 @@
+<mp-navigation-bar back="{{false}}">
+  <view slot="left">登录</view>
+  <view slot="center">歌曲列表</view>
+</mp-navigation-bar>
+<view class="page">
+  <view class="page__bd">
+    <mp-cells>
+      <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
+        <mp-cell value="左滑可以删除" footer="说明文字" />
+      </mp-slideview>
+
+      <mp-slideview
+        buttons="{{slideButtons}}"
+        icon
+        bindbuttontap="slideButtonTap"
+      >
+        <mp-cell value="左滑可以删除" footer="说明文字" />
+      </mp-slideview>
+    </mp-cells>
+  </view>
+</view>

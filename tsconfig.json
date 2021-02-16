@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.cloud.json" }
+  ],
+  "include": ["app/**/*.ts", "cloud/**/*.ts", "typings/**/*.ts"]
+}
