@@ -399,24 +399,27 @@ Page({
     const total = this.data.musicList.length;
     let result: number | "nothing";
 
-    switch (this.data.mode) {
-      case "随机播放":
-        do result = Math.round(Math.random() * total - 0.5);
-        while (index === result);
-        break;
-      case "顺序播放":
-        if (index + 1 === total) {
-          result = "nothing";
-          tip("已是最后一曲");
-        } else result = index + 1;
-        break;
-      case "单曲循环":
-      case "列表循环":
-      default:
-        result = index + 1 === total ? 0 : index + 1;
-    }
+    if (total === 1) tip("只有一首歌曲");
+    else {
+      switch (this.data.mode) {
+        case "随机播放":
+          do result = Math.round(Math.random() * total - 0.5);
+          while (index === result);
+          break;
+        case "顺序播放":
+          if (index + 1 === total) {
+            result = "nothing";
+            tip("已是最后一曲");
+          } else result = index + 1;
+          break;
+        case "单曲循环":
+        case "列表循环":
+        default:
+          result = index + 1 === total ? 0 : index + 1;
+      }
 
-    this.switchSong(result);
+      this.switchSong(result);
+    }
   },
 
   /** 上一曲动作 */
@@ -425,23 +428,26 @@ Page({
     const total = this.data.musicList.length;
     let result: number | "nothing";
 
-    switch (this.data.mode) {
-      case "随机播放":
-        do result = Math.round(Math.random() * total - 0.5);
-        while (index === result);
-        break;
-      case "顺序播放":
-        if (index === 0) {
-          result = "nothing";
-          tip("已是第一曲");
-        } else result = index - 1;
-        break;
-      case "单曲循环":
-      case "列表循环":
-      default:
-        result = index === 0 ? total - 1 : index - 1;
+    if (total === 1) tip("只有一首歌曲");
+    else {
+      switch (this.data.mode) {
+        case "随机播放":
+          do result = Math.round(Math.random() * total - 0.5);
+          while (index === result);
+          break;
+        case "顺序播放":
+          if (index === 0) {
+            result = "nothing";
+            tip("已是第一曲");
+          } else result = index - 1;
+          break;
+        case "单曲循环":
+        case "列表循环":
+        default:
+          result = index === 0 ? total - 1 : index - 1;
+      }
+      this.switchSong(result);
     }
-    this.switchSong(result);
   },
 
   /** 切换歌曲 */
