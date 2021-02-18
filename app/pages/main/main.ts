@@ -141,24 +141,39 @@ Page({
   },
 
   onShareAppMessage(): WechatMiniprogram.Page.ICustomShareContent {
-    return {
-      title: this.data.currentMusic.title,
-      path: `/pages/main/main?id=${this.data.currentMusic.fileID}`,
-    };
+    const { currentMusic } = this.data;
+
+    return currentMusic && currentMusic.fileID
+      ? {
+          title: currentMusic.title,
+          path: `/pages/main/main?id=${currentMusic.fileID}`,
+        }
+      : {
+          title: "歌曲列表",
+          path: "/pages/main/main",
+        };
   },
 
   onShareTimeline(): WechatMiniprogram.Page.ICustomTimelineContent {
-    return {
-      title: this.data.currentMusic.title,
-      query: `id=${this.data.currentMusic.fileID}`,
-    };
+    const { currentMusic } = this.data;
+
+    return currentMusic && currentMusic.fileID
+      ? {
+          title: currentMusic.title,
+          query: `id=${currentMusic.fileID}`,
+        }
+      : { title: "歌曲列表" };
   },
 
   onAddToFavorites(): WechatMiniprogram.Page.IAddToFavoritesContent {
-    return {
-      title: this.data.currentMusic.title,
-      query: `id=${this.data.currentMusic.fileID}`,
-    };
+    const { currentMusic } = this.data;
+
+    return currentMusic && currentMusic.fileID
+      ? {
+          title: currentMusic.title,
+          query: `id=${currentMusic.fileID}`,
+        }
+      : { title: "歌曲列表" };
   },
 
   onUnload() {
