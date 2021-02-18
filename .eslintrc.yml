@@ -95,7 +95,8 @@ overrides:
     parserOptions:
       parser: "@typescript-eslint/parser"
       project:
-        - "./tsconfig.json"
+        - "./tsconfig.app.json"
+        - "./tsconfig.cloud.json"
 
     rules:
       "@typescript-eslint/explicit-function-return-type":

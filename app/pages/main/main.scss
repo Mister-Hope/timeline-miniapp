@@ -1,0 +1,109 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+
+  height: 100vh;
+}
+
+.weui-navigation-bar {
+  .upload-icon {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.music-list {
+  flex: 1;
+  overflow: auto;
+  height: auto;
+}
+
+.music-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px 0;
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(8px);
+
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba(24, 24, 24, 0.8);
+  }
+}
+
+.song-info {
+  margin-bottom: 10px;
+  padding: 0 25px;
+
+  color: var(--dark-grey);
+
+  font-weight: 500;
+  font-size: 14px;
+  font-family: FZSSJW, -apple-system-font, "PingFang SC", "Helvetica Neue",
+    Helvetica, STHeiti, Tahoma, Simsun, sans-serif !important;
+}
+
+.progress-bar {
+  align-items: center;
+  margin: 10px 28px;
+}
+
+.time-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 28px;
+
+  .time {
+    color: var(--light-grey);
+    font-size: 15px;
+  }
+}
+
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.cycle-button {
+  width: 60rpx;
+  max-width: 35px;
+  height: 60rpx;
+  max-height: 35px;
+  margin: 0 10rpx;
+}
+
+.music-wrapper .button {
+  width: 70rpx;
+  max-width: 40px;
+  height: 70rpx;
+  max-height: 40px;
+}
+
+.play-button {
+  width: 100rpx;
+  max-width: 56px;
+  height: 100rpx;
+  max-height: 56px;
+}
+
+.button-wrapper .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.button-active {
+  filter: grayscale(50%);
+}

@@ -5,6 +5,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
+    "composite": true,
     "declaration": true,
     "diagnostics": false,
     "downlevelIteration": false,
@@ -29,7 +30,6 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "target": "es6",
     "lib": ["ESNext"],
     "locale": "zh-CN",
     "module": "CommonJS"

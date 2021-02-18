@@ -1,21 +1,102 @@
-<mp-navigation-bar back="{{false}}">
-  <view slot="left">登录</view>
-  <view slot="center">歌曲列表</view>
-</mp-navigation-bar>
-<view class="page">
-  <view class="page__bd">
-    <mp-cells>
-      <mp-slideview buttons="{{slideButtons}}" bindbuttontap="slideButtonTap">
-        <mp-cell value="左滑可以删除" footer="说明文字" />
-      </mp-slideview>
+<wxs src="./main.wxs" module="main" />
+<view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
+  <mp-navigation-bar back="{{false}}">
+    <view slot="left">
+      <view class="upload-icon" hover-class="button-hover" catch:tap="upload">
+        <image src="./icon/add{{darkmode? '-dark': ''}}.svg" />
+      </view>
+    </view>
+    <view slot="center">歌曲列表</view>
+  </mp-navigation-bar>
 
+  <view class="music-list">
+    <mp-cells wx:if="{{musicList.length}}">
       <mp-slideview
-        buttons="{{slideButtons}}"
+        wx:for="{{musicList}}"
+        wx:key="fileID"
+        buttons="{{darkmode? slideDarkButtons: slideButtons}}"
         icon
+        data-index="{{index}}"
         bindbuttontap="slideButtonTap"
       >
-        <mp-cell value="左滑可以删除" footer="说明文字" />
+        <mp-cell
+          hover
+          value="{{item.title}}"
+          data-index="{{index}}"
+          catch:tap="itemTap"
+        />
       </mp-slideview>
     </mp-cells>
+    <mp-msg wx:else type="info" title="暂无歌曲" />
+  </view>
+
+  <view
+    class="music-wrapper"
+    style="padding-bottom: {{info.screenHeight - info.safeArea.bottom + 5}}px"
+  >
+    <view class="song-info">{{currentMusic.title}}</view>
+
+    <view class="action-wrapper">
+      <!-- 进度条 -->
+      <slider
+        class="progress-bar"
+        min="0"
+        max="{{totalTime * 100}}"
+        step="1"
+        value="{{currentTime * 100}}"
+        block-size="12"
+        backgroundColor="{{darkmode? '#999999': '#cccccc'}}"
+        selected-color="#27C087"
+        block-color="#27C087"
+        catch:change="drag"
+        catch:changing="drag"
+      />
+      <!-- 播放时间 -->
+      <view class="time-wrapper">
+        <view class="time">{{inited? main.getTime(currentTime): '--:--'}}</view>
+        <view class="time">{{inited? main.getTime(totalTime): '--:--'}}</view>
+      </view>
+
+      <view class="button-wrapper">
+        <view
+          class="cycle-button"
+          hover-class="button-active"
+          hover-start-time="0"
+          hover-stay-time="100"
+          catch:tap="modeSwitch"
+        >
+          <image class="icon" src="{{main.getMode(mode)}}" />
+        </view>
+        <view
+          class="button"
+          hover-class="button-active"
+          hover-start-time="0"
+          hover-stay-time="100"
+        >
+          <image class="icon" src="./icon/prev.svg" catch:tap="previous" />
+        </view>
+        <view
+          class="play-button"
+          hover-class="button-active"
+          hover-start-time="0"
+          hover-stay-time="100"
+          catch:tap="play"
+        >
+          <image
+            class="icon"
+            src="./icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}.svg"
+          />
+        </view>
+        <view
+          class="button"
+          hover-class="button-active"
+          hover-start-time="0"
+          hover-stay-time="100"
+        >
+          <image class="icon" src="./icon/next.svg" catch:tap="next" />
+        </view>
+        <view class="button" />
+      </view>
+    </view>
   </view>
 </view>

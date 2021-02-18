@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "target": "es6",
     "types": ["miniprogram-api-typings"]
   },
   "include": ["app/**/*.ts", "typings/**/*.ts"]

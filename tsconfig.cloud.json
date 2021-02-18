@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "target": "ESNext",
     "types": ["node"]
   },
   "include": ["cloud/**/*.ts"]
