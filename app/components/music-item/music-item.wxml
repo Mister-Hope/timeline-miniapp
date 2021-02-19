@@ -1,6 +1,9 @@
 <view class="music-wrapper">
-  <view class="date">{{config.date}}</view>
-  <view class="text">{{config.text}}</view>
+  <image class="avatar" src="/image/avatar.webp" />
+  <view class="content">
+    <view class="date">{{config.date}}</view>
+    <view class="text">{{config.text}}</view>
+  </view>
   <view class="player">
     <image
       wx:if="{{config.coverID}}"

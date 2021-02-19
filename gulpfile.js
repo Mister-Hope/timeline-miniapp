@@ -54,10 +54,9 @@ const buildWXSS = () =>
     .pipe(dest("dist/app"));
 
 const moveAppFiles = () =>
-  src("app/**/*.{wxml,wxs,json,svg,png}").pipe(dest("dist/app"));
+  src("app/**/*.{wxml,wxs,json,svg,png,webp}").pipe(dest("dist/app"));
 
-const moveCloudFiles = () =>
-  src("cloud/**/*.{wxml,wxs,json,svg,png}").pipe(dest("dist/cloud"));
+const moveCloudFiles = () => src("cloud/**/*.json").pipe(dest("dist/cloud"));
 
 const watchWXSS = () =>
   watch("app/**/*.scss", { ignoreInitial: false }, buildWXSS);

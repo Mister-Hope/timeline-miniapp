@@ -1,5 +1,19 @@
 .music-wrapper {
-  margin: 12px 20px;
+  margin: 12px 15px;
+
+  .avatar {
+    float: left;
+    width: 32px;
+    height: 32px;
+    margin: 0 8px 8px 0;
+
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .content {
+    margin-left: 40px;
+  }
 
   .date {
     color: var(--dark-grey);
@@ -16,7 +30,7 @@
     display: flex;
     align-items: center;
 
-    margin: 4px;
+    margin: 8px 0 8px 40px;
     overflow: hidden;
     border-radius: 8px;
 
