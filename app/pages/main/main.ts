@@ -1,3 +1,4 @@
+import { error, info, debug, warn } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm, tip } from "../../utils/wx";
 
@@ -44,7 +45,7 @@ Page({
       },
     ],
 
-    /** 滑动按钮 */
+    /** 夜间滑动按钮 */
     slideDarkButtons: [
       // {
       //   text: "重命名",
@@ -67,16 +68,6 @@ Page({
     const mode = wx.getStorageSync("play-mode") as PlayMode;
 
     if (!mode) wx.setStorageSync("play-mode", "列表循环");
-
-    // 加载字体
-    wx.loadFontFace({
-      family: "FZSSJW",
-      source: `url("https://mp.innenu.com/assets/fonts/FZSSJW.ttf")`,
-      complete: (res) => {
-        // 调试
-        console.info("宋体字体", res);
-      },
-    });
 
     // 写入基本信息
     this.setData({
@@ -180,6 +171,7 @@ Page({
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);
   },
 
+  /** 切换主题 */
   themeChange({ theme }: WechatMiniprogram.OnThemeChangeCallbackResult) {
     this.setData({
       darkmode: theme === "dark",
@@ -190,22 +182,29 @@ Page({
     });
   },
 
+  /** 上传文件 */
   upload() {
+    // 选择文件
     wx.chooseMessageFile({
       count: 100,
       type: "file",
+      // 限制文件后缀
       extension: ["m4a", "aac", "mp3", "wav"],
       success: ({ tempFiles }) => {
+        // 进行提示
         wx.showLoading({ title: "上传中" });
+
         const { musicList } = globalData;
         const musicCollection = wx.cloud.database().collection("music");
 
+        // 一次上传每个文件
         const promises = tempFiles.map<Promise<void>>(
           (tempFile) =>
             new Promise((resolve, reject) => {
               wx.cloud.uploadFile({
                 cloudPath: tempFile.name,
                 filePath: tempFile.path,
+                // 返回文件 ID
                 success: ({ fileID }) => {
                   const data = {
                     title: tempFile.name,
@@ -213,13 +212,11 @@ Page({
                     fileID,
                   };
 
-                  // 返回文件 ID
+                  // 插入数据
                   musicCollection.add({
-                    // data 字段表示需新增的 JSON 数据
                     data,
                     success: (res: { _id: string }) => {
-                      console.log(res);
-
+                      // 更新歌曲列表
                       musicList.push({
                         ...data,
                         _id: res._id,
@@ -230,7 +227,7 @@ Page({
                   });
                 },
                 fail: ({ errMsg }) => {
-                  console.error(errMsg);
+                  error(errMsg);
                   reject();
                 },
               });
@@ -246,49 +243,50 @@ Page({
     });
   },
 
+  /** 点击列表项 */
   itemTap({ currentTarget }: WechatMiniprogram.Touch) {
     this.setData({ inited: true });
 
     this.switchSong(currentTarget.dataset.index as number);
   },
 
+  /** 点击滑动按钮 */
   slideButtonTap({
     currentTarget,
     detail,
   }: WechatMiniprogram.Touch<{ data: "rename" | "delete" }>) {
-    // do nothing
-    console.log(detail);
-
     if (detail.data === "delete") {
+      // 要求用户确认
       confirm("是否要删除该文件", () => {
         const music = this.data.musicList[
           currentTarget.dataset.index as number
         ];
 
+        // 删除数据库记录
         wx.cloud
           .database()
           .collection("music")
           .doc(music._id)
           .remove({
             success: () => {
+              // 删除文件
               wx.cloud.deleteFile({
                 fileList: [music.fileID],
                 success: () => {
+                  // 更新歌曲列表
                   globalData.musicList.splice(
                     currentTarget.dataset.index as number,
                     1
                   );
 
-                  console.log(globalData.musicList);
-
                   this.setData({
                     musicList: globalData.musicList,
                   });
                 },
-                fail: console.error,
+                fail: error,
               });
             },
-            fail: console.error,
+            fail: error,
           });
       });
     }
@@ -299,7 +297,7 @@ Page({
     // 能够播放 100ms 后设置可以播放
     manager.onCanplay(() => {
       // 调试
-      console.info("Canplay");
+      info("Canplay");
       this.setData({ canplay: true });
     });
 
@@ -328,7 +326,7 @@ Page({
 
     // 缓冲中
     manager.onWaiting(() => {
-      console.warn("waiting");
+      warn("waiting");
       this.setData({ canplay: false });
     });
 
@@ -339,12 +337,12 @@ Page({
     // 歌曲播放结束
     manager.onEnded(() => {
       this.end();
-      console.log("end");
+      debug("end");
     });
 
     // 歌曲播放结束
     manager.onStop(() => {
-      console.log("用户通过浮窗中止");
+      info("用户通过浮窗中止");
       this.setData({ currentTime: 0, playing: false });
       this.state.interupt = true;
     });
@@ -355,7 +353,7 @@ Page({
 
     manager.onError(({ errMsg }) => {
       tip("获取音乐出错，请稍后重试");
-      console.error(`Manager: ${errMsg}`);
+      error(`Manager: ${errMsg}`);
     });
   },
 

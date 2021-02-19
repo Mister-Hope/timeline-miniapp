@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+import { info, warn } from "./log";
 import { tip } from "./wx";
 import { GlobalData } from "../app";
 
@@ -25,7 +25,7 @@ export const login = (globalData: GlobalData): void => {
   const openid = wx.getStorageSync("openid") as string;
 
   if (openid) {
-    console.info(`openid为: ${openid}`);
+    info(`openid为: ${openid}`);
     globalData.openid = openid;
   } else
     wx.cloud.callFunction(<LoginCloudFunction>{
@@ -43,7 +43,7 @@ export const registAction = (): void => {
   // 设置内存不足警告
   wx.onMemoryWarning((res) => {
     tip("内存不足");
-    console.warn("onMemoryWarningReceive");
+    warn("onMemoryWarningReceive");
     wx.reportAnalytics("memory_warning", {
       // eslint-disable-next-line @typescript-eslint/naming-convention
       memory_warning: res && res.level ? res.level : 0,

@@ -1,4 +1,5 @@
 import { startup } from "./utils/app";
+import { info } from "./utils/log";
 import { message } from "./utils/message";
 
 export interface MusicInfo {
@@ -50,10 +51,12 @@ App({
   onLaunch() {
     startup(this.globalData);
 
+    // 获取歌曲列表
     wx.cloud.callFunction(<MusicCloudFunction>{
       name: "music",
       success: ({ result }) => {
-        console.log(result.data);
+        info("歌曲列表:", result.data);
+
         this.globalData.musicList = result.data;
         message.emit("musicList", result.data);
       },
