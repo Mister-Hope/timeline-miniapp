@@ -102,6 +102,11 @@ export const startup = (globalData: GlobalData): void => {
   globalData.info = wx.getSystemInfoSync();
   globalData.darkmode = getDarkmode(globalData.info);
 
+  // listen theme change
+  wx.onThemeChange(({ theme }) => {
+    globalData.darkmode = theme === "dark";
+  });
+
   wx.cloud.init({
     traceUser: true,
   });
