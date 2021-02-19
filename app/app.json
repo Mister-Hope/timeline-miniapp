@@ -9,7 +9,6 @@
     "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTextStyle",
     "navigationBarTitleText": "歌曲列表",
-    "navigationStyle": "custom",
     "backgroundColor": "@bgColor",
     "backgroundTextStyle": "@bgTxtStyle",
     "backgroundColorTop": "@bgColorTop",

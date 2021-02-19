@@ -6,10 +6,12 @@
 
   height: 100vh;
 
-  background-color: var(--bg-color);
+  background-color: var(--bg-color-grey);
 }
 
 .weui-navigation-bar {
+  background-color: var(--bg-color);
+
   .new-icon {
     width: 24px;
     height: 24px;

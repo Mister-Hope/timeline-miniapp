@@ -1,7 +1,8 @@
 @use "./style/common";
 
 page {
-  --bg-color: #ededed;
+  --bg-color: #fff;
+  --bg-color-grey: #ededed;
   --grey3: #333;
   --dark-grey: #666;
   --light-grey: #999;
@@ -9,7 +10,8 @@ page {
   --card-shadow: rgba(0, 0, 0, 0.15);
 
   @media (prefers-color-scheme: light) {
-    --bg-color: #ededed;
+    --bg-color: #fff;
+    --bg-color-grey: #ededed;
     --grey3: #333;
     --dark-grey: #666;
     --light-grey: #999;
@@ -18,7 +20,8 @@ page {
   }
 
   @media (prefers-color-scheme: dark) {
-    --bg-color: #111;
+    --bg-color: #000;
+    --bg-color-grey: #111;
     --grey3: #bbb;
     --dark-grey: #999;
     --light-grey: #666;

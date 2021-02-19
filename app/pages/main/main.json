@@ -1,5 +1,6 @@
 {
   "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
   "usingComponents": {
     "mp-actionSheet": "weui-miniprogram/actionsheet/actionsheet",
     "mp-cells": "weui-miniprogram/cells/cells",
