@@ -80,7 +80,7 @@
       catch:changing="drag"
     />
     <!-- 歌曲名称 -->
-    <view class="song-info">{{currentMusic.title || '- -'}}</view>
+    <view class="song-info">{{currentMusic.name || '- -'}}</view>
 
     <view class="button-wrapper">
       <!-- 播放时间 -->
