@@ -66,7 +66,7 @@ Page({
 
       if (option.musicID) {
         globalData.music.index = musicList.findIndex(
-          (song) => song.musicID === option.musicID
+          (music) => music.musicID === option.musicID
         );
       }
 
@@ -271,7 +271,7 @@ Page({
         result = index + 1 === total ? 0 : index + 1;
     }
 
-    this.switchSong(result);
+    this.switchMusic(result);
   },
 
   /** 下一曲动作 */
@@ -299,7 +299,7 @@ Page({
           result = index + 1 === total ? 0 : index + 1;
       }
 
-      this.switchSong(result);
+      this.switchMusic(result);
     }
   },
 
@@ -327,12 +327,12 @@ Page({
         default:
           result = index === 0 ? total - 1 : index - 1;
       }
-      this.switchSong(result);
+      this.switchMusic(result);
     }
   },
 
   /** 切换歌曲 */
-  switchSong(index: "stop" | "nothing" | number) {
+  switchMusic(index: "stop" | "nothing" | number) {
     if (index === "stop") {
       this.setData({ playing: false, canPlay: false });
 
@@ -342,7 +342,7 @@ Page({
       const currentMusic = this.data.musicList[index];
 
       this.setData({
-        currentSong: currentMusic,
+        currentMusic,
         index,
         playing: false,
         canPlay: false,
@@ -381,7 +381,7 @@ Page({
   // 点击列表具体歌曲项时触发
   change(res: WechatMiniprogram.TouchEvent) {
     this.list();
-    this.switchSong(res.currentTarget.dataset.index);
+    this.switchMusic(res.currentTarget.dataset.index);
   },
 
   back() {

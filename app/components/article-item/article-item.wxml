@@ -1,5 +1,5 @@
 <wxs src="./article-item.wxs" module="article" />
-<view class="article-wrapper">
+<view class="article-wrapper" catch:tap="navigate">
   <image
     class="avatar"
     src="cloud://lharion-6g2ucs7hb4ee6e89.6c68-lharion-6g2ucs7hb4ee6e89-1304994338/avatar.webp"
@@ -14,6 +14,7 @@
   >
     <image
       wx:for="{{config.photos}}"
+      wx:key="*this"
       class="photo"
       src="{{item}}"
       mode="aspectFill"

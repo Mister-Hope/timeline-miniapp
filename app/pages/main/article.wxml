@@ -1,0 +1,12 @@
+<article-item config="{{item}}" />
+<view class="share">
+  <button
+    class="share-button"
+    hover-class="button-hover"
+    hover-start-time="0"
+    open-type="share"
+    plain
+  >
+    <text class="icon-font share" />分享
+  </button>
+</view>

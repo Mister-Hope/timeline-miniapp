@@ -35,8 +35,6 @@
           <article-item
             wx:elif="{{item.type === 'article'}}"
             config="{{item}}"
-            data-index="{{index}}"
-            catch:tap="itemTap"
           />
         </mp-slideview>
       </block>
@@ -46,8 +44,6 @@
           <article-item
             wx:elif="{{item.type === 'article'}}"
             config="{{item}}"
-            data-index="{{index}}"
-            catch:tap="itemTap"
           />
         </block>
       </block>

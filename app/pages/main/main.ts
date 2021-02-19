@@ -125,12 +125,6 @@ Page({
     this.setData({ showActionsheet: false });
   },
 
-  /** 点击列表项 */
-  itemTap({ currentTarget }: WechatMiniprogram.Touch) {
-    // dosomething
-    console.log(currentTarget);
-  },
-
   /** 点击滑动按钮 */
   slideButtonTap({
     currentTarget,

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "详情",
+  "usingComponents": {
+    "article-item": "/components/article-item/article-item"
+  }
+}
