@@ -203,7 +203,7 @@ Page({
             new Promise((resolve, reject) => {
               wx.cloud.uploadFile({
                 // add current timeStamp as hash
-                cloudPath: `${new Date().getTime()}-${tempFile.name}`,
+                cloudPath: `${new Date().getTime()}-${globalData.openid}`,
                 filePath: tempFile.path,
                 // 返回文件 ID
                 success: ({ fileID }) => {
