@@ -33,12 +33,24 @@
             data-index="{{index}}"
             catch:tap="itemTap"
           />
+          <article-item
+            wx:elif="{{item.type === 'article'}}"
+            config="{{item}}"
+            data-index="{{index}}"
+            catch:tap="itemTap"
+          />
         </mp-slideview>
       </block>
       <block wx:else>
         <block wx:for="{{items}}" wx:key="_id">
           <music-item
             wx:if="{{item.type === 'music'}}"
+            config="{{item}}"
+            data-index="{{index}}"
+            catch:tap="itemTap"
+          />
+          <article-item
+            wx:elif="{{item.type === 'article'}}"
             config="{{item}}"
             data-index="{{index}}"
             catch:tap="itemTap"

@@ -1,5 +1,9 @@
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <mp-msg type="success" title="上传成功" desc="歌曲已成功上传">
+  <mp-msg
+    type="success"
+    title="上传成功"
+    desc="{{type === 'music'? '歌曲': '说说'}}已成功上传"
+  >
     <button slot="handle" type="primary" class="weui-btn" catch:tap="home">
       返回首页
     </button>

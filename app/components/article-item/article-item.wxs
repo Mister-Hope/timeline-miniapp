@@ -1,0 +1,5 @@
+module.exports = {
+  getPhotoClass: function (photos) {
+    return photos.length === 1 ? "single" : photos.length < 5 ? "double" : "";
+  },
+};

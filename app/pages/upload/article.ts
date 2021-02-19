@@ -101,7 +101,7 @@ Page({
             info("插入说说:", res._id);
 
             wx.hideLoading();
-            wx.redirectTo({ url: "/pages/upload/success" });
+            wx.redirectTo({ url: "/pages/upload/success?type=article" });
           })
           .catch(error);
       };

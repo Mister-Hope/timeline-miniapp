@@ -147,7 +147,7 @@ Page({
           .then((res) => {
             info("插入歌曲:", res._id);
             wx.hideLoading();
-            wx.redirectTo({ url: "/pages/upload/success" });
+            wx.redirectTo({ url: "/pages/upload/success?type=music" });
           })
           .catch(error);
       };

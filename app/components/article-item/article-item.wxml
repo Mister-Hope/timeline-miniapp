@@ -1,0 +1,19 @@
+<wxs src="./article-item.wxs" module="article" />
+<view class="article-wrapper">
+  <image class="avatar" src="/image/avatar.webp" />
+  <view class="content">
+    <view class="date">{{config.date}}</view>
+    <view class="text">{{config.text}}</view>
+  </view>
+  <view
+    wx:if="{{config.photos.length}}"
+    class="photo-wrapper {{article.getPhotoClass(config.photos)}}"
+  >
+    <image
+      wx:for="{{config.photos}}"
+      class="photo"
+      src="{{item}}"
+      mode="aspectFill"
+    />
+  </view>
+</view>

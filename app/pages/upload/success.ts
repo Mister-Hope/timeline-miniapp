@@ -1,6 +1,8 @@
 Page({
-  onLoad() {
+  onLoad(options) {
     if (getCurrentPages().length === 1) this.home();
+
+    this.setData({ type: options.type });
 
     if (wx.canIUse("onThemeChange")) wx.onThemeChange(this.themeChange);
   },
