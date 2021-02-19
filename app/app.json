@@ -2,6 +2,7 @@
   "entryPagePath": "pages/main/main",
   "pages": [
     "pages/main/main",
+    "pages/main/article",
     "pages/main/music",
     "pages/upload/article",
     "pages/upload/music",
