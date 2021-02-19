@@ -1,4 +1,9 @@
 module.exports = {
+  /** 日期处理 */
+  getDate: function (date) {
+    return date.split('T')[0].replace(getRegExp('20..-'), '').replace(getRegExp('-','g'), '/');
+  },
+
   /** 时间处理 */
   getTime: function (duration) {
     var time = Math.round(duration);

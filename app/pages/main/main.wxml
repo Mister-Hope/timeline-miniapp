@@ -1,7 +1,7 @@
 <wxs src="./main.wxs" module="main" />
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
   <mp-navigation-bar back="{{false}}">
-    <view slot="left">
+    <view wx:if="{{isAdmin}}" slot="left">
       <view class="upload-icon" hover-class="button-hover" catch:tap="upload">
         <image src="./icon/add{{darkmode? '-dark': ''}}.svg" />
       </view>
@@ -11,21 +11,34 @@
 
   <view class="music-list">
     <mp-cells wx:if="{{musicList.length}}">
-      <mp-slideview
-        wx:for="{{musicList}}"
-        wx:key="fileID"
-        buttons="{{darkmode? slideDarkButtons: slideButtons}}"
-        icon
-        data-index="{{index}}"
-        bindbuttontap="slideButtonTap"
-      >
+      <block wx:if="{{isAdmin}}">
+        <mp-slideview
+          wx:for="{{musicList}}"
+          wx:key="fileID"
+          buttons="{{darkmode? slideDarkButtons: slideButtons}}"
+          icon
+          data-index="{{index}}"
+          bindbuttontap="slideButtonTap"
+        >
+          <mp-cell
+            hover
+            value="{{item.title}}"
+            footer="{{main.getDate(item.createTime)}}"
+            data-index="{{index}}"
+            catch:tap="itemTap"
+          />
+        </mp-slideview>
+      </block>
+      <block wx:else>
         <mp-cell
+          wx:for="{{musicList}}"
+          wx:key="fileID"
           hover
           value="{{item.title}}"
           data-index="{{index}}"
           catch:tap="itemTap"
         />
-      </mp-slideview>
+      </block>
     </mp-cells>
     <mp-msg wx:else type="info" title="暂无歌曲" />
   </view>

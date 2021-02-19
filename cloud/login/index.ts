@@ -5,12 +5,13 @@ init({
   env: (DYNAMIC_CURRENT_ENV as unknown) as string,
 });
 
-export const main = (): {
+export const main = async (): Promise<{
   openid: string | undefined;
   appid: string | undefined;
   unionid: string | undefined;
   env: string | undefined;
-} => {
+  // eslint-disable-next-line @typescript-eslint/require-await
+}> => {
   const { APPID, ENV, OPENID, UNIONID } = getWXContext();
 
   return {

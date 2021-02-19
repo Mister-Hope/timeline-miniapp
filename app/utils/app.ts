@@ -1,4 +1,4 @@
-import { info, warn } from "./log";
+import { error, info, warn } from "./log";
 import { tip } from "./wx";
 import { GlobalData } from "../app";
 
@@ -11,11 +11,6 @@ export const getDarkmode = (
   sysInfo: WechatMiniprogram.SystemInfo = wx.getSystemInfoSync()
 ): boolean => (sysInfo.AppPlatform ? false : sysInfo.theme === "dark");
 
-interface LoginCloudFunction {
-  name: "login";
-  success: (res: { openid: string }) => void;
-}
-
 /**
  * 登录
  *
@@ -25,17 +20,24 @@ export const login = (globalData: GlobalData): void => {
   const openid = wx.getStorageSync("openid") as string;
 
   if (openid) {
-    info(`openid为: ${openid}`);
+    info(`openid 为: ${openid}`);
     globalData.openid = openid;
   } else
-    wx.cloud.callFunction(<LoginCloudFunction>{
-      name: "login",
-      data: {},
-      success: ({ openid }) => {
+    wx.cloud
+      .callFunction({
+        name: "login",
+        data: {},
+      })
+      .then((res) => {
+        const {
+          result: { openid },
+        } = (res as unknown) as { result: { openid: string } };
+
+        info("openid 为", openid);
         wx.setStorageSync("openid", openid);
         globalData.openid = openid;
-      },
-    });
+      })
+      .catch(error);
 };
 
 /** 注册全局监听 */

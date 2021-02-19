@@ -1,9 +1,4 @@
-import cloud, {
-  DYNAMIC_CURRENT_ENV,
-  database,
-  init,
-  getWXContext,
-} from "wx-server-sdk";
+import cloud, { DYNAMIC_CURRENT_ENV, database, init } from "wx-server-sdk";
 
 // 初始化 cloud
 init({
@@ -18,9 +13,7 @@ interface ListResult {
 }
 
 export const main = async (): Promise<ListResult> => {
-  const { OPENID } = getWXContext();
-
-  const colection = database().collection("music").where({ _openid: OPENID });
+  const colection = database().collection("music");
 
   const { total } = (await colection.count()) as cloud.DB.ICountResult;
 

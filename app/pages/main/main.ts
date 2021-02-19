@@ -1,3 +1,4 @@
+import { isAdmin } from "../../utils/identify";
 import { error, info, debug, warn } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm, tip } from "../../utils/wx";
@@ -71,6 +72,7 @@ Page({
 
     // 写入基本信息
     this.setData({
+      isAdmin: isAdmin(globalData.openid),
       playing: globalData.music.playing,
       mode: mode || "列表循环",
 
