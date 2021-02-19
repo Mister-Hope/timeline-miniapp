@@ -1,12 +1,14 @@
 @use "./style/common";
 
 page {
+  --grey3: #333;
   --dark-grey: #666;
   --light-grey: #999;
   --hover: rgba(0, 0, 0, 0.1);
   --card-shadow: rgba(0, 0, 0, 0.15);
 
   @media (prefers-color-scheme: light) {
+    --grey3: #333;
     --dark-grey: #666;
     --light-grey: #999;
     --hover: rgba(0, 0, 0, 0.1);
@@ -14,6 +16,7 @@ page {
   }
 
   @media (prefers-color-scheme: dark) {
+    --grey3: #bbb;
     --dark-grey: #999;
     --light-grey: #666;
     --hover: rgba(255, 255, 255, 0.1);

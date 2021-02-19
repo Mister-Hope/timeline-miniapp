@@ -109,6 +109,8 @@ export const startup = (globalData: GlobalData): void => {
     success: (res) => {
       const { networkType } = res;
 
+      info(networkType);
+
       if (networkType === "none" || networkType === "unknown")
         tip("您的网络状态不佳");
     },

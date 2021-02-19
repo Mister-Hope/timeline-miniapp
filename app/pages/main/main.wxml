@@ -42,11 +42,12 @@
       step="1"
       value="{{currentTime * 100}}"
       block-size="12"
-      selected-color="#27C087"
-      block-color="#27C087"
+      selected-color="{{darkmode? '#bbb': '#333'}}"
+      block-color="{{darkmode? '#bbb': '#333'}}"
       catch:change="drag"
       catch:changing="drag"
     />
+    <!-- 歌曲名称 -->
     <view class="song-info">{{currentMusic.title || '- -'}}</view>
 
     <view class="button-wrapper">
@@ -63,7 +64,11 @@
         hover-start-time="0"
         hover-stay-time="100"
       >
-        <image class="icon" src="./icon/prev.svg" catch:tap="previous" />
+        <image
+          class="icon"
+          src="./icon/prev{{darkmode? '-dark': ''}}.svg"
+          catch:tap="previous"
+        />
       </view>
       <view
         class="play-button"
@@ -74,7 +79,7 @@
       >
         <image
           class="icon"
-          src="./icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}.svg"
+          src="./icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}{{darkmode? '-dark': ''}}.svg"
         />
       </view>
       <view
@@ -83,7 +88,11 @@
         hover-start-time="0"
         hover-stay-time="100"
       >
-        <image class="icon" src="./icon/next.svg" catch:tap="next" />
+        <image
+          class="icon"
+          src="./icon/next{{darkmode? '-dark': ''}}.svg"
+          catch:tap="next"
+        />
       </view>
       <view
         class="cycle-button"
@@ -92,7 +101,7 @@
         hover-stay-time="100"
         catch:tap="modeSwitch"
       >
-        <image class="icon" src="{{main.getMode(mode)}}" />
+        <image class="icon" src="{{main.getMode(mode,darkmode)}}" />
       </view>
     </view>
   </view>

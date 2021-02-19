@@ -50,7 +50,7 @@
   margin: 8px 0;
   padding: 0 25px;
 
-  color: var(--dark-grey);
+  color: var(--grey3);
 
   font-weight: 500;
   font-size: 14px;
@@ -65,37 +65,37 @@
   padding: 0 25px;
 
   .button {
-    width: 70rpx;
-    max-width: 40px;
-    height: 70rpx;
-    max-height: 40px;
+    width: 60rpx;
+    max-width: 30px;
+    height: 60rpx;
+    max-height: 30px;
   }
 }
 
 .time-wrapper {
   display: flex;
   justify-content: space-between;
+  color: var(--grey3);
+  font-size: 15px;
 
   .time {
     margin: 0 2px;
-    color: var(--light-grey);
-    font-size: 15px;
   }
 }
 
 .cycle-button {
-  width: 60rpx;
-  max-width: 35px;
-  height: 60rpx;
-  max-height: 35px;
+  width: 52rpx;
+  max-width: 26px;
+  height: 52rpx;
+  max-height: 26px;
   margin: 0 10rpx;
 }
 
 .play-button {
-  width: 100rpx;
-  max-width: 56px;
-  height: 100rpx;
-  max-height: 56px;
+  width: 84rpx;
+  max-width: 42px;
+  height: 84rpx;
+  max-height: 42px;
 }
 
 .button-wrapper .icon {
