@@ -5,7 +5,7 @@ import { message } from "./utils/message";
 export interface MusicInfo {
   title: string;
   createTime: Date;
-  fileID: string;
+  musicID: string;
 
   _id: string;
   _openid: string;

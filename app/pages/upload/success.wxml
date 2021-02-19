@@ -1,0 +1,3 @@
+<mp-msg type="success" title="上传成功" desc="歌曲已成功上传">
+  <button slot="handle" class="weui-btn">返回首页</button>
+</mp-msg>

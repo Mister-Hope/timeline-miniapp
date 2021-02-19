@@ -1,14 +1,16 @@
 {
+  "entryPagePath": "pages/main/main",
   "pages": [
     "pages/main/main",
     "pages/upload/article",
     "pages/upload/music",
-    "pages/upload/photo"
+    "pages/upload/photo",
+    "pages/upload/success"
   ],
   "window": {
     "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTextStyle",
-    "navigationBarTitleText": "歌曲列表",
+    "navigationBarTitleText": "小爽的专属音乐室",
     "backgroundColor": "@bgColor",
     "backgroundTextStyle": "@bgTxtStyle",
     "backgroundColorTop": "@bgColorTop",

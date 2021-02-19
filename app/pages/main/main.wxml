@@ -1,4 +1,13 @@
 <wxs src="./main.wxs" module="main" />
+
+<mp-actionSheet
+  title="发布内容"
+  show="{{showActionsheet}}"
+  actions="{{actions}}"
+  bindactiontap="actionTap"
+  bindclose="actionClose"
+/>
+
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
   <mp-navigation-bar back="{{false}}">
     <view wx:if="{{isAdmin}}" slot="left">
@@ -8,20 +17,12 @@
     </view>
     <view slot="center">小爽的专属音乐室</view>
   </mp-navigation-bar>
-  <mp-actionSheet
-    title="新建内容"
-    show="{{showActionsheet}}"
-    actions="{{actions}}"
-    bindactiontap="actionTap"
-    bindclose="actionClose"
-  />
-
   <view class="music-list">
     <mp-cells wx:if="{{musicList.length}}">
       <block wx:if="{{isAdmin}}">
         <mp-slideview
           wx:for="{{musicList}}"
-          wx:key="fileID"
+          wx:key="musicID"
           buttons="{{darkmode? slideDarkButtons: slideButtons}}"
           icon
           data-index="{{index}}"
@@ -39,7 +40,7 @@
       <block wx:else>
         <mp-cell
           wx:for="{{musicList}}"
-          wx:key="fileID"
+          wx:key="musicID"
           hover
           value="{{item.title}}"
           data-index="{{index}}"

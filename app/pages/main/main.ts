@@ -4,12 +4,13 @@ import { message } from "../../utils/message";
 import { confirm, tip } from "../../utils/wx";
 
 import type { AppOption, MusicInfo } from "../../app";
-import type { PlayMode } from "./typings";
 
 const { getMusicList, globalData } = getApp<AppOption>();
 
 /** 音频管理器 */
 const manager = wx.getBackgroundAudioManager();
+
+type PlayMode = "列表循环" | "单曲循环" | "顺序播放" | "随机播放";
 
 Page({
   data: {
@@ -62,12 +63,11 @@ Page({
 
     /** 选项菜单 */
     showActionsheet: false,
-
     /** 操作 */
     actions: [
-      { text: "新建说说", value: "article" },
-      { text: "上传图片", value: "photo" },
-      { text: "上传音乐", value: "music" },
+      { text: "说说", value: "article" },
+      { text: "图片", value: "photo" },
+      { text: "音乐", value: "music" },
     ],
   },
 
@@ -100,9 +100,9 @@ Page({
 
     const setCurrentSongMusic = (musicList: MusicInfo[]): void => {
       if (option.index) globalData.music.index = Number(option.index);
-      else if (option.fileID) {
+      else if (option.musicID) {
         globalData.music.index = musicList.findIndex(
-          (song) => song.fileID === option.fileID
+          (song) => song.musicID === option.musicID
         );
       }
 
@@ -154,13 +154,13 @@ Page({
   onShareAppMessage(): WechatMiniprogram.Page.ICustomShareContent {
     const { currentMusic } = this.data;
 
-    return currentMusic && currentMusic.fileID
+    return currentMusic && currentMusic.musicID
       ? {
           title: currentMusic.title,
-          path: `/pages/main/main?id=${currentMusic.fileID}`,
+          path: `/pages/main/main?musicID=${currentMusic.musicID}`,
         }
       : {
-          title: "歌曲列表",
+          title: "小爽的专属音乐室",
           path: "/pages/main/main",
         };
   },
@@ -168,23 +168,23 @@ Page({
   onShareTimeline(): WechatMiniprogram.Page.ICustomTimelineContent {
     const { currentMusic } = this.data;
 
-    return currentMusic && currentMusic.fileID
+    return currentMusic && currentMusic.musicID
       ? {
           title: currentMusic.title,
-          query: `id=${currentMusic.fileID}`,
+          query: `musicID=${currentMusic.musicID}`,
         }
-      : { title: "歌曲列表" };
+      : { title: "小爽的专属音乐室" };
   },
 
   onAddToFavorites(): WechatMiniprogram.Page.IAddToFavoritesContent {
     const { currentMusic } = this.data;
 
-    return currentMusic && currentMusic.fileID
+    return currentMusic && currentMusic.musicID
       ? {
           title: currentMusic.title,
-          query: `id=${currentMusic.fileID}`,
+          query: `musicID=${currentMusic.musicID}`,
         }
-      : { title: "歌曲列表" };
+      : { title: "小爽的专属音乐室" };
   },
 
   onUnload() {
@@ -248,7 +248,7 @@ Page({
             success: () => {
               // 删除文件
               wx.cloud.deleteFile({
-                fileList: [music.fileID],
+                fileList: [music.musicID],
                 success: () => {
                   // 更新歌曲列表
                   globalData.musicList.splice(
@@ -330,14 +330,14 @@ Page({
 
     manager.onError(({ errMsg }) => {
       tip("获取音乐出错，请稍后重试");
-      error(`Manager: ${errMsg}`);
+      error(`Manager failed with error: ${errMsg}`);
     });
   },
 
   /** 播放与暂停 */
   play() {
     if (this.state.interupt) {
-      manager.src = this.data.currentMusic.fileID;
+      manager.src = this.data.currentMusic.musicID;
       this.state.interupt = false;
     } else if (this.data.playing) manager.pause();
     else manager.play();
@@ -346,7 +346,7 @@ Page({
   /** 拖拽进度 */
   drag(event: WechatMiniprogram.SliderChange) {
     if (this.state.interupt) {
-      manager.src = this.data.currentMusic.fileID;
+      manager.src = this.data.currentMusic.musicID;
       this.state.interupt = false;
     }
 
@@ -457,7 +457,7 @@ Page({
         canPlay: false,
       });
 
-      manager.src = currentMusic.fileID;
+      manager.src = currentMusic.musicID;
       manager.title = currentMusic.title;
       globalData.music.index = Number(index);
     }

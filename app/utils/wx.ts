@@ -1,4 +1,4 @@
-import { warn } from "./log";
+import { error, info, warn } from "./log";
 
 /**
  * 显示提示文字
@@ -96,5 +96,26 @@ export const netReport = (): void => {
 
       warn("Request fail and cannot get networkType");
     },
+  });
+};
+
+export const uploadCloudFile = (
+  filePath: string,
+  cloudPath: string
+): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    wx.cloud.uploadFile({
+      cloudPath,
+      filePath,
+      success: ({ fileID }) => {
+        info(`${filePath} 成功上传至 ${fileID}`);
+        // 返回文件 ID
+        resolve(fileID);
+      },
+      fail: ({ errMsg }) => {
+        error(errMsg);
+        reject(errMsg);
+      },
+    });
   });
 };
