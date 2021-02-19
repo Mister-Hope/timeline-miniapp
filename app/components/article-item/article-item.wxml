@@ -17,6 +17,8 @@
       class="photo"
       src="{{item}}"
       mode="aspectFill"
+      data-index="{{index}}"
+      catch:tap="view"
     />
   </view>
 </view>
