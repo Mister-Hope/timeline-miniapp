@@ -44,6 +44,17 @@ Page({
     }
     // 用户无权进入此页面
     else wx.reLaunch({ url: "/pages/main/main" });
+
+    if (wx.canIUse("onThemeChange")) wx.onThemeChange(this.themeChange);
+  },
+
+  onUnload() {
+    if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);
+  },
+
+  /** 切换主题 */
+  themeChange({ theme }: WechatMiniprogram.OnThemeChangeCallbackResult) {
+    this.setData({ darkmode: theme === "dark" });
   },
 
   /** 配文变更 */

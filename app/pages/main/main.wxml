@@ -1,14 +1,13 @@
 <wxs src="./main.wxs" module="main" />
 
-<mp-actionSheet
-  title="发布内容"
-  show="{{showActionsheet}}"
-  actions="{{actions}}"
-  bindactiontap="actionTap"
-  bindclose="actionClose"
-/>
-
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
+  <mp-actionSheet
+    title="发布内容"
+    show="{{showActionsheet}}"
+    actions="{{actions}}"
+    bindactiontap="actionTap"
+    bindclose="actionClose"
+  />
   <mp-navigation-bar back="{{false}}">
     <view wx:if="{{isAdmin}}" slot="left">
       <view class="new-icon" hover-class="button-hover" catch:tap="new">
