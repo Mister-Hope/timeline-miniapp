@@ -18,17 +18,18 @@
     <view slot="center">小爽的专属音乐室</view>
   </mp-navigation-bar>
   <view class="music-list">
-    <mp-cells wx:if="{{musicList.length}}">
+    <mp-cells wx:if="{{items.length}}">
       <block wx:if="{{isAdmin}}">
         <mp-slideview
-          wx:for="{{musicList}}"
-          wx:key="musicID"
+          wx:for="{{items}}"
+          wx:key="_id"
           buttons="{{darkmode? slideDarkButtons: slideButtons}}"
           icon
           data-index="{{index}}"
           bindbuttontap="slideButtonTap"
         >
           <music-item
+            wx:if="{{item.type === 'music'}}"
             config="{{item}}"
             data-index="{{index}}"
             catch:tap="itemTap"
@@ -36,13 +37,14 @@
         </mp-slideview>
       </block>
       <block wx:else>
-        <music-item
-          wx:for="{{musicList}}"
-          wx:key="musicID"
-          config="{{item}}"
-          data-index="{{index}}"
-          catch:tap="itemTap"
-        />
+        <block wx:for="{{items}}" wx:key="_id">
+          <music-item
+            wx:if="{{item.type === 'music'}}"
+            config="{{item}}"
+            data-index="{{index}}"
+            catch:tap="itemTap"
+          />
+        </block>
       </block>
     </mp-cells>
     <mp-msg wx:else type="waiting" title="加载中" />

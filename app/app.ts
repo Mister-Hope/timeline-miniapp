@@ -1,24 +1,7 @@
 import { startup } from "./utils/app";
 import { info } from "./utils/log";
 import { message } from "./utils/message";
-
-export interface MusicInfo {
-  /** 歌曲名称 */
-  name: string;
-  /** 演唱者 */
-  singer: string;
-  /** 日期 */
-  date: string;
-  /** 配文 */
-  text: string;
-  /** 封面 fileID */
-  coverID: string;
-  /** 音乐 fileID */
-  musicID: string;
-
-  _id: string;
-  _openid: string;
-}
+import { ItemInfo } from "./typings";
 
 export interface GlobalData {
   /** 版本号 */
@@ -31,7 +14,7 @@ export interface GlobalData {
     index: number;
   };
   /** 音乐列表 */
-  musicList: MusicInfo[];
+  items: ItemInfo[];
   /** 用户的 openid */
   openid: string;
   /** 夜间模式开启状态 */
@@ -42,7 +25,7 @@ export interface GlobalData {
 
 export interface AppOption {
   globalData: GlobalData;
-  getMusicList: () => Promise<MusicInfo[]>;
+  getItems: () => Promise<ItemInfo[]>;
 }
 
 App({
@@ -50,29 +33,29 @@ App({
     version: "1.0.0",
     openid: "",
     music: { playing: false, index: -1 },
-    musicList: [],
+    items: [],
   } as unknown) as GlobalData,
 
   onLaunch() {
     startup(this.globalData);
 
-    this.getMusicList().then((musicList) => {
-      this.globalData.musicList = musicList;
+    this.getItems().then((items) => {
+      this.globalData.items = items;
 
-      message.emit("musicList", musicList);
+      message.emit("items", items);
     });
   },
 
-  getMusicList(): Promise<MusicInfo[]> {
+  getItems(): Promise<ItemInfo[]> {
     // 获取歌曲列表
     return wx.cloud
       .callFunction({
-        name: "music",
+        name: "items",
       })
       .then(({ result }) => {
-        const { data } = result as { data: MusicInfo[]; errMsg: string };
+        const { data } = result as { data: ItemInfo[]; errMsg: string };
 
-        info("歌曲列表为:", data);
+        info("列表为:", data);
 
         return data;
       });

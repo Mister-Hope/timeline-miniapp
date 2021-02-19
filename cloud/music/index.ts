@@ -13,7 +13,7 @@ interface ListResult {
 }
 
 export const main = async (): Promise<ListResult> => {
-  const colection = database().collection("music");
+  const colection = database().collection("items");
 
   const { total } = (await colection.count()) as cloud.DB.ICountResult;
 

@@ -3,9 +3,10 @@ import { error, info, debug, warn } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm, tip } from "../../utils/wx";
 
-import type { AppOption, MusicInfo } from "../../app";
+import type { AppOption } from "../../app";
+import type { ItemInfo, MusicInfo } from "../../typings";
 
-const { getMusicList, globalData } = getApp<AppOption>();
+const { getItems, globalData } = getApp<AppOption>();
 
 /** 音频管理器 */
 const manager = wx.getBackgroundAudioManager();
@@ -28,8 +29,8 @@ Page({
     totalTime: 1,
     /** 当前歌曲信息 */
     currentMusic: {} as MusicInfo,
-    /** 歌曲列表 */
-    musicList: [] as MusicInfo[],
+    /** 项目列表 */
+    items: [] as ItemInfo[],
     /** 播放模式 */
     mode: "列表循环" as PlayMode,
 
@@ -72,6 +73,7 @@ Page({
   },
 
   state: {
+    musicList: [] as MusicInfo[],
     interupt: false,
   },
 
@@ -98,9 +100,14 @@ Page({
       firstPage: getCurrentPages().length === 1,
     });
 
-    const setCurrentSongMusic = (musicList: MusicInfo[]): void => {
-      if (option.index) globalData.music.index = Number(option.index);
-      else if (option.musicID) {
+    const setCurrentMusic = (items: ItemInfo[]): void => {
+      const musicList = items.filter(
+        (item) => item.type === "music"
+      ) as MusicInfo[];
+
+      this.state.musicList = musicList;
+
+      if (option.musicID) {
         globalData.music.index = musicList.findIndex(
           (song) => song.musicID === option.musicID
         );
@@ -108,8 +115,9 @@ Page({
 
       const { index } = globalData.music;
 
-      // 写入歌曲列表与当前歌曲信息
+      // 写入列表
       this.setData({
+        // 当前歌曲信息
         ...(index > 0
           ? {
               inited: true,
@@ -117,18 +125,18 @@ Page({
               currentMusic: musicList[index],
             }
           : {}),
-        musicList,
+        items,
       });
 
       // 如果正在播放，设置能够播放
       if (globalData.music.playing)
         this.setData({ canplay: true, inited: true });
 
-      message.off("musicList", setCurrentSongMusic);
+      message.off("items", setCurrentMusic);
     };
 
-    if (globalData.musicList.length) setCurrentSongMusic(globalData.musicList);
-    else message.on<[MusicInfo[]]>("musicList", setCurrentSongMusic);
+    if (globalData.items.length) setCurrentMusic(globalData.items);
+    else message.on<[ItemInfo[]]>("items", setCurrentMusic);
 
     // 注册播放器动作
     this.managerRegister();
@@ -145,8 +153,11 @@ Page({
   },
 
   onPullDownRefresh() {
-    getMusicList().then((musicList) => {
-      this.setData({ musicList });
+    getItems().then((items) => {
+      this.setData({ items });
+      this.state.musicList = items.filter(
+        (item) => item.type === "music"
+      ) as MusicInfo[];
       wx.stopPullDownRefresh();
     });
   },
@@ -235,36 +246,35 @@ Page({
     if (detail.data === "delete") {
       // 要求用户确认
       confirm("是否要删除该文件", () => {
-        const music = this.data.musicList[
-          currentTarget.dataset.index as number
-        ];
+        const item = this.data.items[currentTarget.dataset.index as number];
 
         // 删除数据库记录
         wx.cloud
           .database()
-          .collection("music")
-          .doc(music._id)
-          .remove({
-            success: () => {
+          .collection("items")
+          .doc(item._id)
+          .remove()
+          .then(() => {
+            // 说说
+            if (item.type === "article")
               // 删除文件
-              wx.cloud.deleteFile({
-                fileList: [music.musicID],
-                success: () => {
-                  // 更新歌曲列表
-                  globalData.musicList.splice(
-                    currentTarget.dataset.index as number,
-                    1
-                  );
-
-                  this.setData({
-                    musicList: globalData.musicList,
-                  });
-                },
-                fail: error,
-              });
-            },
-            fail: error,
-          });
+              wx.cloud
+                .deleteFile({ fileList: item.photos })
+                .then(() => wx.startPullDownRefresh())
+                .catch(error);
+            // 音乐
+            else if (item.type === "music")
+              wx.cloud
+                .deleteFile({
+                  fileList: [
+                    item.musicID,
+                    ...(item.coverID ? [item.coverID] : []),
+                  ],
+                })
+                .then(() => wx.startPullDownRefresh())
+                .catch(error);
+          })
+          .catch(error);
       });
     }
   },
@@ -360,7 +370,7 @@ Page({
   end() {
     // 结束动作
     const { index } = this.data;
-    const total = this.data.musicList.length;
+    const total = this.state.musicList.length;
     let result: number | "stop";
 
     switch (this.data.mode) {
@@ -386,7 +396,7 @@ Page({
   /** 下一曲动作 */
   next() {
     const { index } = this.data;
-    const total = this.data.musicList.length;
+    const total = this.state.musicList.length;
     let result: number | "nothing";
 
     if (total === 1) tip("只有一首歌曲");
@@ -415,7 +425,7 @@ Page({
   /** 上一曲动作 */
   previous() {
     const { index } = this.data;
-    const total = this.data.musicList.length;
+    const total = this.state.musicList.length;
     let result: number | "nothing";
 
     if (total === 1) tip("只有一首歌曲");
@@ -448,7 +458,7 @@ Page({
       manager.stop();
       // 正常赋值
     } else if (index !== "nothing") {
-      const currentMusic = this.data.musicList[index];
+      const currentMusic = this.state.musicList[index];
 
       this.setData({
         currentMusic,
@@ -459,6 +469,15 @@ Page({
 
       manager.src = currentMusic.musicID;
       manager.title = currentMusic.name;
+      manager.singer = currentMusic.singer;
+
+      // get temp url and set cover
+      wx.cloud
+        .getTempFileURL({ fileList: [currentMusic.coverID] })
+        .then(({ fileList }) => {
+          manager.coverImgUrl = fileList[0].tempFileURL;
+        });
+
       globalData.music.index = Number(index);
     }
   },

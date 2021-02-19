@@ -106,7 +106,7 @@ Page({
   },
 
   /** 日期变更 */
-  timeChange({ detail }: WechatMiniprogram.PickerChange) {
+  dateChange({ detail }: WechatMiniprogram.PickerChange) {
     this.setData({ date: detail.value as string });
   },
 
@@ -120,10 +120,10 @@ Page({
     else {
       // 进行提示
       wx.showLoading({ title: "上传中" });
-      const { musicList } = globalData;
 
       const insertandUpdate = (musicID: string, coverID = ""): void => {
         const data = {
+          type: "music",
           name,
           date,
           text,
@@ -135,15 +135,6 @@ Page({
         this.insetData(data)
           .then((res) => {
             info("插入歌曲:", res._id);
-
-            // 更新歌曲列表
-            musicList.push({
-              ...data,
-              _id: res._id as string,
-              _openid: globalData.openid,
-            });
-            globalData.musicList = musicList;
-            this.setData({ musicList });
             wx.hideLoading();
             wx.redirectTo({ url: "/pages/upload/success" });
           })
@@ -170,5 +161,5 @@ Page({
 
   /** 插入数据 */
   insetData: (data: Record<string, unknown>) =>
-    wx.cloud.database().collection("music").add({ data }),
+    wx.cloud.database().collection("items").add({ data }),
 });

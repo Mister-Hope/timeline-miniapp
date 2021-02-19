@@ -1,5 +1,8 @@
 {
+  "navigationBarTitleText": "发表说说",
   "usingComponents": {
+    "mp-cells": "weui-miniprogram/cells/cells",
+    "mp-cell": "weui-miniprogram/cell/cell",
     "mp-form-page": "weui-miniprogram/form-page/form-page",
     "mp-form": "weui-miniprogram/form/form"
   }

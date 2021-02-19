@@ -1,5 +1,5 @@
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <mp-form-page title="上传音乐" subtitle="选择您的音乐并完成配文">
+  <mp-form-page title="上传音乐">
     <mp-form id="form">
       <mp-cells title="音乐">
         <mp-cell prop="music" title="文件">
@@ -8,7 +8,7 @@
             选择音乐
           </button>
         </mp-cell>
-        <mp-cell prop="music" title="名称">
+        <mp-cell prop="name" title="名称">
           <input value="{{name}}" catch:input="nameChange" />
         </mp-cell>
       </mp-cells>
@@ -33,11 +33,11 @@
             选择封面
           </button>
         </mp-cell>
-        <mp-cell prop="cover" title="演唱者">
+        <mp-cell prop="singer" title="演唱者">
           <input value="{{singer}}" catch:input="singerChange" />
         </mp-cell>
-        <mp-cell prop="cover" title="创建时间">
-          <picker header-text="创建时间" mode="date" bindchange="timeChange"
+        <mp-cell prop="date" title="日期">
+          <picker header-text="日期" mode="date" bindchange="dateChange"
             >{{date}}</picker
           >
         </mp-cell>
