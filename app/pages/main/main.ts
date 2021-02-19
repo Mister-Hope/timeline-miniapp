@@ -66,8 +66,7 @@ Page({
     showActionsheet: false,
     /** 操作 */
     actions: [
-      { text: "说说", value: "article" },
-      { text: "图片", value: "photo" },
+      { text: "说说/图片", value: "article" },
       { text: "音乐", value: "music" },
     ],
   },

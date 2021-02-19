@@ -4,7 +4,6 @@
     "pages/main/main",
     "pages/upload/article",
     "pages/upload/music",
-    "pages/upload/photo",
     "pages/upload/success"
   ],
   "window": {

@@ -1,5 +1,0 @@
-<view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <button class="button" type="primary" catch:tap="chooseImage">
-    选择图片(未制作)
-  </button>
-</view>
