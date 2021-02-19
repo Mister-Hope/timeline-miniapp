@@ -1,7 +1,7 @@
 import { startup } from "./utils/app";
 import { info } from "./utils/log";
 import { message } from "./utils/message";
-import { ItemInfo } from "./typings";
+import { ItemInfo, MusicInfo } from "./typings";
 
 export interface GlobalData {
   /** 版本号 */
@@ -13,8 +13,10 @@ export interface GlobalData {
     /** 播放歌曲序号 */
     index: number;
   };
-  /** 音乐列表 */
+  /** 项目列表 */
   items: ItemInfo[];
+  /** 音乐列表 */
+  musicList: MusicInfo[];
   /** 用户的 openid */
   openid: string;
   /** 夜间模式开启状态 */
@@ -32,8 +34,9 @@ App({
   globalData: ({
     version: "1.0.0",
     openid: "",
-    music: { playing: false, index: -1 },
+    music: { playing: false, index: 0 },
     items: [],
+    musicList: [],
   } as unknown) as GlobalData,
 
   onLaunch() {
@@ -41,6 +44,9 @@ App({
 
     this.getItems().then((items) => {
       this.globalData.items = items;
+      this.globalData.musicList = items.filter(
+        (item) => item.type === "music"
+      ) as MusicInfo[];
 
       message.emit("items", items);
     });

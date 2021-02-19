@@ -16,6 +16,10 @@
     </view>
     <view slot="center">小爽的专属音乐室</view>
   </mp-navigation-bar>
+  <view
+    class="navigation-bar"
+    style="padding-top: {{info.statusBarHeight}}px"
+  />
   <view class="music-list">
     <mp-cells wx:if="{{items.length}}">
       <block wx:if="{{isAdmin}}">
@@ -27,12 +31,7 @@
           data-index="{{index}}"
           bindbuttontap="slideButtonTap"
         >
-          <music-item
-            wx:if="{{item.type === 'music'}}"
-            config="{{item}}"
-            data-index="{{index}}"
-            catch:tap="itemTap"
-          />
+          <music-item wx:if="{{item.type === 'music'}}" config="{{item}}" />
           <article-item
             wx:elif="{{item.type === 'article'}}"
             config="{{item}}"
@@ -43,12 +42,7 @@
       </block>
       <block wx:else>
         <block wx:for="{{items}}" wx:key="_id">
-          <music-item
-            wx:if="{{item.type === 'music'}}"
-            config="{{item}}"
-            data-index="{{index}}"
-            catch:tap="itemTap"
-          />
+          <music-item wx:if="{{item.type === 'music'}}" config="{{item}}" />
           <article-item
             wx:elif="{{item.type === 'article'}}"
             config="{{item}}"
@@ -59,82 +53,5 @@
       </block>
     </mp-cells>
     <mp-msg wx:else type="waiting" title="加载中" />
-  </view>
-
-  <view
-    class="music-wrapper"
-    style="padding-bottom: {{info.screenHeight - info.safeArea.bottom + 5}}px"
-  >
-    <!-- 进度条 -->
-    <slider
-      class="progress-bar"
-      min="0"
-      max="{{totalTime * 100}}"
-      step="1"
-      value="{{currentTime * 100}}"
-      block-size="12"
-      selected-color="{{darkmode? '#bbb': '#333'}}"
-      block-color="{{darkmode? '#bbb': '#333'}}"
-      backgroundColor="{{darkmode? '#000000': '#ffffff'}}"
-      catch:change="drag"
-      catch:changing="drag"
-    />
-    <!-- 歌曲名称 -->
-    <view class="song-info">{{currentMusic.name || '- -'}}</view>
-
-    <view class="button-wrapper">
-      <!-- 播放时间 -->
-      <view class="time-wrapper">
-        <view class="time">{{inited? main.getTime(currentTime): '--:--'}}</view>
-        <span class="time">/</span>
-        <view class="time">{{inited? main.getTime(totalTime): '--:--'}}</view>
-      </view>
-
-      <view
-        class="button"
-        hover-class="button-active"
-        hover-start-time="0"
-        hover-stay-time="100"
-      >
-        <image
-          class="icon"
-          src="/icon/prev{{darkmode? '-dark': ''}}.svg"
-          catch:tap="previous"
-        />
-      </view>
-      <view
-        class="play-button"
-        hover-class="button-active"
-        hover-start-time="0"
-        hover-stay-time="100"
-        catch:tap="play"
-      >
-        <image
-          class="icon"
-          src="/icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}{{darkmode? '-dark': ''}}.svg"
-        />
-      </view>
-      <view
-        class="button"
-        hover-class="button-active"
-        hover-start-time="0"
-        hover-stay-time="100"
-      >
-        <image
-          class="icon"
-          src="/icon/next{{darkmode? '-dark': ''}}.svg"
-          catch:tap="next"
-        />
-      </view>
-      <view
-        class="cycle-button"
-        hover-class="button-active"
-        hover-start-time="0"
-        hover-stay-time="100"
-        catch:tap="modeSwitch"
-      >
-        <image class="icon" src="{{main.getMode(mode,darkmode)}}" />
-      </view>
-    </view>
   </view>
 </view>

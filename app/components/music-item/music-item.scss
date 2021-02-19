@@ -3,12 +3,13 @@
 
   .avatar {
     float: left;
+
+    overflow: hidden;
+
     width: 32px;
     height: 32px;
     margin: 0 8px 8px 0;
-
     border-radius: 50%;
-    overflow: hidden;
   }
 
   .content {
@@ -30,8 +31,9 @@
     display: flex;
     align-items: center;
 
-    margin: 8px 0 8px 40px;
     overflow: hidden;
+
+    margin: 8px 0 8px 40px;
     border-radius: 8px;
 
     background-color: var(--bg-color-grey);

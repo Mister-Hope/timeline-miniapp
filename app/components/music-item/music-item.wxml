@@ -3,11 +3,11 @@
     class="avatar"
     src="cloud://lharion-6g2ucs7hb4ee6e89.6c68-lharion-6g2ucs7hb4ee6e89-1304994338/avatar.webp"
   />
-  <view class="content">
+  <view class="content" catch:tap="navigate">
     <view class="date">{{config.date}}</view>
     <view class="text">{{config.text}}</view>
   </view>
-  <view class="player">
+  <view class="player" catch:tap="navigate">
     <image
       wx:if="{{config.coverID}}"
       class="cover"
