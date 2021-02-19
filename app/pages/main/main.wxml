@@ -34,68 +34,65 @@
     class="music-wrapper"
     style="padding-bottom: {{info.screenHeight - info.safeArea.bottom + 5}}px"
   >
-    <view class="song-info">{{currentMusic.title}}</view>
+    <!-- 进度条 -->
+    <slider
+      class="progress-bar"
+      min="0"
+      max="{{totalTime * 100}}"
+      step="1"
+      value="{{currentTime * 100}}"
+      block-size="12"
+      selected-color="#27C087"
+      block-color="#27C087"
+      catch:change="drag"
+      catch:changing="drag"
+    />
+    <view class="song-info">{{currentMusic.title || '- -'}}</view>
 
-    <view class="action-wrapper">
-      <!-- 进度条 -->
-      <slider
-        class="progress-bar"
-        min="0"
-        max="{{totalTime * 100}}"
-        step="1"
-        value="{{currentTime * 100}}"
-        block-size="12"
-        backgroundColor="{{darkmode? '#999999': '#cccccc'}}"
-        selected-color="#27C087"
-        block-color="#27C087"
-        catch:change="drag"
-        catch:changing="drag"
-      />
+    <view class="button-wrapper">
       <!-- 播放时间 -->
       <view class="time-wrapper">
         <view class="time">{{inited? main.getTime(currentTime): '--:--'}}</view>
+        <span class="time">/</span>
         <view class="time">{{inited? main.getTime(totalTime): '--:--'}}</view>
       </view>
 
-      <view class="button-wrapper">
-        <view
-          class="cycle-button"
-          hover-class="button-active"
-          hover-start-time="0"
-          hover-stay-time="100"
-          catch:tap="modeSwitch"
-        >
-          <image class="icon" src="{{main.getMode(mode)}}" />
-        </view>
-        <view
-          class="button"
-          hover-class="button-active"
-          hover-start-time="0"
-          hover-stay-time="100"
-        >
-          <image class="icon" src="./icon/prev.svg" catch:tap="previous" />
-        </view>
-        <view
-          class="play-button"
-          hover-class="button-active"
-          hover-start-time="0"
-          hover-stay-time="100"
-          catch:tap="play"
-        >
-          <image
-            class="icon"
-            src="./icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}.svg"
-          />
-        </view>
-        <view
-          class="button"
-          hover-class="button-active"
-          hover-start-time="0"
-          hover-stay-time="100"
-        >
-          <image class="icon" src="./icon/next.svg" catch:tap="next" />
-        </view>
-        <view class="button" />
+      <view
+        class="button"
+        hover-class="button-active"
+        hover-start-time="0"
+        hover-stay-time="100"
+      >
+        <image class="icon" src="./icon/prev.svg" catch:tap="previous" />
+      </view>
+      <view
+        class="play-button"
+        hover-class="button-active"
+        hover-start-time="0"
+        hover-stay-time="100"
+        catch:tap="play"
+      >
+        <image
+          class="icon"
+          src="./icon/{{inited? canplay? playing? 'pause': 'play': 'loading': 'play'}}.svg"
+        />
+      </view>
+      <view
+        class="button"
+        hover-class="button-active"
+        hover-start-time="0"
+        hover-stay-time="100"
+      >
+        <image class="icon" src="./icon/next.svg" catch:tap="next" />
+      </view>
+      <view
+        class="cycle-button"
+        hover-class="button-active"
+        hover-start-time="0"
+        hover-stay-time="100"
+        catch:tap="modeSwitch"
+      >
+        <image class="icon" src="{{main.getMode(mode)}}" />
       </view>
     </view>
   </view>

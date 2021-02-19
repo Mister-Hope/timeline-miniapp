@@ -1,19 +1,22 @@
-@use './style/common';
+@use "./style/common";
 
 page {
   --dark-grey: #666;
   --light-grey: #999;
   --hover: rgba(0, 0, 0, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.15);
 
   @media (prefers-color-scheme: light) {
     --dark-grey: #666;
     --light-grey: #999;
     --hover: rgba(0, 0, 0, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.15);
   }
 
   @media (prefers-color-scheme: dark) {
     --dark-grey: #999;
     --light-grey: #666;
     --hover: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.3);
   }
 }
