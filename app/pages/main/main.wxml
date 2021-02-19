@@ -44,6 +44,7 @@
       block-size="12"
       selected-color="{{darkmode? '#bbb': '#333'}}"
       block-color="{{darkmode? '#bbb': '#333'}}"
+      backgroundColor="{{darkmode? '#000000': '#ffffff'}}"
       catch:change="drag"
       catch:changing="drag"
     />
