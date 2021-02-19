@@ -1,5 +1,9 @@
 <wxs src="./music.wxs" module="music" />
-<image class="backgroud-image" mode="aspectFill" src="{{currentMusic.cover}}" />
+<image
+  class="backgroud-image"
+  mode="aspectFill"
+  src="{{currentMusic.coverID}}"
+/>
 <view class="music-wrapper">
   <view
     class="back-button"

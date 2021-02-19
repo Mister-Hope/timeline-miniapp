@@ -3,6 +3,7 @@
 page {
   --bg-color: #fff;
   --bg-color-grey: #ededed;
+  --text-color: #000;
   --grey3: #333;
   --dark-grey: #666;
   --light-grey: #999;
@@ -12,6 +13,7 @@ page {
   @media (prefers-color-scheme: light) {
     --bg-color: #fff;
     --bg-color-grey: #ededed;
+    --text-color: #000;
     --grey3: #333;
     --dark-grey: #666;
     --light-grey: #999;
@@ -22,6 +24,7 @@ page {
   @media (prefers-color-scheme: dark) {
     --bg-color: #000;
     --bg-color-grey: #111;
+    --text-color: #fff;
     --grey3: #bbb;
     --dark-grey: #999;
     --light-grey: #666;
