@@ -1,0 +1,9 @@
+<view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
+  <mp-navigation-bar back="{{false}}">
+    <view slot="center">上传图片</view>
+  </mp-navigation-bar>
+
+  <button class="button" type="primary" catch:tap="chooseImage">
+    选择图片(未制作)
+  </button>
+</view>

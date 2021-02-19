@@ -1,5 +1,10 @@
 {
-  "pages": ["pages/main/main"],
+  "pages": [
+    "pages/main/main",
+    "pages/upload/article",
+    "pages/upload/music",
+    "pages/upload/photo"
+  ],
   "window": {
     "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTextStyle",

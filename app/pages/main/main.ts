@@ -36,12 +36,12 @@ Page({
     slideButtons: [
       // {
       //   text: "重命名",
-      //   src: "/pages/main/icon/rename.svg",
+      //   src: "/icon/rename.svg",
       //   data: "rename",
       // },
       {
         text: "删除",
-        src: "/pages/main/icon/delete.svg",
+        src: "/icon/delete.svg",
         data: "delete",
       },
     ],
@@ -50,14 +50,24 @@ Page({
     slideDarkButtons: [
       // {
       //   text: "重命名",
-      //   src: "/pages/main/icon/rename-dark.svg",
+      //   src: "/icon/rename-dark.svg",
       //   data: "rename",
       // },
       {
         text: "删除",
-        src: "/pages/main/icon/delete-dark.svg",
+        src: "/icon/delete-dark.svg",
         data: "delete",
       },
+    ],
+
+    /** 选项菜单 */
+    showActionsheet: false,
+
+    /** 操作 */
+    actions: [
+      { text: "新建说说", value: "article" },
+      { text: "上传图片", value: "photo" },
+      { text: "上传音乐", value: "music" },
     ],
   },
 
@@ -76,8 +86,9 @@ Page({
       playing: globalData.music.playing,
       mode: mode || "列表循环",
 
-      info: globalData.info,
       darkmode: globalData.darkmode,
+      info: globalData.info,
+
       indicatorColor: globalData.darkmode
         ? "rgba(255, 255, 255, 0.15)"
         : "rgba(0, 0, 0, 0.15)",
@@ -191,66 +202,22 @@ Page({
     });
   },
 
-  /** 上传文件 */
-  upload() {
-    // 选择文件
-    wx.chooseMessageFile({
-      count: 100,
-      type: "file",
-      // 限制文件后缀
-      extension: ["m4a", "aac", "mp3", "wav"],
-      success: ({ tempFiles }) => {
-        // 进行提示
-        wx.showLoading({ title: "上传中" });
+  /** 新建内容 */
+  new() {
+    this.setData({ showActionsheet: true });
+  },
 
-        const { musicList } = globalData;
-        const musicCollection = wx.cloud.database().collection("music");
+  /** 点击选项菜单 */
+  actionTap({
+    detail,
+  }: WechatMiniprogram.Touch<{ value: "article" | "music" | "photo" }>) {
+    this.setData({ showActionsheet: false });
+    wx.navigateTo({ url: `/pages/upload/${detail.value}` });
+  },
 
-        // 一次上传每个文件
-        const promises = tempFiles.map<Promise<void>>(
-          (tempFile) =>
-            new Promise((resolve, reject) => {
-              wx.cloud.uploadFile({
-                // add current timeStamp as hash
-                cloudPath: `${new Date().getTime()}-${globalData.openid}`,
-                filePath: tempFile.path,
-                // 返回文件 ID
-                success: ({ fileID }) => {
-                  const data = {
-                    title: tempFile.name,
-                    createTime: new Date(),
-                    fileID,
-                  };
-
-                  // 插入数据
-                  musicCollection.add({
-                    data,
-                    success: (res: { _id: string }) => {
-                      // 更新歌曲列表
-                      musicList.push({
-                        ...data,
-                        _id: res._id,
-                        _openid: globalData.openid,
-                      });
-                      resolve();
-                    },
-                  });
-                },
-                fail: ({ errMsg }) => {
-                  error(errMsg);
-                  reject();
-                },
-              });
-            })
-        );
-
-        Promise.all(promises).then(() => {
-          globalData.musicList = musicList;
-          this.setData({ musicList });
-          wx.hideLoading();
-        });
-      },
-    });
+  /** 点击取消项目 */
+  actionClose() {
+    this.setData({ showActionsheet: false });
   },
 
   /** 点击列表项 */
