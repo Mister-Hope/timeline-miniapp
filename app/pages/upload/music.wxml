@@ -1,5 +1,5 @@
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <mp-form-page title="上传音乐" subtitle="您可以自定义发布时间与封面">
+  <mp-form-page title="上传音乐" subtitle="选择您的音乐并完成配文">
     <mp-form id="form">
       <mp-cells title="音乐">
         <mp-cell prop="music">
@@ -16,7 +16,8 @@
             class="weui-textarea"
             placeholder="请输入配文"
             style="height: 4em"
-            bindinput="textChange"
+            value="{{text}}"
+            catch:input="textChange"
           />
           <view class="weui-textarea-counter">{{textNumber}}/200</view>
         </mp-cell>
@@ -28,6 +29,9 @@
           <button wx:else class="button" catch:tap="chooseCover">
             选择封面
           </button>
+        </mp-cell>
+        <mp-cell prop="cover" title="演唱者">
+          <input value="{{singer}}" catch:input="singerChange" />
         </mp-cell>
         <mp-cell prop="cover" title="创建时间">
           <picker header-text="创建时间" mode="date" bindchange="timeChange"

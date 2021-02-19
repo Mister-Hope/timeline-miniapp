@@ -20,6 +20,8 @@ Page({
     cover: {} as WechatMiniprogram.ImageFile,
     /** 发布日期 */
     date: "",
+    /** 演唱者 */
+    singer: "小爽",
   },
 
   onLoad() {
@@ -64,6 +66,14 @@ Page({
     });
   },
 
+  /** 配文变更 */
+  textChange({ detail }: WechatMiniprogram.TextareaInput) {
+    this.setData({
+      text: detail.value,
+      textNumber: detail.value.length,
+    });
+  },
+
   /** 选择封面 */
   chooseCover() {
     wx.chooseImage({
@@ -76,12 +86,9 @@ Page({
     });
   },
 
-  /** 配文变更 */
-  textChange({ detail }: WechatMiniprogram.TextareaInput) {
-    this.setData({
-      text: detail.value,
-      textNumber: detail.value.length,
-    });
+  /** 歌手变更 */
+  singerChange({ detail }: WechatMiniprogram.TextareaInput) {
+    this.setData({ singer: detail.value });
   },
 
   /** 日期变更 */
@@ -91,9 +98,10 @@ Page({
 
   /** 上传 */
   upload() {
-    const { cover, music } = this.data;
+    const { cover, music, singer } = this.data;
 
     if (!music.name) modal("无法上传", "您必须选择一个音乐文件");
+    else if (!singer) modal("无法上传", "您必须填写演唱者");
     else {
       // 进行提示
       wx.showLoading({ title: "上传中" });
@@ -104,6 +112,7 @@ Page({
           title: music.name,
           createTime: new Date(),
           text: this.data.text,
+          singer,
           coverID,
           musicID,
         };
