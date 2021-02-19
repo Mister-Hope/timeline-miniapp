@@ -2,11 +2,14 @@
   <mp-form-page title="上传音乐" subtitle="选择您的音乐并完成配文">
     <mp-form id="form">
       <mp-cells title="音乐">
-        <mp-cell prop="music">
+        <mp-cell prop="music" title="文件">
           <view wx:if="{{music.name}}">{{music.name || ''}}</view>
           <button wx:else class="button" catch:tap="chooseMusic">
             选择音乐
           </button>
+        </mp-cell>
+        <mp-cell prop="music" title="名称">
+          <input value="{{name}}" catch:input="nameChange" />
         </mp-cell>
       </mp-cells>
 

@@ -12,6 +12,8 @@ Page({
 
     /** 音乐 */
     music: {} as WechatMiniprogram.ChooseFile,
+    /** 音乐名称 */
+    name: "",
     /** 配文 */
     text: "",
     /** 配文文字数 */
@@ -59,11 +61,23 @@ Page({
       // 限制文件后缀
       extension: ["m4a", "aac", "mp3", "wav"],
       success: ({ tempFiles }) => {
+        const music = tempFiles[0];
+        const temp = music.name.split(".");
+
+        temp.pop();
+        const name = temp.join(".");
+
         this.setData({
           music: tempFiles[0],
+          name,
         });
       },
     });
+  },
+
+  /** 名称变更 */
+  nameChange({ detail }: WechatMiniprogram.Input) {
+    this.setData({ name: detail.value });
   },
 
   /** 配文变更 */
@@ -98,9 +112,10 @@ Page({
 
   /** 上传 */
   upload() {
-    const { cover, music, singer } = this.data;
+    const { cover, music, name, singer } = this.data;
 
     if (!music.name) modal("无法上传", "您必须选择一个音乐文件");
+    else if (!name) modal("无法上传", "您必须命名您的音乐文件");
     else if (!singer) modal("无法上传", "您必须填写演唱者");
     else {
       // 进行提示
@@ -109,7 +124,7 @@ Page({
 
       const insertandUpdate = (musicID: string, coverID = ""): void => {
         const data = {
-          title: music.name,
+          title: name,
           createTime: new Date(),
           text: this.data.text,
           singer,
