@@ -1,0 +1,47 @@
+.music-wrapper {
+  margin: 12px 20px;
+
+  .date {
+    color: var(--dark-grey);
+    font-size: 14px;
+  }
+
+  .text {
+    margin: 4px 0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .player {
+    display: flex;
+    align-items: center;
+
+    margin: 4px;
+    overflow: hidden;
+    border-radius: 8px;
+
+    background-color: var(--bg-color-grey);
+
+    .cover {
+      width: 60px;
+      height: 60px;
+    }
+
+    .info {
+      flex: 1;
+      padding: 4px 8px;
+    }
+
+    .name {
+      margin: 4px 0;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .singer {
+      color: var(--dark-grey);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  }
+}

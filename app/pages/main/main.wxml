@@ -28,21 +28,18 @@
           data-index="{{index}}"
           bindbuttontap="slideButtonTap"
         >
-          <mp-cell
-            hover
-            value="{{item.title}}"
-            footer="{{main.getDate(item.createTime)}}"
+          <music-item
+            config="{{item}}"
             data-index="{{index}}"
             catch:tap="itemTap"
           />
         </mp-slideview>
       </block>
       <block wx:else>
-        <mp-cell
+        <music-item
           wx:for="{{musicList}}"
           wx:key="musicID"
-          hover
-          value="{{item.title}}"
+          config="{{item}}"
           data-index="{{index}}"
           catch:tap="itemTap"
         />

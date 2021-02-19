@@ -156,7 +156,7 @@ Page({
 
     return currentMusic && currentMusic.musicID
       ? {
-          title: currentMusic.title,
+          title: currentMusic.name,
           path: `/pages/main/main?musicID=${currentMusic.musicID}`,
         }
       : {
@@ -170,7 +170,7 @@ Page({
 
     return currentMusic && currentMusic.musicID
       ? {
-          title: currentMusic.title,
+          title: currentMusic.name,
           query: `musicID=${currentMusic.musicID}`,
         }
       : { title: "小爽的专属音乐室" };
@@ -181,7 +181,7 @@ Page({
 
     return currentMusic && currentMusic.musicID
       ? {
-          title: currentMusic.title,
+          title: currentMusic.name,
           query: `musicID=${currentMusic.musicID}`,
         }
       : { title: "小爽的专属音乐室" };
@@ -458,7 +458,7 @@ Page({
       });
 
       manager.src = currentMusic.musicID;
-      manager.title = currentMusic.title;
+      manager.title = currentMusic.name;
       globalData.music.index = Number(index);
     }
   },

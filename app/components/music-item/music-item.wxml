@@ -1,0 +1,21 @@
+<view class="music-wrapper">
+  <view class="date">{{config.date}}</view>
+  <view class="text">{{config.text}}</view>
+  <view class="player">
+    <image
+      wx:if="{{config.coverID}}"
+      class="cover"
+      src="{{config.coverID}}"
+      mode="aspectFill"
+    />
+    <image
+      wx:else
+      class="play-icon"
+      src="/icon/play{{darkmode? '-dark': ''}}.svg"
+    />
+    <view class="info">
+      <view class="name">{{config.name}}</view>
+      <view class="singer">演唱者: {{config.singer}}</view>
+    </view>
+  </view>
+</view>

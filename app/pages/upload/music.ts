@@ -112,7 +112,7 @@ Page({
 
   /** 上传 */
   upload() {
-    const { cover, music, name, singer } = this.data;
+    const { cover, date, music, name, singer, text } = this.data;
 
     if (!music.name) modal("无法上传", "您必须选择一个音乐文件");
     else if (!name) modal("无法上传", "您必须命名您的音乐文件");
@@ -124,9 +124,9 @@ Page({
 
       const insertandUpdate = (musicID: string, coverID = ""): void => {
         const data = {
-          title: name,
-          createTime: new Date(),
-          text: this.data.text,
+          name,
+          date,
+          text,
           singer,
           coverID,
           musicID,

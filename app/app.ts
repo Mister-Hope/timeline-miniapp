@@ -3,8 +3,17 @@ import { info } from "./utils/log";
 import { message } from "./utils/message";
 
 export interface MusicInfo {
-  title: string;
-  createTime: Date;
+  /** 歌曲名称 */
+  name: string;
+  /** 演唱者 */
+  singer: string;
+  /** 日期 */
+  date: string;
+  /** 配文 */
+  text: string;
+  /** 封面 fileID */
+  coverID: string;
+  /** 音乐 fileID */
   musicID: string;
 
   _id: string;

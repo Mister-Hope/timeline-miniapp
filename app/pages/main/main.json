@@ -7,6 +7,7 @@
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-navigation-bar": "weui-miniprogram/navigation-bar/navigation-bar",
-    "mp-slideview": "weui-miniprogram/slideview/slideview"
+    "mp-slideview": "weui-miniprogram/slideview/slideview",
+    "music-item": "/components/music-item/music-item"
   }
 }
