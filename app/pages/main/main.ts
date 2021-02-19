@@ -6,7 +6,7 @@ import { confirm, tip } from "../../utils/wx";
 import type { AppOption, MusicInfo } from "../../app";
 import type { PlayMode } from "./typings";
 
-const { globalData } = getApp<AppOption>();
+const { getMusicList, globalData } = getApp<AppOption>();
 
 /** 音频管理器 */
 const manager = wx.getBackgroundAudioManager();
@@ -130,6 +130,13 @@ Page({
     this.setData({
       playing: globalData.music.playing,
       index: globalData.music.index,
+    });
+  },
+
+  onPullDownRefresh() {
+    getMusicList().then((musicList) => {
+      this.setData({ musicList });
+      wx.stopPullDownRefresh();
     });
   },
 

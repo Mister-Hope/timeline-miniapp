@@ -11,11 +11,6 @@ export interface MusicInfo {
   _openid: string;
 }
 
-interface MusicCloudFunction {
-  name: "music";
-  success: (res: { result: { data: MusicInfo[]; errMsg: string } }) => void;
-}
-
 export interface GlobalData {
   /** 版本号 */
   version: string;
@@ -38,6 +33,7 @@ export interface GlobalData {
 
 export interface AppOption {
   globalData: GlobalData;
+  getMusicList: () => Promise<MusicInfo[]>;
 }
 
 App({
@@ -51,15 +47,25 @@ App({
   onLaunch() {
     startup(this.globalData);
 
-    // 获取歌曲列表
-    wx.cloud.callFunction(<MusicCloudFunction>{
-      name: "music",
-      success: ({ result }) => {
-        info("歌曲列表:", result.data);
+    this.getMusicList().then((musicList) => {
+      this.globalData.musicList = musicList;
 
-        this.globalData.musicList = result.data;
-        message.emit("musicList", result.data);
-      },
+      message.emit("musicList", musicList);
     });
+  },
+
+  getMusicList(): Promise<MusicInfo[]> {
+    // 获取歌曲列表
+    return wx.cloud
+      .callFunction({
+        name: "music",
+      })
+      .then(({ result }) => {
+        const { data } = result as { data: MusicInfo[]; errMsg: string };
+
+        info("歌曲列表为:", data);
+
+        return data;
+      });
   },
 });
