@@ -202,7 +202,8 @@ Page({
           (tempFile) =>
             new Promise((resolve, reject) => {
               wx.cloud.uploadFile({
-                cloudPath: tempFile.name,
+                // add current timeStamp as hash
+                cloudPath: `${new Date().getTime()}-${tempFile.name}`,
                 filePath: tempFile.path,
                 // 返回文件 ID
                 success: ({ fileID }) => {
