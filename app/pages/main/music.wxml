@@ -16,6 +16,16 @@
       src="/icon/{{firstPage? 'home': 'back'}}{{darkmode? '-white': ''}}.svg"
     />
   </view>
+  <button
+    class="share-button"
+    hover-class="button-hover"
+    hover-start-time="0"
+    open-type="share"
+    plain
+  >
+    <text class="icon-font share" />分享
+  </button>
+
   <view class="song-info">
     <view class="name">{{currentMusic.name}}</view>
     <view class="author">—— {{currentMusic.singer}} ——</view>

@@ -1,3 +1,5 @@
+@use "../../style/lib/icon";
+
 .backgroud-image {
   position: absolute;
   top: 0;
@@ -19,12 +21,35 @@
 
   background-color: rgba(255, 255, 255, 0.8);
 
-  backdrop-filter: blur(8px);
-
   text-align: center;
+
+  backdrop-filter: blur(8px);
 
   @media (prefers-color-scheme: dark) {
     background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.share-button {
+  position: absolute;
+  top: 120px;
+  right: 15px;
+  z-index: 10;
+
+  width: auto !important;
+  padding: 4px 12px !important;
+  border: none !important;
+  border-radius: 16px;
+
+  background-color: #666 !important;
+  color: #fff !important;
+
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
+
+  .icon-font {
+    margin-right: 4px;
   }
 }
 

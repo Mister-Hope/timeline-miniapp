@@ -18,10 +18,12 @@
 
 .navigation-bar {
   position: fixed;
-  z-index: 5000;
-  left: 0;
-  right: 0;
   top: 0;
+  right: 0;
+  left: 0;
+  z-index: 5000;
+
   height: 44px;
+
   background-color: var(--bg-color);
 }
