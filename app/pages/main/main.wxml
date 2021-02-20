@@ -2,13 +2,13 @@
 
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
   <mp-actionSheet
-    title="发布内容"
+    title="发表内容"
     show="{{showActionsheet}}"
     actions="{{actions}}"
     bindactiontap="actionTap"
     bindclose="actionClose"
   />
-  <mp-navigation-bar back="{{false}}">
+  <mp-navigation-bar back="{{false}}" background="{{darkmode? '#000': '#fff'}}">
     <view wx:if="{{isAdmin}}" slot="left">
       <view class="new-icon" hover-class="button-hover" catch:tap="new">
         <image src="/icon/add{{darkmode? '-dark': ''}}.svg" />
@@ -16,12 +16,8 @@
     </view>
     <view slot="center">小爽的专属音乐室</view>
   </mp-navigation-bar>
-  <view
-    class="navigation-bar"
-    style="padding-top: {{info.statusBarHeight}}px"
-  />
-  <view class="music-list">
-    <mp-cells wx:if="{{items.length}}">
+  <view wx:if="{{items.length}}" class="timeline">
+    <mp-cells>
       <block wx:if="{{isAdmin}}">
         <mp-slideview
           wx:for="{{items}}"
@@ -48,6 +44,6 @@
         </block>
       </block>
     </mp-cells>
-    <mp-msg wx:else type="waiting" title="加载中" />
   </view>
+  <mp-msg wx:else type="waiting" title="加载中" />
 </view>

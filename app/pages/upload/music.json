@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "发布音乐",
+  "navigationBarTitleText": "发表音乐",
   "usingComponents": {
     "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",

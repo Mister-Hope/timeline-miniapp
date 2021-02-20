@@ -125,9 +125,9 @@ Page({
   upload() {
     const { cover, date, music, name, singer, text } = this.data;
 
-    if (!music.name) modal("无法上传", "您必须选择一个音乐文件");
-    else if (!name) modal("无法上传", "您必须命名您的音乐文件");
-    else if (!singer) modal("无法上传", "您必须填写演唱者");
+    if (!music.name) modal("无法发表", "您必须选择一个音乐文件");
+    else if (!name) modal("无法发表", "您必须命名您的音乐文件");
+    else if (!singer) modal("无法发表", "您必须填写演唱者");
     else {
       // 进行提示
       wx.showLoading({ title: "上传中" });

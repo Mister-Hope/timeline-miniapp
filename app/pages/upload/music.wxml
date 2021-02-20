@@ -1,5 +1,5 @@
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <mp-form-page title="上传音乐">
+  <mp-form-page title="发表音乐">
     <mp-form id="form">
       <mp-cells title="音乐">
         <mp-cell prop="music" title="文件">
@@ -44,10 +44,10 @@
       </mp-cells>
     </mp-form>
     <label slot="tips" class="weui-agree" for="weuiAgree">
-      <view class="weui-agree__text">您可以自定义发布时间与封面</view>
+      <view class="weui-agree__text">您可以自定义发表时间与封面</view>
     </label>
     <button slot="button" class="weui-btn" type="primary" bindtap="upload">
-      发布音乐
+      发表音乐
     </button>
   </mp-form-page>
 </view>

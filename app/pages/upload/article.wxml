@@ -1,5 +1,5 @@
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
-  <mp-form-page title="发布说说">
+  <mp-form-page title="发表说说">
     <mp-form id="form">
       <mp-cells title="说说">
         <mp-cell prop="text">

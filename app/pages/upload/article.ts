@@ -107,7 +107,7 @@ Page({
       };
 
       if (photos.length)
-        // 上传封面
+        // 上传配图
         Promise.all(
           photos.map((photo) =>
             uploadCloudFile(

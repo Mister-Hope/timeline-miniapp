@@ -6,6 +6,7 @@ const { globalData } = getApp<AppOption>();
 Page({
   data: {
     item: {} as ArticleInfo,
+    sharedText: "",
   },
   onLoad(options) {
     if (!options.id) wx.reLaunch({ url: "pages/main/main" });
@@ -19,6 +20,8 @@ Page({
     // 写入基本信息
     this.setData({
       item,
+      shareText:
+        item.text.length > 10 ? `${item.text.substring(0, 10)}...` : item.text,
       info: globalData.info,
       darkmode: globalData.darkmode,
       firstPage: getCurrentPages().length === 1,
@@ -28,23 +31,29 @@ Page({
   },
 
   onShareAppMessage(): WechatMiniprogram.Page.ICustomShareContent {
+    const { item, sharedText } = this.data;
+
     return {
-      title: "说说详情",
-      path: `/pages/main/music?id=${this.data.item._id}`,
+      title: sharedText,
+      path: `/pages/main/article?id=${item._id}`,
     };
   },
 
   onShareTimeline(): WechatMiniprogram.Page.ICustomTimelineContent {
+    const { item, sharedText } = this.data;
+
     return {
-      title: "说说详情",
-      query: `id=${this.data.item._id}`,
+      title: sharedText,
+      query: `id=${item._id}`,
     };
   },
 
   onAddToFavorites(): WechatMiniprogram.Page.IAddToFavoritesContent {
+    const { item, sharedText } = this.data;
+
     return {
-      title: "说说详情",
-      query: `id=${this.data.item._id}`,
+      title: sharedText,
+      query: `id=${item._id}`,
     };
   },
 
