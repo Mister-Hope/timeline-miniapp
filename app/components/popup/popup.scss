@@ -1,4 +1,5 @@
 @import "../../style/lib/icon";
+@import "../../style/common";
 
 .popup-wrapper {
   position: absolute;
@@ -24,6 +25,7 @@
 
     overflow: hidden;
 
+    min-height: 25%;
     padding: 0 24px;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
