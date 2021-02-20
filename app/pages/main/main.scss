@@ -16,6 +16,11 @@
   }
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
+.weui-slideview_icon .btn.weui-slideview__btn__wrp {
+  background-color: var(--bg-color-grey);
+}
+
 .weui-msg {
   background-color: var(--bg-color);
 }

@@ -83,7 +83,7 @@ Page({
   upload() {
     const { date, photos, text } = this.data;
 
-    if (!text) modal("无法上传", "您必须输入文字内容");
+    if (!text) modal("无法发表", "您必须输入文字内容");
     else {
       // 进行提示
       wx.showLoading({ title: "上传中" });
