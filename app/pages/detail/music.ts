@@ -62,17 +62,14 @@ Page({
     });
 
     const setCurrentMusic = (): void => {
-      const { musicList } = globalData;
+      const { music, musicList } = globalData;
 
-      if (option.id) {
-        globalData.music.index = musicList.findIndex(
-          (music) => music.musicID === option.id
-        );
-      }
-
-      if (globalData.music.index < 0) globalData.music.index = 0;
-
-      const { index } = globalData.music;
+      const index = option.id
+        ? Math.max(
+            musicList.findIndex((music) => music.musicID === option.id),
+            0
+          )
+        : music.index;
       const currentMusic = musicList[index];
 
       // 写入列表
@@ -83,22 +80,11 @@ Page({
         musicList,
       });
 
-      // 如果正在播放，设置能够播放
-      if (globalData.music.playing)
-        this.setData({ canplay: true, inited: true });
-      else {
-        manager.epname = "小爽的专属音乐室";
-        manager.src = currentMusic.musicID;
-        manager.title = currentMusic.name;
-        manager.singer = currentMusic.singer;
-
-        // get temp url and set cover
-        wx.cloud
-          .getTempFileURL({ fileList: [currentMusic.coverID] })
-          .then(({ fileList }) => {
-            manager.coverImgUrl = fileList[0].tempFileURL;
-          });
-      }
+      // 歌曲相同且正在播放
+      if (index === music.index && music.playing)
+        this.setData({ canplay: true });
+      // 播放新的歌曲
+      else this.switchMusic(index);
 
       message.off("items", setCurrentMusic);
     };
@@ -157,6 +143,8 @@ Page({
 
   /** 注册音乐播放器 */
   managerRegister() {
+    manager.epname = "小爽的专属音乐室";
+
     // 能够播放 100ms 后设置可以播放
     manager.onCanplay(() => {
       // 调试
@@ -379,9 +367,9 @@ Page({
   },
 
   // 点击列表具体歌曲项时触发
-  change(res: WechatMiniprogram.TouchEvent) {
+  change({ currentTarget }: WechatMiniprogram.TouchEvent) {
     this.list();
-    this.switchMusic(res.currentTarget.dataset.index);
+    this.switchMusic(currentTarget.dataset.index);
   },
 
   back() {
