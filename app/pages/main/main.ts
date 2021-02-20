@@ -15,28 +15,9 @@ Page({
 
     /** 滑动按钮 */
     slideButtons: [
-      // {
-      //   text: "重命名",
-      //   src: "/icon/rename.svg",
-      //   data: "rename",
-      // },
       {
         text: "删除",
         src: "/icon/delete.svg",
-        data: "delete",
-      },
-    ],
-
-    /** 夜间滑动按钮 */
-    slideDarkButtons: [
-      // {
-      //   text: "重命名",
-      //   src: "/icon/rename-dark.svg",
-      //   data: "rename",
-      // },
-      {
-        text: "删除",
-        src: "/icon/delete-dark.svg",
         data: "delete",
       },
     ],
@@ -129,7 +110,7 @@ Page({
   slideButtonTap({
     currentTarget,
     detail,
-  }: WechatMiniprogram.Touch<{ data: "rename" | "delete" }>) {
+  }: WechatMiniprogram.Touch<{ data: "delete" }>) {
     if (detail.data === "delete") {
       const item = this.data.items[currentTarget.dataset.index as number];
 

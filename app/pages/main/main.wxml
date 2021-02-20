@@ -20,7 +20,7 @@
         <mp-slideview
           wx:for="{{items}}"
           wx:key="_id"
-          buttons="{{darkmode? slideDarkButtons: slideButtons}}"
+          buttons="{{slideButtons}}"
           icon
           data-index="{{index}}"
           bindbuttontap="slideButtonTap"
