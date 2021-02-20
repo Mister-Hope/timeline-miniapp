@@ -15,17 +15,19 @@ Page({
       (item) => item._id === options.id
     ) as ArticleInfo;
 
-    if (!item) wx.reLaunch({ url: "pages/main/main" });
-
-    // 写入基本信息
-    this.setData({
-      item,
-      shareText:
-        item.text.length > 10 ? `${item.text.substring(0, 10)}...` : item.text,
-      info: globalData.info,
-      darkmode: globalData.darkmode,
-      firstPage: getCurrentPages().length === 1,
-    });
+    if (item)
+      // 写入基本信息
+      this.setData({
+        item,
+        shareText:
+          item.text.length > 10
+            ? `${item.text.substring(0, 10)}...`
+            : item.text,
+        info: globalData.info,
+        darkmode: globalData.darkmode,
+        firstPage: getCurrentPages().length === 1,
+      });
+    else wx.reLaunch({ url: "pages/main/main" });
 
     if (wx.canIUse("onThemeChange")) wx.onThemeChange(this.themeChange);
   },
