@@ -1,5 +1,3 @@
-<wxs src="./main.wxs" module="main" />
-
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
   <mp-actionSheet
     title="发表内容"
