@@ -56,9 +56,10 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide"
+          "name": "音乐分享",
+          "pathName": "pages/main/music",
+          "query": "id=cloud://lharion-6g2ucs7hb4ee6e89.6c68-lharion-6g2ucs7hb4ee6e89-1304994338/music-oo-v55YPZD2y0R2R4ph1q7r2c3EQ-1613752766820",
+          "scene": null
         }
       ]
     }

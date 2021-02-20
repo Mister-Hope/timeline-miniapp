@@ -64,9 +64,9 @@ Page({
     const setCurrentMusic = (): void => {
       const { musicList } = globalData;
 
-      if (option.musicID) {
+      if (option.id) {
         globalData.music.index = musicList.findIndex(
-          (music) => music.musicID === option.musicID
+          (music) => music.musicID === option.id
         );
       }
 
@@ -125,7 +125,7 @@ Page({
 
     return {
       title: currentMusic.name,
-      path: `/pages/main/music?musicID=${currentMusic.musicID}`,
+      path: `/pages/detail/music?id=${currentMusic.musicID}`,
     };
   },
 
@@ -134,7 +134,7 @@ Page({
 
     return {
       title: currentMusic.name,
-      query: `musicID=${currentMusic.musicID}`,
+      query: `id=${currentMusic.musicID}`,
     };
   },
 
@@ -143,7 +143,7 @@ Page({
 
     return {
       title: currentMusic.name,
-      query: `musicID=${currentMusic.musicID}`,
+      query: `id=${currentMusic.musicID}`,
     };
   },
 

@@ -6,7 +6,7 @@ const { globalData } = getApp<AppOption>();
 Page({
   data: {
     item: {} as ArticleInfo,
-    sharedText: "",
+    shareText: "",
   },
   onLoad(options) {
     if (!options.id) wx.reLaunch({ url: "pages/main/main" });
@@ -31,28 +31,28 @@ Page({
   },
 
   onShareAppMessage(): WechatMiniprogram.Page.ICustomShareContent {
-    const { item, sharedText } = this.data;
+    const { item, shareText } = this.data;
 
     return {
-      title: sharedText,
-      path: `/pages/main/article?id=${item._id}`,
+      title: shareText,
+      path: `/pages/detail/article?id=${item._id}`,
     };
   },
 
   onShareTimeline(): WechatMiniprogram.Page.ICustomTimelineContent {
-    const { item, sharedText } = this.data;
+    const { item, shareText } = this.data;
 
     return {
-      title: sharedText,
+      title: shareText,
       query: `id=${item._id}`,
     };
   },
 
   onAddToFavorites(): WechatMiniprogram.Page.IAddToFavoritesContent {
-    const { item, sharedText } = this.data;
+    const { item, shareText } = this.data;
 
     return {
-      title: sharedText,
+      title: shareText,
       query: `id=${item._id}`,
     };
   },

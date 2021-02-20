@@ -23,6 +23,8 @@ module.exports = {
       "随机播放": "random",
     };
 
-    return "/icon/" + modeMap[mode] + "-play"+ (darkmode? '-dark': '') +".svg";
+    return (
+      "/icon/" + modeMap[mode] + "-play" + (darkmode ? "-dark" : "") + ".svg"
+    );
   },
 };

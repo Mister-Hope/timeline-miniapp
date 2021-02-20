@@ -9,7 +9,7 @@ Component({
   methods: {
     navigate(): void {
       wx.navigateTo({
-        url: `/pages/main/article?id=${this.data.config._id as string}`,
+        url: `/pages/detail/article?id=${this.data.config._id as string}`,
       });
     },
 

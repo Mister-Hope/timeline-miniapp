@@ -1,4 +1,3 @@
 dist/
 
-app/pages/main/main.wxs
-app/pages/main/music.wxs
+app/pages/detail/music.wxs
