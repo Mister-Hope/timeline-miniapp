@@ -33,7 +33,7 @@ export interface AppOption {
 
 App({
   globalData: ({
-    version: "1.0.0",
+    version: "2.0.0",
     openid: "",
     music: { playing: false, index: 0 },
     items: [],

@@ -4,7 +4,7 @@
     "pages/main/main",
     "pages/detail/article",
     "pages/detail/music",
-    "pages/manage/manage"
+    "pages/about/about"
   ],
   "window": {
     "navigationBarBackgroundColor": "@navBgColor",
