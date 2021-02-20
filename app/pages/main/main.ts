@@ -134,38 +134,35 @@ Page({
       const item = this.data.items[currentTarget.dataset.index as number];
 
       // 要求用户确认
-      confirm(
-        `是否要删除该${item.type === "article" ? "说说" : "音乐"}`,
-        () => {
-          // 删除数据库记录
-          wx.cloud
-            .database()
-            .collection("items")
-            .doc(item._id)
-            .remove()
-            .then(() => {
-              // 说说
-              if (item.type === "article")
-                // 删除文件
-                wx.cloud
-                  .deleteFile({ fileList: item.photos })
-                  .then(() => wx.startPullDownRefresh())
-                  .catch(error);
-              // 音乐
-              else if (item.type === "music")
-                wx.cloud
-                  .deleteFile({
-                    fileList: [
-                      item.musicID,
-                      ...(item.coverID ? [item.coverID] : []),
-                    ],
-                  })
-                  .then(() => wx.startPullDownRefresh())
-                  .catch(error);
-            })
-            .catch(error);
-        }
-      );
+      confirm(`删除该${item.type === "article" ? "说说" : "音乐"}`, () => {
+        // 删除数据库记录
+        wx.cloud
+          .database()
+          .collection("items")
+          .doc(item._id)
+          .remove()
+          .then(() => {
+            // 说说
+            if (item.type === "article")
+              // 删除文件
+              wx.cloud
+                .deleteFile({ fileList: item.photos })
+                .then(() => wx.startPullDownRefresh())
+                .catch(error);
+            // 音乐
+            else if (item.type === "music")
+              wx.cloud
+                .deleteFile({
+                  fileList: [
+                    item.musicID,
+                    ...(item.coverID ? [item.coverID] : []),
+                  ],
+                })
+                .then(() => wx.startPullDownRefresh())
+                .catch(error);
+          })
+          .catch(error);
+      });
     }
   },
 });
