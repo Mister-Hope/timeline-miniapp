@@ -67,14 +67,24 @@ const buildAppTypesciprt = () =>
 const buildCloudTypesciprt = () =>
   cloudTSProject.src().pipe(cloudTSProject()).pipe(dest("dist/cloud"));
 
-const watchAppTypescript = () => watch("app/**/*.ts", buildAppTypesciprt);
+const watchAppTypescript = () =>
+  watch("app/**/*.ts", { ignoreInitial: false }, buildAppTypesciprt);
 
-const watchCloudTypescript = () => watch("cloud/**/*.ts", buildCloudTypesciprt);
+const watchCloudTypescript = () =>
+  watch("cloud/**/*.ts", { ignoreInitial: false }, buildCloudTypesciprt);
 
 const watchAppFiles = () =>
-  watch("app/**/*.{wxml,wxs,json,svg,png}", moveAppFiles);
+  watch(
+    "app/**/*.{wxml,wxs,json,svg,png}",
+    { ignoreInitial: false },
+    moveAppFiles
+  );
 const watchCloudFiles = () =>
-  watch("cloud/**/*.{wxml,wxs,json,svg,png}", moveCloudFiles);
+  watch(
+    "cloud/**/*.{wxml,wxs,json,svg,png}",
+    { ignoreInitial: false },
+    moveCloudFiles
+  );
 
 const watchApp = parallel(watchWXSS, watchAppTypescript, watchAppFiles);
 
@@ -108,8 +118,8 @@ exports.watchApp = watchApp;
 exports.watchCloud = watchCloud;
 exports.watch = watchCommand;
 
-exports.build = build;
 exports.buildApp = buildApp;
 exports.buildCloud = buildCloud;
+exports.build = build;
 
 exports.default = build;

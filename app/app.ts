@@ -53,15 +53,18 @@ App({
   },
 
   getItems(): Promise<ItemInfo[]> {
-    // 获取歌曲列表
+    // 获取项目列表
     return wx.cloud
       .callFunction({
         name: "items",
       })
       .then(({ result }) => {
-        const { data } = result as { data: ItemInfo[]; errMsg: string };
+        const data = (result as {
+          data: ItemInfo[];
+          errMsg: string;
+        }).data.reverse();
 
-        info("列表为:", data);
+        info("项目列表为:", data);
 
         return data;
       });
