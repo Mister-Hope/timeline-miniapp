@@ -127,6 +127,20 @@ Page({
     this.setData({ singer: detail.value });
   },
 
+  /** 重置选择 */
+  reset({ currentTarget }: WechatMiniprogram.Touch) {
+    const name = currentTarget.dataset.name as string;
+
+    if (name === "photos") this.setData({ photos: [] });
+    else if (name === "cover")
+      this.setData({ cover: {} as WechatMiniprogram.ImageFile });
+    else if (name === "music")
+      this.setData({
+        music: {} as WechatMiniprogram.ChooseFile,
+        musicName: "",
+      });
+  },
+
   /** 插入数据 */
   insetData: (data: Record<string, unknown>) =>
     wx.cloud.database().collection("items").add({ data }),

@@ -45,10 +45,13 @@
 
           <mp-cells title="信息">
             <mp-cell prop="cover" title="配图">
-              <view wx:if="{{photos.length}}">已选择</view>
-              <button wx:else class="button" catch:tap="choosePhoto">
-                选择图片
-              </button>
+              <view class="select" wx:if="{{photos.length}}">
+                <text>已选择 {{photos.length}} 张</text>
+                <button size="mini" data-name="photos" catch:tap="reset">
+                  重新选择
+                </button>
+              </view>
+              <button wx:else catch:tap="choosePhoto">选择图片</button>
             </mp-cell>
             <mp-cell prop="date" title="日期">
               <picker header-text="日期" mode="date" bindchange="dateChange"
@@ -72,10 +75,13 @@
         <mp-form id="form">
           <mp-cells title="音乐">
             <mp-cell prop="music" title="文件">
-              <view wx:if="{{music.name}}">{{music.name || ''}}</view>
-              <button wx:else class="button" catch:tap="chooseMusic">
-                选择音乐
-              </button>
+              <view class="select" wx:if="{{music.name}}">
+                <text>{{music.name || ''}}</text>
+                <button size="mini" data-name="music" catch:tap="reset">
+                  重新选择
+                </button>
+              </view>
+              <button wx:else catch:tap="chooseMusic">选择音乐</button>
             </mp-cell>
             <mp-cell prop="musicName" title="名称">
               <input value="{{musicName}}" catch:input="musicNameChange" />
@@ -97,10 +103,13 @@
 
           <mp-cells title="自定义">
             <mp-cell prop="cover" title="封面">
-              <view wx:if="{{cover.path}}">已选择</view>
-              <button wx:else class="button" catch:tap="chooseCover">
-                选择封面
-              </button>
+              <view class="select" wx:if="{{cover.path}}">
+                <text>已选择</text>
+                <button size="mini" data-name="cover" catch:tap="reset">
+                  重新选择
+                </button>
+              </view>
+              <button wx:else catch:tap="chooseCover">选择封面</button>
             </mp-cell>
             <mp-cell prop="singer" title="演唱者">
               <input value="{{singer}}" catch:input="singerChange" />

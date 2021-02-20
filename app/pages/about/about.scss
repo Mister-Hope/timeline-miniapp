@@ -3,8 +3,15 @@
   background-color: var(--bg-color);
 }
 
-.button {
-  margin: 16px auto;
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    flex-shrink: 0;
+    width: 88px;
+  }
 }
 
 .version {
