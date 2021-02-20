@@ -14,7 +14,7 @@ export const getDarkmode = (
 /**
  * 登录
  *
- * @param appID 小程序的appID
+ * @param globalData 全局数据
  */
 export const login = (globalData: GlobalData): void => {
   const openid = wx.getStorageSync("openid") as string;
@@ -118,8 +118,7 @@ export const startup = (globalData: GlobalData): void => {
 
       info(networkType);
 
-      if (networkType === "none" || networkType === "unknown")
-        tip("您的网络状态不佳");
+      if (networkType === "none") tip("您没有连接到网络");
     },
   });
 

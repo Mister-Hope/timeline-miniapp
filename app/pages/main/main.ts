@@ -35,7 +35,6 @@ Page({
     // 写入基本信息
     this.setData({
       isAdmin: isAdmin(globalData.openid),
-
       darkmode: globalData.darkmode,
       info: globalData.info,
     });
@@ -64,20 +63,18 @@ Page({
     });
   },
 
-  onShareAppMessage(): WechatMiniprogram.Page.ICustomShareContent {
-    return {
-      title: "小爽的专属音乐室",
-      path: "/pages/main/main",
-    };
-  },
+  onShareAppMessage: () => ({
+    title: "小爽的专属音乐室",
+    path: "/pages/main/main",
+  }),
 
-  onShareTimeline(): WechatMiniprogram.Page.ICustomTimelineContent {
-    return { title: "小爽的专属音乐室" };
-  },
+  onShareTimeline: () => ({
+    title: "小爽的专属音乐室",
+  }),
 
-  onAddToFavorites(): WechatMiniprogram.Page.IAddToFavoritesContent {
-    return { title: "小爽的专属音乐室" };
-  },
+  onAddToFavorites: () => ({
+    title: "小爽的专属音乐室",
+  }),
 
   onUnload() {
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);

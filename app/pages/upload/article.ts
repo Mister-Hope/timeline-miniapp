@@ -8,8 +8,6 @@ const { globalData } = getApp<AppOption>();
 
 Page({
   data: {
-    darkmode: false,
-
     /** 正文 */
     text: "",
     /** 文字数 */
@@ -18,22 +16,26 @@ Page({
     photos: [] as WechatMiniprogram.ImageFile[],
     /** 发布日期 */
     date: "",
+
+    /** 夜间模式 */
+    darkmode: false,
   },
 
   onLoad() {
+    /** 是否有权限上传 */
     const isAdmin = isAdminFunction(globalData.openid);
 
     if (isAdmin) {
+      // 生成当前日期
       const now = new Date();
       const month = now.getMonth() + 1;
       const date = now.getDate();
-      const currentDate = `${now.getFullYear()}-${
-        month < 10 ? `0${month}` : month
-      }-${date < 10 ? `0${date}` : date}`;
 
       // 写入基本信息
       this.setData({
-        date: currentDate,
+        date: `${now.getFullYear()}-${month < 10 ? `0${month}` : month}-${
+          date < 10 ? `0${date}` : date
+        }`,
 
         isAdmin,
 
@@ -67,10 +69,8 @@ Page({
 
   /** 选择配图 */
   choosePhoto() {
-    wx.chooseImage({
-      success: ({ tempFiles }) => {
-        this.setData({ photos: tempFiles });
-      },
+    wx.chooseImage({}).then(({ tempFiles }) => {
+      this.setData({ photos: tempFiles });
     });
   },
 
@@ -78,6 +78,10 @@ Page({
   dateChange({ detail }: WechatMiniprogram.PickerChange) {
     this.setData({ date: detail.value as string });
   },
+
+  /** 插入数据 */
+  insetData: (data: Record<string, unknown>) =>
+    wx.cloud.database().collection("items").add({ data }),
 
   /** 上传 */
   upload() {
@@ -120,8 +124,4 @@ Page({
       else insertandUpdate();
     }
   },
-
-  /** 插入数据 */
-  insetData: (data: Record<string, unknown>) =>
-    wx.cloud.database().collection("items").add({ data }),
 });

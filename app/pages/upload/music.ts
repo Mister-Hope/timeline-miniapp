@@ -69,20 +69,19 @@ Page({
     wx.chooseMessageFile({
       count: 1,
       type: "file",
-      // 限制文件后缀
+      // 限制选择音乐文件
       extension: ["m4a", "aac", "mp3", "wav"],
-      success: ({ tempFiles }) => {
-        const music = tempFiles[0];
-        const temp = music.name.split(".");
+    }).then(({ tempFiles }) => {
+      const music = tempFiles[0];
+      const temp = music.name.split(".");
 
-        temp.pop();
-        const name = temp.join(".");
+      temp.pop();
+      const name = temp.join(".");
 
-        this.setData({
-          music: tempFiles[0],
-          name,
-        });
-      },
+      this.setData({
+        music: tempFiles[0],
+        name,
+      });
     });
   },
 
@@ -101,13 +100,9 @@ Page({
 
   /** 选择封面 */
   chooseCover() {
-    wx.chooseImage({
-      count: 1,
-      success: ({ tempFiles }) => {
-        this.setData({
-          cover: tempFiles[0],
-        });
-      },
+    // 限制选择一张照片
+    wx.chooseImage({ count: 1 }).then(({ tempFiles }) => {
+      this.setData({ cover: tempFiles[0] });
     });
   },
 
@@ -121,13 +116,19 @@ Page({
     this.setData({ date: detail.value as string });
   },
 
+  /** 插入数据 */
+  insetData: (data: Record<string, unknown>) =>
+    wx.cloud.database().collection("items").add({ data }),
+
   /** 上传 */
   upload() {
     const { cover, date, music, name, singer, text } = this.data;
 
+    // 必要的校验
     if (!music.name) modal("无法发表", "您必须选择一个音乐文件");
     else if (!name) modal("无法发表", "您必须命名您的音乐文件");
     else if (!singer) modal("无法发表", "您必须填写演唱者");
+    //可以上传
     else {
       // 进行提示
       wx.showLoading({ title: "上传中" });
@@ -169,8 +170,4 @@ Page({
       });
     }
   },
-
-  /** 插入数据 */
-  insetData: (data: Record<string, unknown>) =>
-    wx.cloud.database().collection("items").add({ data }),
 });

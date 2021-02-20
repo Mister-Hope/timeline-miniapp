@@ -99,6 +99,12 @@ export const netReport = (): void => {
   });
 };
 
+/**
+ * 上传文件到云开发存储
+ *
+ * @param filePath 本地缓存文件目录
+ * @param cloudPath 云文件目录
+ */
 export const uploadCloudFile = (
   filePath: string,
   cloudPath: string

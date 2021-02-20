@@ -27,11 +27,16 @@ export const main = async (): Promise<ListResult> => {
         .get() as Promise<cloud.DB.IQueryResult>
   );
 
-  return (await Promise.all(tasks)).reduce(
+  const { data, errMsg } = (await Promise.all(tasks)).reduce(
     (acc, cur) => ({
       data: acc.data.concat(cur.data),
       errMsg: cur.errMsg,
     }),
     { data: [], errMsg: "Empty" }
   );
+
+  return {
+    data: data.reverse(),
+    errMsg,
+  };
 };
