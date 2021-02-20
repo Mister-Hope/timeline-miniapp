@@ -7,9 +7,22 @@
     bindclose="actionClose"
   />
   <mp-navigation-bar back="{{false}}" background="{{darkmode? '#000': '#fff'}}">
-    <view wx:if="{{isAdmin}}" slot="left">
-      <view class="new-icon" hover-class="button-hover" catch:tap="new">
+    <view slot="left">
+      <view
+        wx:if="{{isAdmin}}"
+        class="new-icon"
+        hover-class="button-hover"
+        catch:tap="new"
+      >
         <image src="/icon/add{{darkmode? '-dark': ''}}.svg" />
+      </view>
+      <view
+        wx:else
+        class="about-icon"
+        hover-class="button-hover"
+        catch:tap="about"
+      >
+        <image src="/icon/about{{darkmode? '-dark': ''}}.svg" />
       </view>
     </view>
     <view slot="center">小爽的专属音乐室</view>

@@ -90,12 +90,17 @@ Page({
     this.setData({ showActionsheet: true });
   },
 
+  /** 关于 */
+  about() {
+    wx.navigateTo({ url: `/pages/manage/manage?type=about` });
+  },
+
   /** 点击选项菜单 */
   actionTap({
     detail,
-  }: WechatMiniprogram.Touch<{ value: "article" | "music" | "photo" }>) {
+  }: WechatMiniprogram.Touch<{ value: "article" | "music" }>) {
     this.setData({ showActionsheet: false });
-    wx.navigateTo({ url: `/pages/upload/${detail.value}` });
+    wx.navigateTo({ url: `/pages/manage/manage?type=${detail.value}` });
   },
 
   /** 点击取消项目 */

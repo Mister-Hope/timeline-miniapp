@@ -1,0 +1,129 @@
+<view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
+  <!-- 关于 -->
+  <mp-msg
+    wx:if="{{type === 'about'}}"
+    type="info"
+    title="关于"
+    desc="展示小爽翻唱的歌曲与心情笔记"
+  >
+    <view slot="extend" class="version">版本号: {{version}}</view>
+    <button slot="handle" type="primary" class="weui-btn" catch:tap="back">
+      返回首页
+    </button>
+  </mp-msg>
+
+  <block wx:elif="{{isAdmin}}">
+    <!-- 成功页面 -->
+    <mp-msg
+      wx:if="{{success}}"
+      type="success"
+      title="发表成功"
+      desc="{{type === 'music'? '歌曲': '说说'}}已成功发表"
+    >
+      <button slot="handle" type="primary" class="weui-btn" catch:tap="home">
+        返回首页
+      </button>
+    </mp-msg>
+
+    <!-- 上传页面 -->
+    <block wx:else>
+      <!-- 说说上传 -->
+      <mp-form-page wx:if="{{type === 'article'}}" title="发表说说">
+        <mp-form id="form">
+          <mp-cells title="说说">
+            <mp-cell prop="text">
+              <textarea
+                class="weui-textarea"
+                placeholder="请输入说说内容"
+                style="height: 4em"
+                value="{{text}}"
+                catch:input="textChange"
+              />
+              <view class="weui-textarea-counter">{{textNumber}}/200</view>
+            </mp-cell>
+          </mp-cells>
+
+          <mp-cells title="信息">
+            <mp-cell prop="cover" title="配图">
+              <view wx:if="{{photos.length}}">已选择</view>
+              <button wx:else class="button" catch:tap="choosePhoto">
+                选择图片
+              </button>
+            </mp-cell>
+            <mp-cell prop="date" title="日期">
+              <picker header-text="日期" mode="date" bindchange="dateChange"
+                >{{date}}</picker
+              >
+            </mp-cell>
+          </mp-cells>
+        </mp-form>
+        <button
+          slot="button"
+          class="weui-btn"
+          type="primary"
+          bindtap="uploadArticle"
+        >
+          发表说说
+        </button>
+      </mp-form-page>
+
+      <!-- 音乐上传 -->
+      <mp-form-page wx:elif="{{type === 'music'}}" title="发表音乐">
+        <mp-form id="form">
+          <mp-cells title="音乐">
+            <mp-cell prop="music" title="文件">
+              <view wx:if="{{music.name}}">{{music.name || ''}}</view>
+              <button wx:else class="button" catch:tap="chooseMusic">
+                选择音乐
+              </button>
+            </mp-cell>
+            <mp-cell prop="musicName" title="名称">
+              <input value="{{musicName}}" catch:input="musicNameChange" />
+            </mp-cell>
+          </mp-cells>
+
+          <mp-cells title="配文">
+            <mp-cell prop="text">
+              <textarea
+                class="weui-textarea"
+                placeholder="请输入配文"
+                style="height: 4em"
+                value="{{text}}"
+                catch:input="textChange"
+              />
+              <view class="weui-textarea-counter">{{textNumber}}/200</view>
+            </mp-cell>
+          </mp-cells>
+
+          <mp-cells title="自定义">
+            <mp-cell prop="cover" title="封面">
+              <view wx:if="{{cover.path}}">已选择</view>
+              <button wx:else class="button" catch:tap="chooseCover">
+                选择封面
+              </button>
+            </mp-cell>
+            <mp-cell prop="singer" title="演唱者">
+              <input value="{{singer}}" catch:input="singerChange" />
+            </mp-cell>
+            <mp-cell prop="date" title="日期">
+              <picker header-text="日期" mode="date" bindchange="dateChange"
+                >{{date}}</picker
+              >
+            </mp-cell>
+          </mp-cells>
+        </mp-form>
+        <label slot="tips" class="weui-agree" for="weuiAgree">
+          <view class="weui-agree__text">您可以自定义发表时间与封面</view>
+        </label>
+        <button
+          slot="button"
+          class="weui-btn"
+          type="primary"
+          bindtap="uploadMusic"
+        >
+          发表音乐
+        </button>
+      </mp-form-page>
+    </block>
+  </block>
+</view>
