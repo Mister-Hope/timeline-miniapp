@@ -1,7 +1,8 @@
 import { startup } from "./utils/app";
 import { info } from "./utils/log";
 import { message } from "./utils/message";
-import { ItemInfo, MusicInfo } from "./typings";
+
+import type { ItemInfo, MusicInfo } from "./typings";
 
 export interface GlobalData {
   /** 版本号 */
