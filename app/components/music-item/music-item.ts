@@ -9,9 +9,7 @@ Component({
   methods: {
     navigate(): void {
       wx.navigateTo({
-        url: `/pages/detail/music?musicID=${
-          this.data.config.musicID as string
-        }`,
+        url: `/pages/detail/music?id=${this.data.config.musicID as string}`,
       });
     },
   },
