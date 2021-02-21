@@ -93,7 +93,7 @@
         <view class="icon icon-{{playing? 'pause': 'play'}}" />
       </view>
       <view wx:else class="play-button" hover-class="button-active">
-        <image class="icon" src="/icon/loading{{darkmode? '-dark': ''}}.svg" />
+        <view class="icon icon-loading" />
       </view>
       <view
         class="button"
