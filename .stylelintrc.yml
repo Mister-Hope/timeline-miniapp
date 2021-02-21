@@ -48,8 +48,6 @@ rules:
 
   function-url-quotes: always
 
-  indentation: 2
-
   length-zero-no-unit: true
 
   max-nesting-depth:

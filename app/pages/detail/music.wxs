@@ -11,7 +11,7 @@ module.exports = {
   },
 
   /** 播放模式 */
-  getMode: function (mode, darkmode) {
+  getMode: function (mode) {
     var modeMap = {
       // eslint-disable-next-line
       "列表循环": "cycle",
@@ -23,8 +23,6 @@ module.exports = {
       "随机播放": "random",
     };
 
-    return (
-      "/icon/" + modeMap[mode] + "-play" + (darkmode ? "-dark" : "") + ".svg"
-    );
+    return "icon-" + modeMap[mode] + "-play";
   },
 };

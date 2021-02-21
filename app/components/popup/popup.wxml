@@ -7,7 +7,7 @@
     <view class="popup-head">
       <view class="popup-head-button">
         <!-- 关闭按钮 -->
-        <view class="icon-button close" catch:tap="closeDialog" />
+        <view class="icon-close icon-button" catch:tap="closeDialog" />
       </view>
       <view class="popup-head-title">
         <text class="title">{{config.title}}</text>
@@ -17,7 +17,7 @@
         <!-- 更多按钮 -->
         <view
           wx:if="{{config.more}}"
-          class="icon-button more"
+          class="icon-button icon-more"
           catch:tap="more"
         />
       </view>

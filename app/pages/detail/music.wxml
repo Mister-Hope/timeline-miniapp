@@ -23,7 +23,7 @@
     open-type="share"
     plain
   >
-    <text class="icon-font share" />分享
+    <text class="icon-font icon-share" />分享
   </button>
 
   <view class="music-info">
@@ -32,10 +32,9 @@
   </view>
 
   <view class="cover-wrapper">
-    <image
+    <view
       wx:if="{{!coverLoad}}"
-      class="cover {{playing? 'rotate': ''}}"
-      src="/icon/cd{{darkmode? '-dark': ''}}.svg"
+      class="cover icon-cd {{playing? 'rotate': ''}}"
     />
     <image
       class="cover {{playing? 'rotate': ''}} {{coverLoad? '': 'hide'}}"
@@ -75,7 +74,7 @@
         hover-stay-time="100"
         catch:tap="modeSwitch"
       >
-        <image class="icon" src="{{music.getMode(mode, darkmode)}}" />
+        <view class="icon {{music.getMode(mode)}}" />
       </view>
       <view
         class="button"
@@ -83,11 +82,7 @@
         hover-start-time="0"
         hover-stay-time="100"
       >
-        <image
-          class="icon"
-          src="/icon/prev{{darkmode? '-dark': ''}}.svg"
-          catch:tap="previous"
-        />
+        <view class="icon icon-prev" catch:tap="previous" />
       </view>
       <view
         wx:if="{{canplay}}"
@@ -97,10 +92,7 @@
         hover-stay-time="100"
         catch:tap="play"
       >
-        <image
-          class="icon"
-          src="/icon/{{playing? 'pause': 'play'}}{{darkmode? '-dark': ''}}.svg"
-        />
+        <view class="icon icon-{{playing? 'pause': 'play'}}" />
       </view>
       <view wx:else class="play-button" hover-class="button-active">
         <image class="icon" src="/icon/loading{{darkmode? '-dark': ''}}.svg" />
@@ -111,11 +103,7 @@
         hover-start-time="0"
         hover-stay-time="100"
       >
-        <image
-          class="icon"
-          src="/icon/next{{darkmode? '-dark': ''}}.svg"
-          catch:tap="next"
-        />
+        <view class="icon icon-next" catch:tap="next" />
       </view>
       <view
         class="button"
@@ -124,10 +112,7 @@
         hover-stay-time="100"
         catch:tap="list"
       >
-        <image
-          class="icon"
-          src="/icon/music-list{{darkmode? '-dark': ''}}.svg"
-        />
+        <view class="icon icon-music-list" />
       </view>
     </view>
   </view>

@@ -11,19 +11,14 @@
     <view slot="left">
       <view
         wx:if="{{isOwner}}"
-        class="new-icon"
+        class="button"
         hover-class="button-hover"
         catch:tap="new"
       >
-        <image src="/icon/add{{darkmode? '-dark': ''}}.svg" />
+        <view class="icon-add" />
       </view>
-      <view
-        wx:else
-        class="about-icon"
-        hover-class="button-hover"
-        catch:tap="about"
-      >
-        <image src="/icon/about{{darkmode? '-dark': ''}}.svg" />
+      <view wx:else class="button" hover-class="button-hover" catch:tap="about">
+        <view class="icon-about" />
       </view>
     </view>
     <view slot="center">{{appName}}</view>

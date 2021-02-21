@@ -1,16 +1,18 @@
+@import "./main-icon";
+
 .page {
   height: 100vh;
   background-color: var(--bg-color);
 }
 
 .weui-navigation-bar {
-  .new-icon,
-  .about-icon {
+  .button {
     width: 24px;
     height: 24px;
     padding: 4px;
 
-    image {
+    .icon-about,
+    .icon-add {
       width: 100%;
       height: 100%;
     }

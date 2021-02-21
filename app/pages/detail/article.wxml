@@ -7,6 +7,6 @@
     open-type="share"
     plain
   >
-    <text class="icon-font share" />分享
+    <text class="icon-font icon-share" />分享
   </button>
 </view>
