@@ -1,8 +1,9 @@
+<wxs src="./main.wxs" module="main" />
 <view class="page" data-weui-theme="{{darkmode? 'dark': ''}}">
   <mp-actionSheet
     title="发表内容"
     show="{{showActionsheet}}"
-    actions="{{actions}}"
+    actions="{{main.actions}}"
     bindactiontap="actionTap"
     bindclose="actionClose"
   />
@@ -25,7 +26,7 @@
         <image src="/icon/about{{darkmode? '-dark': ''}}.svg" />
       </view>
     </view>
-    <view slot="center">小爽的专属音乐室</view>
+    <view slot="center">{{appName}}</view>
   </mp-navigation-bar>
   <view wx:if="{{items.length}}" class="timeline">
     <mp-cells>
@@ -33,7 +34,7 @@
         <mp-slideview
           wx:for="{{items}}"
           wx:key="_id"
-          buttons="{{slideButtons}}"
+          buttons="{{main.slideButtons}}"
           icon
           data-index="{{index}}"
           bindbuttontap="slideButtonTap"

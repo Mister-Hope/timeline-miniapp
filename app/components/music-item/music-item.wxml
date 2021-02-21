@@ -1,8 +1,5 @@
 <view class="music-wrapper">
-  <image
-    class="avatar"
-    src="cloud://lharion-6g2ucs7hb4ee6e89.6c68-lharion-6g2ucs7hb4ee6e89-1304994338/avatar.webp"
-  />
+  <image class="avatar" src="{{avatar}}" />
   <view class="content" catch:tap="navigate">
     <view class="date">{{config.date}}</view>
     <view class="text">{{config.text}}</view>

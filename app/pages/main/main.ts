@@ -1,3 +1,4 @@
+import { appName } from "../../config";
 import { isAdmin } from "../../utils/identify";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
@@ -10,25 +11,12 @@ const { getItems, globalData } = getApp<AppOption>();
 
 Page({
   data: {
+    appName,
+
     /** 项目列表 */
     items: [] as ItemInfo[],
-
-    /** 滑动按钮 */
-    slideButtons: [
-      {
-        text: "删除",
-        src: "/icon/delete.svg",
-        data: "delete",
-      },
-    ],
-
     /** 选项菜单 */
     showActionsheet: false,
-    /** 操作 */
-    actions: [
-      { text: "说说 / 图片", value: "article" },
-      { text: "音乐", value: "music" },
-    ],
   },
 
   onLoad() {
@@ -63,18 +51,11 @@ Page({
     });
   },
 
-  onShareAppMessage: () => ({
-    title: "小爽的专属音乐室",
-    path: "/pages/main/main",
-  }),
+  onShareAppMessage: () => ({ title: appName, path: "/pages/main/main" }),
 
-  onShareTimeline: () => ({
-    title: "小爽的专属音乐室",
-  }),
+  onShareTimeline: () => ({ title: appName }),
 
-  onAddToFavorites: () => ({
-    title: "小爽的专属音乐室",
-  }),
+  onAddToFavorites: () => ({ title: appName }),
 
   onUnload() {
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);

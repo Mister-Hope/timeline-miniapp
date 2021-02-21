@@ -1,3 +1,4 @@
+import { owner } from "../../config";
 import { getCurrentDate } from "../../utils/date";
 import { isAdmin as isAdminFunction } from "../../utils/identify";
 import { error, info } from "../../utils/log";
@@ -11,6 +12,7 @@ Page({
   data: {
     isAdmin: false,
     type: "about",
+    owner,
 
     /** 文字 */
     text: "",
@@ -26,7 +28,7 @@ Page({
     /** 封面 */
     cover: {} as WechatMiniprogram.ImageFile,
     /** 演唱者 */
-    singer: "小爽",
+    singer: owner,
 
     /** 图片 */
     photos: [] as WechatMiniprogram.ImageFile[],

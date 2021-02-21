@@ -9,7 +9,7 @@
   "window": {
     "navigationBarBackgroundColor": "@navBgColor",
     "navigationBarTextStyle": "@navTextStyle",
-    "navigationBarTitleText": "小爽的专属音乐室",
+    "navigationBarTitleText": "时间线",
     "backgroundColor": "@bgColor",
     "backgroundTextStyle": "@bgTxtStyle",
     "backgroundColorTop": "@bgColorTop",

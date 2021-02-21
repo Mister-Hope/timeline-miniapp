@@ -1,0 +1,16 @@
+module.exports = {
+  /** 滑动按钮 */
+  slideButtons: [
+    {
+      text: "删除",
+      src: "/icon/delete.svg",
+      data: "delete",
+    },
+  ],
+
+  /** 操作 */
+  actions: [
+    { text: "说说 / 图片", value: "article" },
+    { text: "音乐", value: "music" },
+  ],
+};

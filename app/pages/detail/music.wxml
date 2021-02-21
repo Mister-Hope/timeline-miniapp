@@ -2,7 +2,7 @@
 <image
   class="backgroud-image"
   mode="aspectFill"
-  src="{{currentMusic.coverID}}"
+  src="{{currentMusic.coverID || defaultCover}}"
 />
 <view class="music-wrapper">
   <view
@@ -39,7 +39,7 @@
     />
     <image
       class="cover {{playing? 'rotate': ''}} {{coverLoad? '': 'hide'}}"
-      src="{{currentMusic.coverID}}"
+      src="{{currentMusic.coverID || defaultCover}}"
       mode="aspectFill"
       catch:load="loadCover"
     />

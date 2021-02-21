@@ -4,7 +4,7 @@
     wx:if="{{type === 'about'}}"
     type="info"
     title="关于"
-    desc="展示小爽翻唱的歌曲与心情笔记"
+    desc="展示{{owner}}的心情笔记、随拍与歌曲"
   >
     <view slot="extend" class="version">版本号: {{version}}</view>
     <button slot="handle" type="primary" class="weui-btn" catch:tap="back">

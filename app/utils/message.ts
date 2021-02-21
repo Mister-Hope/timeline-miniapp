@@ -1,7 +1,7 @@
 /** 发布 / 订阅模块 */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 /** 事件处理器 */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface EventHandler<T extends any[] = any[]> {
   /** 事件处理函数 */
   handler: (...args: T) => void;
@@ -12,7 +12,6 @@ interface EventHandler<T extends any[] = any[]> {
 }
 
 /** 监听器对象 */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 interface EventBus<T extends any[] = any[]> {
   [props: string]: EventHandler<T>[];
 }
@@ -35,7 +34,6 @@ class Message {
    *
    * @returns 取消监听函数
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   on<T extends any[]>(
     eventId: string,
     handler: (...args: T) => void,
@@ -58,7 +56,6 @@ class Message {
    * - 设置为`all`即取消所有
    * @param handler 需要取消的监听处理函数，不填则取消所有监听处理函数
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   off<T extends any[]>(
     eventId: string | string[] | "all",
     handler: (...args: T) => void

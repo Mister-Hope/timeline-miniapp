@@ -1,3 +1,4 @@
+import { appName, defaultCover } from "../../config";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
 import { tip } from "../../utils/wx";
@@ -14,6 +15,8 @@ type PlayMode = "列表循环" | "单曲循环" | "顺序播放" | "随机播放
 
 Page({
   data: {
+    defaultCover,
+
     /** 是否可以播放 */
     canplay: false,
     /** 是否正在播放 */
@@ -42,10 +45,10 @@ Page({
   },
 
   state: {
+    /** 是否被系统或用户中断 */
     interupt: false,
   },
 
-  // eslint-disable-next-line max-lines-per-function
   onLoad(option) {
     const mode = wx.getStorageSync("play-mode") as PlayMode;
 
@@ -143,7 +146,7 @@ Page({
 
   /** 注册音乐播放器 */
   managerRegister() {
-    manager.epname = "小爽的专属音乐室";
+    manager.epname = appName;
 
     // 能够播放 100ms 后设置可以播放
     manager.onCanplay(() => {
