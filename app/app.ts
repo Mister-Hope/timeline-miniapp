@@ -21,7 +21,7 @@ export interface GlobalData {
   /** 用户的 openid */
   openid: string;
   /** 是否是所有者 */
-  isOwner: boolean;
+  isOwner: boolean | undefined;
   /** 夜间模式开启状态 */
   darkmode: boolean;
   /** 设备信息 */

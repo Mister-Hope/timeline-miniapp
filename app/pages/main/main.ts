@@ -27,13 +27,12 @@ Page({
       info: globalData.info,
     });
 
-    const setItems = (items: ItemInfo[]): void => {
-      // 写入列表
-      this.setData({ items });
-    };
+    if (globalData.items.length) this.setItems(globalData.items);
+    else message.on("items", this.setItems);
 
-    if (globalData.items.length) setItems(globalData.items);
-    else message.on<[ItemInfo[]]>("items", setItems);
+    if (typeof globalData.isOwner === "boolean")
+      this.setOwner(globalData.isOwner);
+    else message.on("isOwner", this.setOwner);
 
     if (wx.canIUse("onThemeChange")) wx.onThemeChange(this.themeChange);
   },
@@ -58,12 +57,24 @@ Page({
   onAddToFavorites: () => ({ title: appName }),
 
   onUnload() {
+    message.off("items", this.setItems);
+
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);
   },
 
   /** 切换主题 */
   themeChange({ theme }: WechatMiniprogram.OnThemeChangeCallbackResult) {
     this.setData({ darkmode: theme === "dark" });
+  },
+
+  /** 设置时间线内容 */
+  setItems(items: ItemInfo[]) {
+    this.setData({ items });
+  },
+
+  /** 设置是否可以上传 */
+  setOwner(isOwner: boolean) {
+    this.setData({ isOwner });
   },
 
   /** 新建内容 */
