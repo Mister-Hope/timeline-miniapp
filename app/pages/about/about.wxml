@@ -12,7 +12,7 @@
     </button>
   </mp-msg>
 
-  <block wx:elif="{{isAdmin}}">
+  <block wx:elif="{{isOwner}}">
     <!-- 成功页面 -->
     <mp-msg
       wx:if="{{success}}"

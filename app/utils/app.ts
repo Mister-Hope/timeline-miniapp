@@ -1,6 +1,7 @@
 import { error, info, warn } from "./log";
 import { tip } from "./wx";
 import { GlobalData } from "../app";
+import { message } from "./message";
 
 /**
  * 根据用户设置，判断当前小程序是否应启用夜间模式
@@ -11,17 +12,26 @@ export const getDarkmode = (
   sysInfo: WechatMiniprogram.SystemInfo = wx.getSystemInfoSync()
 ): boolean => (sysInfo.AppPlatform ? false : sysInfo.theme === "dark");
 
+interface LoginCloudFunctionResult {
+  /** 用户的 openid */
+  openid: string;
+  /** 用户是否是小程序的所有者 */
+  isOwner: boolean;
+}
+
 /**
  * 登录
  *
  * @param globalData 全局数据
  */
 export const login = (globalData: GlobalData): void => {
-  const openid = wx.getStorageSync("openid") as string;
+  const openid = wx.getStorageSync("openid") as string | undefined;
+  const isOwner = wx.getStorageSync("isOwner") as boolean | undefined;
 
-  if (openid) {
+  if (openid && typeof isOwner === "boolean") {
     info(`openid 为: ${openid}`);
     globalData.openid = openid;
+    globalData.isOwner = isOwner;
   } else
     wx.cloud
       .callFunction({
@@ -29,13 +39,16 @@ export const login = (globalData: GlobalData): void => {
         data: {},
       })
       .then((res) => {
-        const {
-          result: { openid },
-        } = (res as unknown) as { result: { openid: string } };
+        const { openid, isOwner } = res.result as LoginCloudFunctionResult;
 
-        info("openid 为", openid);
+        info(`openid 为 ${openid}`, `用户${isOwner ? "是" : "不是"}所有者`);
         wx.setStorageSync("openid", openid);
+        wx.setStorageSync("isOwner", isOwner);
         globalData.openid = openid;
+        globalData.isOwner = isOwner;
+
+        message.emit("openid", openid);
+        message.emit("isOwner", isOwner);
       })
       .catch(error);
 };

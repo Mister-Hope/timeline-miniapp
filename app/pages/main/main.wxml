@@ -10,7 +10,7 @@
   <mp-navigation-bar back="{{false}}" background="{{darkmode? '#000': '#fff'}}">
     <view slot="left">
       <view
-        wx:if="{{isAdmin}}"
+        wx:if="{{isOwner}}"
         class="new-icon"
         hover-class="button-hover"
         catch:tap="new"
@@ -30,7 +30,7 @@
   </mp-navigation-bar>
   <view wx:if="{{items.length}}" class="timeline">
     <mp-cells>
-      <block wx:if="{{isAdmin}}">
+      <block wx:if="{{isOwner}}">
         <mp-slideview
           wx:for="{{items}}"
           wx:key="_id"

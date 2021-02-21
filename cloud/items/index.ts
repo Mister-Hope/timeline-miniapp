@@ -13,15 +13,15 @@ interface ListResult {
 }
 
 export const main = async (): Promise<ListResult> => {
-  const colection = database().collection("items");
+  const collection = database().collection("items");
 
-  const { total } = (await colection.count()) as cloud.DB.ICountResult;
+  const { total } = (await collection.count()) as cloud.DB.ICountResult;
 
   const batchTimes = Math.ceil(total / 100);
 
   const tasks = new Array(batchTimes).fill(1).map(
     (_element, index) =>
-      colection
+      collection
         .skip(index * MAX_LIMIT)
         .limit(MAX_LIMIT)
         .get() as Promise<cloud.DB.IQueryResult>

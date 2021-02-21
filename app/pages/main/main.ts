@@ -1,5 +1,5 @@
 import { appName } from "../../config";
-import { isAdmin } from "../../utils/identify";
+import { getItems } from "../../utils/database";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm } from "../../utils/wx";
@@ -7,7 +7,7 @@ import { confirm } from "../../utils/wx";
 import type { AppOption } from "../../app";
 import type { ItemInfo, MusicInfo } from "../../typings";
 
-const { getItems, globalData } = getApp<AppOption>();
+const { globalData } = getApp<AppOption>();
 
 Page({
   data: {
@@ -22,7 +22,7 @@ Page({
   onLoad() {
     // 写入基本信息
     this.setData({
-      isAdmin: isAdmin(globalData.openid),
+      isOwner: globalData.isOwner,
       darkmode: globalData.darkmode,
       info: globalData.info,
     });

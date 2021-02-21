@@ -1,5 +1,5 @@
 import { startup } from "./utils/app";
-import { info } from "./utils/log";
+import { getItems } from "./utils/database";
 import { message } from "./utils/message";
 
 import type { ItemInfo, MusicInfo } from "./typings";
@@ -20,6 +20,8 @@ export interface GlobalData {
   musicList: MusicInfo[];
   /** 用户的 openid */
   openid: string;
+  /** 是否是所有者 */
+  isOwner: boolean;
   /** 夜间模式开启状态 */
   darkmode: boolean;
   /** 设备信息 */
@@ -28,12 +30,12 @@ export interface GlobalData {
 
 export interface AppOption {
   globalData: GlobalData;
-  getItems: () => Promise<ItemInfo[]>;
 }
 
 App({
   globalData: ({
     version: "2.0.0",
+    isAdmin: false,
     openid: "",
     music: { playing: false, index: 0 },
     items: [],
@@ -43,27 +45,13 @@ App({
   onLaunch() {
     startup(this.globalData);
 
-    this.getItems().then((items) => {
+    getItems().then((items) => {
       this.globalData.items = items;
       this.globalData.musicList = items.filter(
         (item) => item.type === "music"
       ) as MusicInfo[];
 
       message.emit("items", items);
-    });
-  },
-
-  getItems(): Promise<ItemInfo[]> {
-    // 获取项目列表
-    return wx.cloud.callFunction({ name: "items" }).then(({ result }) => {
-      const { data } = result as {
-        data: ItemInfo[];
-        errMsg: string;
-      };
-
-      info("项目列表为:", data);
-
-      return data;
     });
   },
 });

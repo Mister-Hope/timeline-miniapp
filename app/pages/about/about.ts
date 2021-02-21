@@ -1,6 +1,5 @@
 import { owner } from "../../config";
 import { getCurrentDate } from "../../utils/date";
-import { isAdmin as isAdminFunction } from "../../utils/identify";
 import { error, info } from "../../utils/log";
 import { modal, uploadCloudFile } from "../../utils/wx";
 
@@ -10,7 +9,7 @@ const { globalData } = getApp<AppOption>();
 
 Page({
   data: {
-    isAdmin: false,
+    isOwner: false,
     type: "about",
     owner,
 
@@ -38,11 +37,10 @@ Page({
   },
 
   onLoad(options) {
-    const isAdmin = isAdminFunction(globalData.openid);
     const type = options.type || "about";
 
     this.setData({
-      isAdmin,
+      isOwner: globalData.isOwner,
       type,
 
       date: getCurrentDate(),
@@ -52,7 +50,7 @@ Page({
     });
 
     // 设置导航栏标题
-    if (isAdmin)
+    if (globalData.isOwner)
       if (type === "article") wx.setNavigationBarTitle({ title: "发表说说" });
       else if (type === "music")
         wx.setNavigationBarTitle({ title: "发表音乐" });
