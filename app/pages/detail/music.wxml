@@ -9,12 +9,10 @@
     class="back-button"
     style="top:{{info.statusBarHeight + 5}}px;"
     hover-class="button-hover"
+    hover-stay-time="100"
     catch:tap="back"
   >
-    <image
-      class="back-icon"
-      src="/icon/{{firstPage? 'home': 'back'}}{{darkmode? '-white': ''}}.svg"
-    />
+    <view class="icon-{{firstPage? 'home': 'back'}}" />
   </view>
   <button
     class="share-button"
