@@ -29,7 +29,7 @@ export const login = (globalData: GlobalData): void => {
   const isOwner = wx.getStorageSync("isOwner") as boolean | undefined;
 
   if (openid && typeof isOwner === "boolean") {
-    info(`openid 为: ${openid}`);
+    info(`openid 为 ${openid}，用户${isOwner ? "是" : "不是"}所有者`);
     globalData.openid = openid;
     globalData.isOwner = isOwner;
   } else
@@ -41,7 +41,7 @@ export const login = (globalData: GlobalData): void => {
       .then((res) => {
         const { openid, isOwner } = res.result as LoginCloudFunctionResult;
 
-        info(`openid 为 ${openid}`, `用户${isOwner ? "是" : "不是"}所有者`);
+        info(`openid 为 ${openid}，用户${isOwner ? "是" : "不是"}所有者`);
         wx.setStorageSync("openid", openid);
         wx.setStorageSync("isOwner", isOwner);
         globalData.openid = openid;
