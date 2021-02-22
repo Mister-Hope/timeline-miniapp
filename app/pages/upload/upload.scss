@@ -1,0 +1,19 @@
+.page {
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  button {
+    flex-shrink: 0;
+  }
+}
+
+.version {
+  color: var(--light-grey);
+  font-size: 14px;
+}
