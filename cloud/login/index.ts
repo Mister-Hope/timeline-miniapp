@@ -34,7 +34,7 @@ export const main = async (): Promise<LoginResult> => {
 
   const isOwner = (await Promise.all(tasks))
     .reduce((acc, cur) => acc.concat(cur.data), [] as cloud.DB.IDocumentData[])
-    .some((item) => item.openid);
+    .some((item) => item.openid === OPENID);
 
   return {
     openid: OPENID,
