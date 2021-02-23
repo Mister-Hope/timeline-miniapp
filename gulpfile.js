@@ -1,6 +1,6 @@
 const { dest, parallel, src, watch } = require("gulp");
 const rename = require("gulp-rename");
-const { gulpSass } = require("@mr-hope/gulp-sass");
+const { sassSync } = require("@mr-hope/gulp-sass");
 const PluginError = require("plugin-error");
 const typescript = require("gulp-typescript");
 const { Transform } = require("stream");
@@ -11,14 +11,14 @@ const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
 const buildWXSS = () =>
   src("app/**/*.scss")
     .pipe(
-      gulpSass({
+      sassSync({
         // use `@` as hack for remaining '@import'
         importer: (url) => {
           if (url.includes(".css")) return null;
 
           return { contents: `@import "${url}.css"` };
         },
-      }).on("error", gulpSass.logError)
+      }).on("error", sassSync.logError)
     )
     .pipe(rename({ extname: ".wxss" }))
     .pipe(
