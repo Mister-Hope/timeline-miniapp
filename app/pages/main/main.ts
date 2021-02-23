@@ -9,6 +9,8 @@ import type { ItemInfo, MusicInfo } from "../../typings";
 
 const { globalData } = getApp<AppOption>();
 
+const ITEMS_PER_LOAD = 10;
+
 Page({
   data: {
     appName,
@@ -19,6 +21,10 @@ Page({
     showActionsheet: false,
   },
 
+  state: {
+    timeline: [] as ItemInfo[],
+  },
+
   onLoad() {
     // 写入基本信息
     this.setData({
@@ -27,8 +33,8 @@ Page({
       info: globalData.info,
     });
 
-    this.setItems(globalData.timeline);
-    message.on("items", this.setItems);
+    this.setTimeline(globalData.timeline);
+    message.on("items", this.setTimeline);
 
     if (typeof globalData.isOwner === "boolean")
       this.setOwner(globalData.isOwner);
@@ -37,14 +43,21 @@ Page({
     if (wx.canIUse("onThemeChange")) wx.onThemeChange(this.themeChange);
   },
 
-  onPullDownRefresh() {
-    getTimelineItems().then((items) => {
-      this.setData({ items });
+  onReachBottom() {
+    const { items } = this.data;
+    const { timeline } = this.state;
+    const end = Math.min(items.length + ITEMS_PER_LOAD, timeline.length);
 
-      globalData.timeline = items;
-      globalData.musicList = items.filter(
+    this.setData({ items: timeline.slice(0, end) });
+  },
+
+  onPullDownRefresh() {
+    getTimelineItems().then((timeline) => {
+      globalData.timeline = timeline;
+      globalData.musicList = timeline.filter(
         (item) => item.type === "music"
       ) as MusicInfo[];
+      this.setTimeline(timeline);
 
       wx.stopPullDownRefresh();
     });
@@ -57,7 +70,7 @@ Page({
   onAddToFavorites: () => ({ title: appName }),
 
   onUnload() {
-    message.off("items", this.setItems);
+    message.off("items", this.setTimeline);
 
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);
   },
@@ -68,8 +81,11 @@ Page({
   },
 
   /** 设置时间线内容 */
-  setItems(items: ItemInfo[]) {
-    this.setData({ items });
+  setTimeline(timeline: ItemInfo[]) {
+    const end = Math.min(ITEMS_PER_LOAD, timeline.length);
+
+    this.state.timeline = timeline;
+    this.setData({ items: timeline.slice(0, end) });
   },
 
   /** 设置是否可以上传 */
