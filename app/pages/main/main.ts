@@ -27,8 +27,8 @@ Page({
       info: globalData.info,
     });
 
-    if (globalData.timeline.length) this.setItems(globalData.timeline);
-    else message.on("items", this.setItems);
+    this.setItems(globalData.timeline);
+    message.on("items", this.setItems);
 
     if (typeof globalData.isOwner === "boolean")
       this.setOwner(globalData.isOwner);
