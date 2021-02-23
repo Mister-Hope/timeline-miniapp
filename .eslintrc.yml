@@ -147,6 +147,7 @@ overrides:
       node: true
 
   - files:
+      - "script/**"
       - "gulpfile.js"
 
     env:

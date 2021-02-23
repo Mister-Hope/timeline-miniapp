@@ -42,6 +42,7 @@ export const login = (globalData: GlobalData): void => {
         const { openid, isOwner } = res.result as LoginCloudFunctionResult;
 
         info(`openid 为 ${openid}，用户${isOwner ? "是" : "不是"}所有者`);
+
         wx.setStorageSync("openid", openid);
         wx.setStorageSync("isOwner", isOwner);
         globalData.openid = openid;
