@@ -1,4 +1,4 @@
-<article-item config="{{item}}" />
+<article-item config="{{article}}" />
 <view class="share">
   <button
     class="share-button"
