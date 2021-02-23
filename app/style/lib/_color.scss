@@ -1,0 +1,35 @@
+page {
+  --bg-color: #fff;
+  --bg-color-grey: #ededed;
+  --text-color: #000;
+  --grey3: #333;
+  --dark-grey: #666;
+  --light-grey: #999;
+  --grey12: #bbb;
+  --hover: rgba(0, 0, 0, 0.1);
+  --card-shadow: rgba(0, 0, 0, 0.15);
+
+  @media (prefers-color-scheme: light) {
+    --bg-color: #fff;
+    --bg-color-grey: #ededed;
+    --text-color: #000;
+    --grey3: #333;
+    --dark-grey: #666;
+    --light-grey: #999;
+    --grey12: #bbb;
+    --hover: rgba(0, 0, 0, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.15);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --bg-color: #000;
+    --bg-color-grey: #111;
+    --text-color: #fff;
+    --grey3: #bbb;
+    --dark-grey: #999;
+    --light-grey: #666;
+    --grey12: #333;
+    --hover: rgba(255, 255, 255, 0.1);
+    --card-shadow: rgba(0, 0, 0, 0.3);
+  }
+}
