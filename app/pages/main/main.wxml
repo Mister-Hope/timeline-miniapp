@@ -52,5 +52,5 @@
       </block>
     </mp-cells>
   </view>
-  <mp-msg wx:else type="waiting" title="加载中" />
+  <mp-loading wx:else type="circle" />
 </view>
