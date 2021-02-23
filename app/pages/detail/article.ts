@@ -11,7 +11,7 @@ Page({
   onLoad(options) {
     if (!options.id) wx.reLaunch({ url: "pages/main/main" });
 
-    const item = globalData.items.find(
+    const item = globalData.timeline.find(
       (item) => item._id === options.id
     ) as ArticleInfo;
 

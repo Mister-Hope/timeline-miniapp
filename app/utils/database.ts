@@ -1,7 +1,7 @@
 import { info } from "./log";
 import type { ItemInfo } from "../typings";
 
-export const getItems = (): Promise<ItemInfo[]> => {
+export const getTimelineItems = (): Promise<ItemInfo[]> => {
   // 获取项目列表
   return wx.cloud.callFunction({ name: "items" }).then(({ result }) => {
     const { data } = result as {

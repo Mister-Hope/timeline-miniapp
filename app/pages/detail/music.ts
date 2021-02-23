@@ -92,7 +92,7 @@ Page({
       message.off("items", setCurrentMusic);
     };
 
-    if (globalData.items.length) setCurrentMusic();
+    if (globalData.timeline.length) setCurrentMusic();
     else message.on<[ItemInfo[]]>("items", setCurrentMusic);
 
     // 注册播放器动作

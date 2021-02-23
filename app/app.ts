@@ -1,5 +1,5 @@
 import { startup } from "./utils/app";
-import { getItems } from "./utils/database";
+import { getTimelineItems } from "./utils/database";
 import { message } from "./utils/message";
 
 import type { ItemInfo, MusicInfo } from "./typings";
@@ -14,8 +14,8 @@ export interface GlobalData {
     /** 播放歌曲序号 */
     index: number;
   };
-  /** 项目列表 */
-  items: ItemInfo[];
+  /** 时间线项目列表 */
+  timeline: ItemInfo[];
   /** 音乐列表 */
   musicList: MusicInfo[];
   /** 用户的 openid */
@@ -38,20 +38,23 @@ App({
     isAdmin: false,
     openid: "",
     music: { playing: false, index: 0 },
-    items: [],
+    timeline: [],
     musicList: [],
   } as unknown) as GlobalData,
 
   onLaunch() {
     startup(this.globalData);
 
-    getItems().then((items) => {
-      this.globalData.items = items;
+    this.globalData.timeline = wx.getStorageSync("timeline") as ItemInfo[];
+
+    getTimelineItems().then((items) => {
+      this.globalData.timeline = items;
       this.globalData.musicList = items.filter(
         (item) => item.type === "music"
       ) as MusicInfo[];
 
       message.emit("items", items);
+      wx.setStorageSync("timeline", items);
     });
   },
 });

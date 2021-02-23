@@ -1,5 +1,5 @@
 import { appName } from "../../config";
-import { getItems } from "../../utils/database";
+import { getTimelineItems } from "../../utils/database";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm } from "../../utils/wx";
@@ -27,7 +27,7 @@ Page({
       info: globalData.info,
     });
 
-    if (globalData.items.length) this.setItems(globalData.items);
+    if (globalData.timeline.length) this.setItems(globalData.timeline);
     else message.on("items", this.setItems);
 
     if (typeof globalData.isOwner === "boolean")
@@ -38,10 +38,10 @@ Page({
   },
 
   onPullDownRefresh() {
-    getItems().then((items) => {
+    getTimelineItems().then((items) => {
       this.setData({ items });
 
-      globalData.items = items;
+      globalData.timeline = items;
       globalData.musicList = items.filter(
         (item) => item.type === "music"
       ) as MusicInfo[];
