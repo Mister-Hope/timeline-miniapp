@@ -50,7 +50,7 @@ Page({
   },
 
   onLoad(option) {
-    const mode = wx.getStorageSync("play-mode") as PlayMode;
+    const mode = wx.getStorageSync<PlayMode | undefined>("play-mode");
 
     if (!mode) wx.setStorageSync("play-mode", "列表循环");
 

@@ -25,8 +25,8 @@ interface LoginCloudFunctionResult {
  * @param globalData 全局数据
  */
 export const login = (globalData: GlobalData): void => {
-  const openid = wx.getStorageSync("openid") as string | undefined;
-  const isOwner = wx.getStorageSync("isOwner") as boolean | undefined;
+  const openid = wx.getStorageSync<string | undefined>("openid");
+  const isOwner = wx.getStorageSync<boolean | undefined>("isOwner");
 
   if (openid && typeof isOwner === "boolean") {
     info(`openid 为 ${openid}，用户${isOwner ? "是" : "不是"}所有者`);
@@ -81,10 +81,9 @@ export const registAction = (): void => {
   // 监听用户截屏
   if (wx.getStorageSync("capture-screen") !== "never")
     wx.onUserCaptureScreen(() => {
-      const status = wx.getStorageSync("capture-screen") as
-        | "never"
-        | "noticed"
-        | undefined;
+      const status = wx.getStorageSync<"never" | "noticed" | undefined>(
+        "capture-screen"
+      );
 
       if (status !== "never")
         wx.showModal({
