@@ -45,7 +45,7 @@ App({
   onLaunch() {
     startup(this.globalData);
 
-    this.globalData.timeline = wx.getStorageSync("timeline") as ItemInfo[];
+    this.globalData.timeline = wx.getStorageSync<ItemInfo[]>("timeline");
 
     getTimelineItems().then((items) => {
       this.globalData.timeline = items;
