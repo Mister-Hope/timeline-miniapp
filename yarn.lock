@@ -4582,7 +4582,6 @@ minipass-fetch@^1.3.0, minipass-fetch@^1.3.2:
   resolved "https://registry.yarnpkg.com/minipass-fetch/-/minipass-fetch-1.3.3.tgz#34c7cea038c817a8658461bf35174551dce17a0a"
   integrity sha512-akCrLDWfbdAWkMLBxJEeWTdNsjML+dt5YgOI4gJ53vuO0vrmYQkUPxa6j6V65s9CcePIr2SSWqjT2EcrNseryQ==
   dependencies:
-    encoding "^0.1.12"
     minipass "^3.1.0"
     minipass-sized "^1.0.3"
     minizlib "^2.0.0"
@@ -4625,10 +4624,10 @@ minipass@^3.0.0, minipass@^3.1.0, minipass@^3.1.1, minipass@^3.1.3:
   dependencies:
     yallist "^4.0.0"
 
-miniprogram-api-typings@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/miniprogram-api-typings/-/miniprogram-api-typings-3.3.0.tgz#3275d2ae66887481a410aedec54fd11eb8c7261f"
-  integrity sha512-WgwsHfIu62JNJIRYzuw4C5gF2ueE/w0ysni1AF/2J1XXLKHWklnyLGCgg8ZRDV781sP8MeaPzQmB+u3Yr08QRw==
+miniprogram-api-typings@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/miniprogram-api-typings/-/miniprogram-api-typings-3.3.1.tgz#1cc58437873fe01c1b4f382aa7630bd73d848c42"
+  integrity sha512-3MTHaLgcuaLlMiEIVn3OdzJjLKgZfkpV/KrwxUYIL/+4b4BM6TAFYcwsXmQH7edOG9AUwU7pkQESpzE0ZjpPUQ==
 
 minizlib@^2.0.0, minizlib@^2.1.1:
   version "2.1.2"
