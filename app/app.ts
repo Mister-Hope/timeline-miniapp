@@ -33,14 +33,14 @@ export interface AppOption {
 }
 
 App({
-  globalData: ({
+  globalData: {
     version: "2.0.0",
     isAdmin: false,
     openid: "",
     music: { playing: false, index: 0 },
     timeline: [],
     musicList: [],
-  } as unknown) as GlobalData,
+  } as unknown as GlobalData,
 
   onLaunch() {
     startup(this.globalData);

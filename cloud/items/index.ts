@@ -2,7 +2,7 @@ import cloud, { DYNAMIC_CURRENT_ENV, database, init } from "wx-server-sdk";
 
 // 初始化 cloud
 init({
-  env: (DYNAMIC_CURRENT_ENV as unknown) as string,
+  env: DYNAMIC_CURRENT_ENV as unknown as string,
 });
 
 const MAX_LIMIT = 100;
