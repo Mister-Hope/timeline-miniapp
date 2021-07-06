@@ -7305,9 +7305,9 @@ write-file-atomic@^3.0.0, write-file-atomic@^3.0.3:
     typedarray-to-buffer "^3.1.5"
 
 wx-server-sdk@latest:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/wx-server-sdk/-/wx-server-sdk-2.4.0.tgz#5e14432ba0ef1c95485cf72c9359446eab392bde"
-  integrity sha512-+d/OAUgt3LVlIwC/EEd9oHK2VltMqvoSa3Z797sgZ/hBm/Z+bhYBX3PfrRgn41fprzNk49jdbmw8Rkwa4JryIQ==
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/wx-server-sdk/-/wx-server-sdk-2.5.3.tgz#1e1e30a6b5552c716332348d35451df6f9f6eb9c"
+  integrity sha512-UrLSvDZGb5iUhOikZAD7FtgaOXfobfnegc5mSQZ/MGghiLMNOL73Vb3xHIUPK41N4Hax9BTqMALscGuNJS5wqA==
   dependencies:
     "@cloudbase/node-sdk" "2.4.7"
     protobufjs "6.8.8"
