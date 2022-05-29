@@ -4,13 +4,13 @@
 
 ## 构建代码
 
-小程序使用 gulp 进行构建，请在克隆本项目后通过 yarn 或 npm 安装依赖。
+小程序使用 gulp 进行构建，请在克隆本项目后通过 pnpm, yarn 或 npm 安装依赖。
 
-- 使用 `yarn run build` 或 `npm run build` 编译小程序输出
+- 使用 `pnpm run build`, `yarn run build` 或 `npm run build` 编译小程序输出
 
-- 使用 `yarn run watch` 或 `npm run watch` 在开发过程中监听小程序更改
+- 使用 `pnpm run watch`,`yarn run watch` 或 `npm run watch` 在开发过程中监听小程序更改
 
-- 使用 `yarn run lint` 或 `npm run lint` 格式化小程序代码
+- 使用 `pnpm run lint`, `yarn run lint` 或 `npm run lint` 格式化小程序代码
 
 ## 配置
 

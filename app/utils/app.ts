@@ -81,8 +81,9 @@ export const registAction = (): void => {
   // 监听用户截屏
   if (wx.getStorageSync("capture-screen") !== "never")
     wx.onUserCaptureScreen(() => {
-      const status =
-        wx.getStorageSync<"never" | "noticed" | undefined>("capture-screen");
+      const status = wx.getStorageSync<"never" | "noticed" | undefined>(
+        "capture-screen"
+      );
 
       if (status !== "never")
         wx.showModal({

@@ -370,7 +370,13 @@ Page({
   },
 
   // 点击列表具体歌曲项时触发
-  change({ currentTarget }: WechatMiniprogram.TouchEvent) {
+  change({
+    currentTarget,
+  }: WechatMiniprogram.TouchEvent<
+    Record<string, never>,
+    Record<string, never>,
+    { index: number | "stop" | "nothing" }
+  >) {
     this.list();
     this.switchMusic(currentTarget.dataset.index);
   },

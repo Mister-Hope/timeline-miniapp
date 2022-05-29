@@ -1,9 +1,8 @@
 const { dest, parallel, src, watch } = require("gulp");
 const rename = require("gulp-rename");
-const { sassSync } = require("@mr-hope/gulp-sass");
-const PluginError = require("plugin-error");
+const { sass } = require("@mr-hope/gulp-sass");
+const sourcemaps = require("gulp-sourcemaps");
 const typescript = require("gulp-typescript");
-const { Transform } = require("stream");
 
 const appTSProject = typescript.createProject("tsconfig.app.json");
 const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
@@ -11,48 +10,27 @@ const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
 const buildWXSS = () =>
   src("app/**/*.scss")
     .pipe(
-      sassSync({
-        // use `@` as hack for remaining '@import'
-        importer: (url) => {
-          if (url.includes(".css")) return null;
-
-          return { contents: `@import "${url}.css"` };
-        },
-      }).on("error", sassSync.logError)
+      sass({
+        style: "compressed",
+        importers: [
+          // preserve `@import` rules
+          {
+            canonicalize: (url, { fromImport }) =>
+              fromImport
+                ? new URL(`wx:import?path=${url.replace(/^import:/, "")}`)
+                : null,
+            load: (canonicalUrl) => ({
+              contents: `@import "${canonicalUrl.searchParams.get(
+                "path"
+              )}.wxss"`,
+              syntax: "css",
+            }),
+          },
+        ],
+      }).on("error", sass.logError)
     )
     .pipe(rename({ extname: ".wxss" }))
-    .pipe(
-      new Transform({
-        objectMode: true,
-        transform(chunk, _enc, callback) {
-          if (chunk.isNull()) {
-            this.push(chunk);
-
-            return callback();
-          }
-
-          if (chunk.isStream()) {
-            this.emit(
-              "error",
-              new PluginError("Sass", "Streaming not supported")
-            );
-
-            return callback();
-          }
-
-          const content = chunk.contents
-            .toString()
-            .replace(/@import "@(.*?)\.css"/gu, '@import "$1.wxss"');
-
-          chunk.contents = Buffer.from(content);
-
-          this.push(chunk);
-
-          callback();
-        },
-      })
-    )
-    .pipe(dest("dist/app"));
+    .pipe(dest("dist"));
 
 const moveAppFiles = () =>
   src("app/**/*.{wxml,wxs,json,svg,png,webp}").pipe(dest("dist/app"));
@@ -63,10 +41,20 @@ const watchWXSS = () =>
   watch("app/**/*.scss", { ignoreInitial: false }, buildWXSS);
 
 const buildAppTypesciprt = () =>
-  appTSProject.src().pipe(appTSProject()).pipe(dest("dist/app"));
+  appTSProject
+    .src()
+    .pipe(sourcemaps.init())
+    .pipe(appTSProject())
+    .pipe(sourcemaps.write(".", { includeContent: false }))
+    .pipe(dest("dist/app"));
 
 const buildCloudTypesciprt = () =>
-  cloudTSProject.src().pipe(cloudTSProject()).pipe(dest("dist/cloud"));
+  cloudTSProject
+    .src()
+    .pipe(sourcemaps.init())
+    .pipe(cloudTSProject())
+    .pipe(sourcemaps.write(".", { includeContent: false }))
+    .pipe(dest("dist/cloud"));
 
 const watchAppTypescript = () =>
   watch("app/**/*.ts", { ignoreInitial: false }, buildAppTypesciprt);
