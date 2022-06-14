@@ -6,8 +6,8 @@ page {
   --dark-grey: #666;
   --light-grey: #999;
   --grey12: #bbb;
-  --hover: rgba(0, 0, 0, 0.1);
-  --card-shadow: rgba(0, 0, 0, 0.15);
+  --hover: rgb(0 0 0 / 10%);
+  --card-shadow: rgb(0 0 0 / 15%);
 
   @media (prefers-color-scheme: light) {
     --bg-color: #fff;
@@ -17,8 +17,8 @@ page {
     --dark-grey: #666;
     --light-grey: #999;
     --grey12: #bbb;
-    --hover: rgba(0, 0, 0, 0.1);
-    --card-shadow: rgba(0, 0, 0, 0.15);
+    --hover: rgb(0 0 0 / 10%);
+    --card-shadow: rgb(0 0 0 / 15%);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -29,7 +29,7 @@ page {
     --dark-grey: #999;
     --light-grey: #666;
     --grey12: #333;
-    --hover: rgba(255, 255, 255, 0.1);
-    --card-shadow: rgba(0, 0, 0, 0.3);
+    --hover: rgb(255 255 255 / 10%);
+    --card-shadow: rgb(0 0 0 / 30%);
   }
 }
