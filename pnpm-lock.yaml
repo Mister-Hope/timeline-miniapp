@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@mr-hope/gulp-sass': 3.0.2
+      '@mr-hope/gulp-sass': 3.1.1
       '@types/node': 18.11.9
       '@typescript-eslint/eslint-plugin': 5.28.0
       '@typescript-eslint/parser': 5.28.0
@@ -29,7 +29,7 @@ importers:
       stylelint-order: 5.0.0
       typescript: 4.7.3
     devDependencies:
-      '@mr-hope/gulp-sass': 3.0.2
+      '@mr-hope/gulp-sass': 3.1.1
       '@types/node': 18.11.9
       '@typescript-eslint/eslint-plugin': 5.28.0_dke77owj23wy6lapcptc33hvzy
       '@typescript-eslint/parser': 5.28.0_jzzvps5hqkntvvdkgbxbnjsq2a
@@ -309,17 +309,17 @@ packages:
     dev: true
     optional: true
 
-  /@mr-hope/gulp-sass/3.0.2:
-    resolution: {integrity: sha512-D53Q2V7G/i/AsRoM8o6G+71p5uv29qEI3WGDJb13ZNkxbq1NaB9+ERdlwCn7mzzs1r4Ilmb/qLJU70GB7P8Bsg==}
+  /@mr-hope/gulp-sass/3.1.1:
+    resolution: {integrity: sha512-QfEMLR3C6etfTydy/arqb/1dJrjhuS2fWOsdYaxVWImjdhzQ7j6ej2u80DODbog7IMhlm85HN28ndBOSDqiDUQ==}
     dependencies:
-      '@types/lodash': 4.14.182
       '@types/node': 18.11.9
       chalk: 4.1.2
-      lodash: 4.17.21
       plugin-error: 1.0.1
       replace-ext: 2.0.0
       sass: 1.52.3
+      source-map-js: 1.0.2
       strip-ansi: 6.0.1
+      vinyl: 2.2.1
       vinyl-sourcemaps-apply: 0.2.1
     dev: true
 
@@ -525,10 +525,6 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
-    dev: true
-
-  /@types/lodash/4.14.182:
-    resolution: {integrity: sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==}
     dev: true
 
   /@types/long/4.0.2:
