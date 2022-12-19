@@ -1,0 +1,25 @@
+{
+  "cSpell.words": [
+    "canonicalize",
+    "errcode",
+    "errmsg",
+    "frameset",
+    "miniprogram",
+    "stylelint",
+    "wechat",
+    "weixin",
+    "werun",
+    "weui",
+    "wxss",
+    "wxml"
+  ],
+  "git.ignoreLimitWarning": true,
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "yaml.schemas": {
+    "./server/.vscode/res.schema.json": [
+      "/server/res/guide/**/*.yml",
+      "/server/res/intro/**/*.yml",
+      "/server/res/other/**/*.yml"
+    ]
+  }
+}

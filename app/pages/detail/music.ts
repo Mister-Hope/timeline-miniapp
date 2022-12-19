@@ -140,7 +140,7 @@ Page({
     if (wx.canIUse("onThemeChange")) wx.offThemeChange(this.themeChange);
   },
 
-  themeChange({ theme }: WechatMiniprogram.OnThemeChangeCallbackResult) {
+  themeChange({ theme }: WechatMiniprogram.OnThemeChangeListenerResult) {
     this.setData({ darkmode: theme === "dark" });
   },
 

@@ -1,5 +1,9 @@
-dist/
-
 app/pages/detail/music.wxs
 
+dist/
+
+project.config.json
+project.private.config.json
+
 pnpm-lock.yaml
+pnpm-workspace.yaml

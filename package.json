@@ -1,58 +1,95 @@
 {
   "name": "timline-miniapp",
   "version": "2.0.1",
-  "license": "MIT",
   "private": true,
+  "homepage": "https://mrhope.site",
+  "bugs": {
+    "url": "https://github.com/Mister-Hope/timline-miniapp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mister-Hope/timline-miniapp.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mr.Hope",
+    "email": "mister-hope@outlook.com",
+    "url": "https://mrhope.site"
+  },
+  "type": "module",
   "scripts": {
-    "build": "gulp build",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2",
+    "build": "gulp -f gulpfile.cjs build",
+    "changelog": "standard-version --skip.bump --skip.commit --skip.tag",
+    "clean": "node scripts/del.js",
     "commit": "git cz",
-    "lint": "pnpm lint:prettier --write && pnpm lint:wxs --write && pnpm lint:wxml --write && pnpm lint:eslint --fix && pnpm lint:style --fix",
-    "lint:check": "pnpm lint:prettier && pnpm lint:wxs && pnpm lint:wxml && pnpm lint:eslint && pnpm lint:style",
+    "dev": "gulp -f gulpfile.cjs watch",
+    "lint": "pnpm lint:prettier --write && pnpm lint:wxs --write && pnpm lint:wxml --write && pnpm lint:eslint --fix && pnpm lint:stylelint --fix",
+    "lint:check": "pnpm lint:prettier && pnpm lint:wxs && pnpm lint:wxml && pnpm lint:eslint && pnpm lint:stylelint",
     "lint:eslint": "eslint --ext .ts,.wxs .",
-    "lint:style": "stylelint **/*.scss",
     "lint:prettier": "prettier --check .",
+    "lint:stylelint": "stylelint **/*.scss",
     "lint:wxml": "prettier --check --parser html **/*.wxml",
     "lint:wxs": "prettier --check --parser babel-flow **/*.wxs",
-    "prepare": "husky install",
-    "watch": "gulp watch"
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,ts,json,yaml,yml,md}": "prettier --write",
+    "*.wxss": "stylelint --fix",
+    "*.wxml": "prettier --parser html --write",
+    "*.wxs": "prettier --parser babel-flow --write",
+    "package.json": "sort-package-json"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-git"
+    }
   },
   "devDependencies": {
-    "@mr-hope/gulp-sass": "3.0.2",
-    "@types/node": "18.11.9",
-    "@typescript-eslint/eslint-plugin": "5.28.0",
-    "@typescript-eslint/parser": "5.28.0",
-    "conventional-changelog-cli": "2.2.2",
-    "cz-conventional-changelog": "3.3.0",
-    "eslint": "8.28.0",
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
+    "@mr-hope/gulp-sass": "3.1.1",
+    "@types/node": "18.11.17",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
+    "cz-git": "1.4.1",
+    "del": "7.0.0",
+    "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-prettier": "4.2.1",
     "gulp": "4.0.2",
     "gulp-rename": "2.0.0",
     "gulp-sourcemaps": "3.0.0",
     "gulp-typescript": "6.0.0-alpha.1",
     "husky": "8.0.2",
-    "lint-staged": "13.0.1",
-    "miniprogram-api-typings": "3.4.6",
-    "npm-check-updates": "16.4.1",
-    "prettier": "2.7.1",
-    "stylelint": "14.15.0",
+    "lint-staged": "13.1.0",
+    "miniprogram-api-typings": "3.8.1",
+    "npm-check-updates": "16.6.0",
+    "postcss": "8.4.20",
+    "prettier": "2.8.1",
+    "sort-package-json": "2.1.0",
+    "stylelint": "14.16.0",
     "stylelint-config-prettier": "9.0.4",
     "stylelint-config-standard": "29.0.0",
     "stylelint-config-standard-scss": "6.1.0",
     "stylelint-order": "5.0.0",
-    "typescript": "4.7.3"
+    "typescript": "4.9.4"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+  "packageManager": "pnpm@7.18.2",
+  "pnpm": {
+    "overrides": {
+      "cacache": "^17.0.4",
+      "chokidar": "3.5.1",
+      "css": "npm:@adobe/css-tools@4.0.1",
+      "glob-stream": "^7.0.0",
+      "glob-parent": "^6.0.2",
+      "micromatch": "^4.0.5",
+      "yargs-parser": "^21.1.1"
+    },
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "typescript"
+      ]
     }
-  },
-  "lint-staged": {
-    "*.{js,ts}": "eslint --fix",
-    "*.{js,ts,json,yaml,.md}": "prettier --write",
-    "*.wxss": "stylelint --fix",
-    "*.wxml": "prettier --parser html --write",
-    "*.wxs": "prettier --parser babel-flow --write"
   }
 }

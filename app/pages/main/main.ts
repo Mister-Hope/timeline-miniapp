@@ -76,7 +76,7 @@ Page({
   },
 
   /** 切换主题 */
-  themeChange({ theme }: WechatMiniprogram.OnThemeChangeCallbackResult) {
+  themeChange({ theme }: WechatMiniprogram.OnThemeChangeListenerResult) {
     this.setData({ darkmode: theme === "dark" });
   },
 

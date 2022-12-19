@@ -1,60 +1,50 @@
 {
   "miniprogramRoot": "dist/app/",
   "cloudfunctionRoot": "dist/cloud/",
+  "compileType": "miniprogram",
   "setting": {
-    "urlCheck": true,
     "es6": false,
-    "enhance": true,
+    "enhance": false,
     "postcss": true,
-    "preloadBackgroundData": false,
     "minified": true,
-    "newFeature": true,
-    "coverView": true,
-    "nodeModules": true,
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "uglifyFileName": false,
+    "ignoreUploadUnusedFiles": false,
     "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": true,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
+    "urlCheck": true,
     "compileHotReLoad": true,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
+    "preloadBackgroundData": false,
+    "lazyloadPlaceholderEnable": false,
+
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
-    "bundle": true,
+    "useCompilerPlugins": false,
+    "disableUseStrict": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./dist"
+      }
+    ],
+    "coverView": true,
+    "ignoreDevUnusedFiles": true,
+    "checkInvalidKey": true,
+    "showShadowRootInWxmlPanel": true,
     "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": true,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
+    "useApiHook": false,
+    "useApiHostProcess": true,
+    "showES6CompileOption": false
   },
-  "appid": "wxcd36b75c953e0340",
-  "projectname": "music",
-  "libVersion": "2.15.0",
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
-    }
+  "libVersion": "trial",
+  "appid": "wx33acb831ee1831a5",
+  "projectname": "timeline-demo",
+  "watchOptions": {
+    "ignore": ["app/**", "cloud/**", "node_modules/**"]
   }
 }

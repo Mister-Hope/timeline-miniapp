@@ -13,7 +13,7 @@ declare namespace WechatMiniprogram {
     /** 显示指南针，默认为 false */
     showCompass?: boolean;
 
-    /** 个性化地图使用的key */
+    /** 个性化地图使用的 key */
     subKey?: string;
     /** 个性化地图配置的 style，不支持动态修改 */
     layerStyle?: number;
@@ -32,10 +32,6 @@ declare namespace WechatMiniprogram {
     enableSatellite?: boolean;
     /** 是否开启实时路况，默认为 false */
     enableTraffic?: boolean;
-  }
-
-  interface RequestResult<T> extends RequestSuccessCallbackResult {
-    data: T;
   }
 
   interface NodeRectInfo {
@@ -70,17 +66,4 @@ declare namespace WechatMiniprogram {
           NodeSizeInfo;
       }
   >;
-
-  namespace Component {
-    interface Constructor {
-      <
-        TData extends DataOption = DataOption,
-        TProperty extends PropertyOption = PropertyOption,
-        TMethod extends MethodOption = MethodOption,
-        TCustomInstanceProperty extends IAnyObject = IAnyObject
-      >(
-        options: Options<TData, TProperty, TMethod, TCustomInstanceProperty>
-      ): string;
-    }
-  }
 }

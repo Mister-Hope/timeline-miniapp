@@ -1,8 +1,8 @@
+const { sass } = require("@mr-hope/gulp-sass");
 const { dest, parallel, src, watch } = require("gulp");
 const rename = require("gulp-rename");
-const { sass } = require("@mr-hope/gulp-sass");
-const sourcemaps = require("gulp-sourcemaps");
 const typescript = require("gulp-typescript");
+const sourcemaps = require("gulp-sourcemaps");
 
 const appTSProject = typescript.createProject("tsconfig.app.json");
 const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
@@ -40,7 +40,7 @@ const moveCloudFiles = () => src("cloud/**/*.json").pipe(dest("dist/cloud"));
 const watchWXSS = () =>
   watch("app/**/*.scss", { ignoreInitial: false }, buildWXSS);
 
-const buildAppTypesciprt = () =>
+const buildAppTypescript = () =>
   appTSProject
     .src()
     .pipe(sourcemaps.init())
@@ -48,7 +48,7 @@ const buildAppTypesciprt = () =>
     .pipe(sourcemaps.write(".", { includeContent: false }))
     .pipe(dest("dist/app"));
 
-const buildCloudTypesciprt = () =>
+const buildCloudTypescript = () =>
   cloudTSProject
     .src()
     .pipe(sourcemaps.init())
@@ -57,10 +57,10 @@ const buildCloudTypesciprt = () =>
     .pipe(dest("dist/cloud"));
 
 const watchAppTypescript = () =>
-  watch("app/**/*.ts", { ignoreInitial: false }, buildAppTypesciprt);
+  watch("app/**/*.ts", { ignoreInitial: false }, buildAppTypescript);
 
 const watchCloudTypescript = () =>
-  watch("cloud/**/*.ts", { ignoreInitial: false }, buildCloudTypesciprt);
+  watch("cloud/**/*.ts", { ignoreInitial: false }, buildCloudTypescript);
 
 const watchAppFiles = () =>
   watch(
@@ -87,18 +87,18 @@ const watchCommand = parallel(
   watchCloudFiles
 );
 
-const buildApp = parallel(buildWXSS, buildAppTypesciprt, moveAppFiles);
+const buildApp = parallel(buildWXSS, buildAppTypescript, moveAppFiles);
 
 const buildCloud = parallel(
-  buildCloudTypesciprt,
+  buildCloudTypescript,
 
   moveCloudFiles
 );
 
 const build = parallel(
   buildWXSS,
-  buildAppTypesciprt,
-  buildCloudTypesciprt,
+  buildAppTypescript,
+  buildCloudTypescript,
   moveAppFiles,
   moveCloudFiles
 );
