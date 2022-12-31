@@ -30,9 +30,11 @@
     "lint:stylelint": "stylelint **/*.scss",
     "lint:wxml": "prettier --check --parser html **/*.wxml",
     "lint:wxs": "prettier --check --parser babel-flow **/*.wxs",
+    "packages:check-update": "pnpm dlx npm-check-updates -u --deep --timeout 600000",
+    "packages:update": "pnpm up -r",
     "prepare": "husky install"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*.{js,ts}": "eslint --fix",
     "*.{js,ts,json,yaml,yml,md}": "prettier --write",
     "*.wxss": "stylelint --fix",
@@ -62,9 +64,8 @@
     "gulp-sourcemaps": "3.0.0",
     "gulp-typescript": "6.0.0-alpha.1",
     "husky": "8.0.2",
-    "lint-staged": "13.1.0",
     "miniprogram-api-typings": "3.8.1",
-    "npm-check-updates": "16.6.0",
+    "nano-staged": "0.8.0",
     "postcss": "8.4.20",
     "prettier": "2.8.1",
     "sort-package-json": "2.1.0",
