@@ -56,7 +56,7 @@
     "@typescript-eslint/parser": "5.46.1",
     "cz-git": "1.4.1",
     "del": "7.0.0",
-    "eslint": "8.30.0",
+    "eslint": "8.31.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
     "gulp": "4.0.2",
