@@ -16,7 +16,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@mr-hope/gulp-sass': 3.1.1
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       '@typescript-eslint/eslint-plugin': 5.46.1
       '@typescript-eslint/parser': 5.46.1
       cz-git: 1.4.1
@@ -45,7 +45,7 @@ importers:
       '@commitlint/cli': 17.3.0
       '@commitlint/config-conventional': 17.3.0
       '@mr-hope/gulp-sass': 3.1.1
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       '@typescript-eslint/eslint-plugin': 5.46.1_mqzxmroayievgzgel6yrqgih5i
       '@typescript-eslint/parser': 5.46.1_lzzuuodtsqwxnvqeq4g4likcqa
       cz-git: 1.4.1
@@ -430,7 +430,7 @@ packages:
   /@mr-hope/gulp-sass/3.1.1:
     resolution: {integrity: sha512-QfEMLR3C6etfTydy/arqb/1dJrjhuS2fWOsdYaxVWImjdhzQ7j6ej2u80DODbog7IMhlm85HN28ndBOSDqiDUQ==}
     dependencies:
-      '@types/node': 18.11.17
+      '@types/node': 18.11.18
       chalk: 4.1.2
       plugin-error: 1.0.1
       replace-ext: 2.0.0
@@ -640,8 +640,8 @@ packages:
     resolution: {integrity: sha512-2ATO8pfhG1kDvw4Lc4C0GXIMSQFFJBCo/R1fSgTwmUlq5oy95LXyjDQinsRVgQY6gp6ghh3H91wk9ES5/5C+Tw==}
     dev: true
 
-  /@types/node/18.11.17:
-    resolution: {integrity: sha512-HJSUJmni4BeDHhfzn6nF0sVmd1SMezP7/4F0Lq+aXzmp2xm9O7WXrUtHW/CHlYVtZUbByEvWidHqRtcJXGF2Ng==}
+  /@types/node/18.11.18:
+    resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
