@@ -29,7 +29,7 @@ importers:
       gulp-sourcemaps: 3.0.0
       gulp-typescript: 6.0.0-alpha.1
       husky: 8.0.3
-      miniprogram-api-typings: 3.8.1
+      miniprogram-api-typings: 3.12.0
       nano-staged: 0.8.0
       postcss: 8.4.29
       prettier: 2.8.1
@@ -57,7 +57,7 @@ importers:
       gulp-sourcemaps: 3.0.0
       gulp-typescript: 6.0.0-alpha.1_typescript@4.9.4
       husky: 8.0.3
-      miniprogram-api-typings: 3.8.1
+      miniprogram-api-typings: 3.12.0
       nano-staged: 0.8.0
       postcss: 8.4.29
       prettier: 2.8.1
@@ -3115,8 +3115,8 @@ packages:
     resolution: {integrity: sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==}
     dev: true
 
-  /miniprogram-api-typings/3.8.1:
-    resolution: {integrity: sha512-AjuBYxghx3LZeTtWQ48TfDMxoACGRUA+NdPrgl+mPPNgi5g0YXn3sDELNHRw0LcjTxfqhVufwLL65AjwT+W+FQ==}
+  /miniprogram-api-typings/3.12.0:
+    resolution: {integrity: sha512-tE0zjq+3bFEgUROzCjXTdtLY+FmqiTX4kZWXc8bCC7M9wSHCriBz+ga1E2i1PcI+DQJoz2cyK8Cv2exJv6XEzA==}
     dev: true
 
   /ms/2.1.2:
