@@ -19,7 +19,7 @@ importers:
       '@types/node': 18.11.18
       '@typescript-eslint/eslint-plugin': 5.62.0
       '@typescript-eslint/parser': 5.62.0
-      cz-git: 1.4.1
+      cz-git: 1.8.0
       del: 7.1.0
       eslint: 8.49.0
       eslint-config-prettier: 9.1.0
@@ -47,7 +47,7 @@ importers:
       '@types/node': 18.11.18
       '@typescript-eslint/eslint-plugin': 5.62.0_gg3lsoyzatkttmq4hjmukhwrri
       '@typescript-eslint/parser': 5.62.0_ue22gldtv76xkj23hh5yqkmgae
-      cz-git: 1.4.1
+      cz-git: 1.8.0
       del: 7.1.0
       eslint: 8.49.0
       eslint-config-prettier: 9.1.0_eslint@8.49.0
@@ -1380,8 +1380,9 @@ packages:
     hasBin: true
     dev: true
 
-  /cz-git/1.4.1:
-    resolution: {integrity: sha512-EOtuitcnfxde8t3NNTKh2YxEJhLXGiVlKSVaZipK3+DVo135rEUifAfqxkslM66Nf6ZO7a+3JR+XAOLhMXUAjQ==}
+  /cz-git/1.8.0:
+    resolution: {integrity: sha512-XL5nXiqbW10YswQqWODrbwyWhydw3mLhP8OBrXyl8u4sIjTf/6mhGsizd6FA2VgPc4tZaNGguFoUyDj7vIBouw==}
+    engines: {node: '>=v12.20.0'}
     dev: true
 
   /d/1.0.1:
