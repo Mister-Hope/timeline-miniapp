@@ -32,7 +32,7 @@ importers:
       miniprogram-api-typings: 3.12.0
       nano-staged: 0.8.0
       postcss: 8.4.29
-      prettier: 2.8.1
+      prettier: 3.1.1
       sort-package-json: 2.6.0
       stylelint: 14.16.1
       stylelint-config-prettier: 9.0.5
@@ -51,7 +51,7 @@ importers:
       del: 7.1.0
       eslint: 8.49.0
       eslint-config-prettier: 9.1.0_eslint@8.49.0
-      eslint-plugin-prettier: 4.2.1_b4btqsx6atfp5upqin5a6vkmqa
+      eslint-plugin-prettier: 4.2.1_n2cmwwrpk7chevv22bou7epfs4
       gulp: 4.0.2
       gulp-rename: 2.0.0
       gulp-sourcemaps: 3.0.0
@@ -60,7 +60,7 @@ importers:
       miniprogram-api-typings: 3.12.0
       nano-staged: 0.8.0
       postcss: 8.4.29
-      prettier: 2.8.1
+      prettier: 3.1.1
       sort-package-json: 2.6.0
       stylelint: 14.16.1
       stylelint-config-prettier: 9.0.5_stylelint@14.16.1
@@ -1658,7 +1658,7 @@ packages:
       eslint: 8.49.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_b4btqsx6atfp5upqin5a6vkmqa:
+  /eslint-plugin-prettier/4.2.1_n2cmwwrpk7chevv22bou7epfs4:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -1671,7 +1671,7 @@ packages:
     dependencies:
       eslint: 8.49.0
       eslint-config-prettier: 9.1.0_eslint@8.49.0
-      prettier: 2.8.1
+      prettier: 3.1.1
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -3560,9 +3560,9 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier/2.8.1:
-    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
-    engines: {node: '>=10.13.0'}
+  /prettier/3.1.1:
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
