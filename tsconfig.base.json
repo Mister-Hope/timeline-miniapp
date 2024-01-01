@@ -16,7 +16,6 @@
     "inlineSourceMap": false,
     "inlineSources": false,
     "listEmittedFiles": true,
-    "moduleResolution": "node",
     "noEmitHelpers": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -30,8 +29,8 @@
     "strict": true,
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
-    "lib": ["ESNext"],
-    "locale": "zh-CN",
-    "module": "CommonJS"
+    "lib": ["ES2020"],
+    "module": "CommonJS",
+    "moduleResolution": "node"
   }
 }

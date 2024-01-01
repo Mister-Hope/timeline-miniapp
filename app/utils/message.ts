@@ -37,7 +37,7 @@ class Message {
   on<T extends any[]>(
     eventId: string,
     handler: (...args: T) => void,
-    once = false
+    once = false,
   ): () => void {
     // 如果时间对象中不存在 eventId，则初始化一个空数组
     if (!this.eventObject[eventId]) this.eventObject[eventId] = [];
@@ -57,21 +57,21 @@ class Message {
    * @param handler 需要取消的监听处理函数，不填则取消所有监听处理函数
    */
   off<T extends any[]>(
-    eventId: string | string[] | "all",
-    handler: (...args: T) => void
+    eventId: string | string[],
+    handler: (...args: T) => void,
   ): void {
     /** 需要移除的监听id列表 */
     const idList = Array.isArray(eventId)
       ? eventId
       : eventId === "all"
-      ? Object.keys(this.eventObject)
-      : [eventId];
+        ? Object.keys(this.eventObject)
+        : [eventId];
 
     idList.forEach((key) => {
       if (handler)
         // 移除特定监听
         this.eventObject[key] = (this.eventObject[key] || []).filter(
-          (evtObj) => evtObj.handler !== handler
+          (evtObj) => evtObj.handler !== handler,
         );
       // 移除所有监听
       else this.eventObject[key] = [];
@@ -100,12 +100,12 @@ class Message {
           // 给出错误信息
           console.error(
             `${eventId}事件监听触发失败：`,
-            (err as Error).stack || (err as Error).message || err
+            (err as Error).stack || (err as Error).message || err,
           );
         }
 
         return true;
-      }
+      },
     );
   }
 }

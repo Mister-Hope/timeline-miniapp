@@ -24,7 +24,7 @@ export const main = async (): Promise<ListResult> => {
       collection
         .skip(index * MAX_LIMIT)
         .limit(MAX_LIMIT)
-        .get() as Promise<cloud.DB.IQueryResult>
+        .get() as Promise<cloud.DB.IQueryResult>,
   );
 
   const { data, errMsg } = (await Promise.all(tasks)).reduce(
@@ -32,7 +32,7 @@ export const main = async (): Promise<ListResult> => {
       data: acc.data.concat(cur.data),
       errMsg: cur.errMsg,
     }),
-    { data: [], errMsg: "Empty" }
+    { data: [], errMsg: "Empty" },
   );
 
   return {

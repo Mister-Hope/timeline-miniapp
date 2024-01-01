@@ -12,7 +12,7 @@ Page({
     if (!options.id) wx.reLaunch({ url: "pages/main/main" });
 
     const article = globalData.timeline.find(
-      (item) => item._id === options.id
+      (item) => item._id === options.id,
     ) as ArticleInfo;
 
     if (article)

@@ -1,8 +1,9 @@
 const { sass } = require("@mr-hope/gulp-sass");
 const { dest, parallel, src, watch } = require("gulp");
 const rename = require("gulp-rename");
-const typescript = require("gulp-typescript");
+const replace = require("gulp-replace");
 const sourcemaps = require("gulp-sourcemaps");
+const typescript = require("gulp-typescript");
 
 const appTSProject = typescript.createProject("tsconfig.app.json");
 const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
@@ -21,13 +22,13 @@ const buildWXSS = () =>
                 : null,
             load: (canonicalUrl) => ({
               contents: `@import "${canonicalUrl.searchParams.get(
-                "path"
+                "path",
               )}.wxss"`,
               syntax: "css",
             }),
           },
         ],
-      }).on("error", sass.logError)
+      }).on("error", sass.logError),
     )
     .pipe(rename({ extname: ".wxss" }))
     .pipe(dest("dist"));
@@ -46,6 +47,12 @@ const buildAppTypescript = () =>
     .pipe(sourcemaps.init())
     .pipe(appTSProject())
     .pipe(sourcemaps.write(".", { includeContent: false }))
+    .pipe(
+      replace(
+        '"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n',
+        "",
+      ),
+    )
     .pipe(dest("dist/app"));
 
 const buildCloudTypescript = () =>
@@ -54,6 +61,12 @@ const buildCloudTypescript = () =>
     .pipe(sourcemaps.init())
     .pipe(cloudTSProject())
     .pipe(sourcemaps.write(".", { includeContent: false }))
+    .pipe(
+      replace(
+        '"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n',
+        "",
+      ),
+    )
     .pipe(dest("dist/cloud"));
 
 const watchAppTypescript = () =>
@@ -66,13 +79,13 @@ const watchAppFiles = () =>
   watch(
     "app/**/*.{wxml,wxs,json,svg,png,webp}",
     { ignoreInitial: false },
-    moveAppFiles
+    moveAppFiles,
   );
 const watchCloudFiles = () =>
   watch(
     "cloud/**/*.{wxml,wxs,json,svg,png}",
     { ignoreInitial: false },
-    moveCloudFiles
+    moveCloudFiles,
   );
 
 const watchApp = parallel(watchWXSS, watchAppTypescript, watchAppFiles);
@@ -84,7 +97,7 @@ const watchCommand = parallel(
   watchAppTypescript,
   watchCloudTypescript,
   watchAppFiles,
-  watchCloudFiles
+  watchCloudFiles,
 );
 
 const buildApp = parallel(buildWXSS, buildAppTypescript, moveAppFiles);
@@ -92,7 +105,7 @@ const buildApp = parallel(buildWXSS, buildAppTypescript, moveAppFiles);
 const buildCloud = parallel(
   buildCloudTypescript,
 
-  moveCloudFiles
+  moveCloudFiles,
 );
 
 const build = parallel(
@@ -100,7 +113,7 @@ const build = parallel(
   buildAppTypescript,
   buildCloudTypescript,
   moveAppFiles,
-  moveCloudFiles
+  moveCloudFiles,
 );
 
 exports.watchApp = watchApp;

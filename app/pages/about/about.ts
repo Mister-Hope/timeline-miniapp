@@ -1,9 +1,8 @@
+import type { AppOption } from "../../app";
 import { owner } from "../../config";
 import { getCurrentDate } from "../../utils/date";
 import { error, info } from "../../utils/log";
 import { modal, uploadCloudFile } from "../../utils/wx";
-
-import type { AppOption } from "../../app";
 
 const { globalData } = getApp<AppOption>();
 
@@ -174,9 +173,9 @@ Page({
           photos.map((photo) =>
             uploadCloudFile(
               photo.path,
-              `cover-${globalData.openid}-${new Date().getTime()}`
-            )
-          )
+              `cover-${globalData.openid}-${new Date().getTime()}`,
+            ),
+          ),
         ).then((photos) => insertandUpdate(photos));
       // 直接上传
       else insertandUpdate();
@@ -222,13 +221,13 @@ Page({
       uploadCloudFile(
         music.path,
         // add current timeStamp as hash
-        `music-${globalData.openid}-${new Date().getTime()}`
+        `music-${globalData.openid}-${new Date().getTime()}`,
       ).then((musicID) => {
         if (cover)
           // 上传封面
           uploadCloudFile(
             this.data.cover.path,
-            `cover-${globalData.openid}-${new Date().getTime()}`
+            `cover-${globalData.openid}-${new Date().getTime()}`,
           ).then((coverID) => insertandUpdate(musicID, coverID));
         // 直接上传
         else insertandUpdate(musicID);

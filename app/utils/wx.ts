@@ -10,7 +10,7 @@ import { error, info, warn } from "./log";
 export const tip = (
   text: string,
   duration = 1500,
-  icon: "success" | "loading" | "none" = "none"
+  icon: "success" | "loading" | "none" = "none",
 ): void => {
   wx.showToast({ icon, title: text, duration });
 };
@@ -27,7 +27,7 @@ export const modal = (
   title: string,
   content: string,
   confirmFunc?: () => void,
-  cancelFunc?: () => void
+  cancelFunc?: () => void,
 ): void => {
   /** 显示取消按钮 */
   const showCancel = Boolean(cancelFunc);
@@ -53,7 +53,7 @@ export const modal = (
 export const confirm = (
   actionText: string,
   confirmFunc: () => void,
-  cancelFunc: () => void = (): void => void 0
+  cancelFunc: () => void = (): void => void 0,
 ): void => {
   modal("确认操作", `您确定要${actionText}么?`, confirmFunc, cancelFunc);
 };
@@ -107,7 +107,7 @@ export const netReport = (): void => {
  */
 export const uploadCloudFile = (
   filePath: string,
-  cloudPath: string
+  cloudPath: string,
 ): Promise<string> => {
   return new Promise((resolve, reject) => {
     wx.cloud.uploadFile({

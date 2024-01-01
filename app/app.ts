@@ -1,8 +1,7 @@
+import type { ItemInfo, MusicInfo } from "./typings";
 import { startup } from "./utils/app";
 import { getTimelineItems } from "./utils/database";
 import { message } from "./utils/message";
-
-import type { ItemInfo, MusicInfo } from "./typings";
 
 export interface GlobalData {
   /** 版本号 */
@@ -50,7 +49,7 @@ App({
     getTimelineItems().then((items) => {
       this.globalData.timeline = items;
       this.globalData.musicList = items.filter(
-        (item) => item.type === "music"
+        (item) => item.type === "music",
       ) as MusicInfo[];
 
       message.emit("items", items);

@@ -1,11 +1,10 @@
+import type { AppOption } from "../../app";
 import { appName } from "../../config";
+import type { ItemInfo, MusicInfo } from "../../typings";
 import { getTimelineItems } from "../../utils/database";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
 import { confirm } from "../../utils/wx";
-
-import type { AppOption } from "../../app";
-import type { ItemInfo, MusicInfo } from "../../typings";
 
 const { globalData } = getApp<AppOption>();
 
@@ -55,7 +54,7 @@ Page({
     getTimelineItems().then((timeline) => {
       globalData.timeline = timeline;
       globalData.musicList = timeline.filter(
-        (item) => item.type === "music"
+        (item) => item.type === "music",
       ) as MusicInfo[];
       this.setTimeline(timeline);
 

@@ -1,10 +1,9 @@
+import type { AppOption } from "../../app";
 import { appName, defaultCover } from "../../config";
+import type { ItemInfo, MusicInfo } from "../../typings";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
 import { tip } from "../../utils/wx";
-
-import type { AppOption } from "../../app";
-import type { ItemInfo, MusicInfo } from "../../typings";
 
 const { globalData } = getApp<AppOption>();
 
@@ -70,7 +69,7 @@ Page({
       const index = option.id
         ? Math.max(
             musicList.findIndex((music) => music.musicID === option.id),
-            0
+            0,
           )
         : music.index;
       const currentMusic = musicList[index];

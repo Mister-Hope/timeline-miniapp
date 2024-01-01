@@ -1,8 +1,8 @@
 import cloud, {
   DYNAMIC_CURRENT_ENV,
   database,
-  init,
   getWXContext,
+  init,
 } from "wx-server-sdk";
 
 // 初始化 cloud
@@ -29,7 +29,7 @@ export const main = async (): Promise<LoginResult> => {
       collection
         .skip(index * MAX_LIMIT)
         .limit(MAX_LIMIT)
-        .get() as Promise<cloud.DB.IQueryResult>
+        .get() as Promise<cloud.DB.IQueryResult>,
   );
 
   const isOwner = (await Promise.all(tasks))
