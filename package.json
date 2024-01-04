@@ -47,8 +47,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "18.4.3",
-    "@commitlint/config-conventional": "18.4.3",
+    "@commitlint/cli": "18.4.4",
+    "@commitlint/config-conventional": "18.4.4",
     "@mr-hope/gulp-sass": "3.1.1",
     "@types/node": "20.10.6",
     "@typescript-eslint/eslint-plugin": "6.16.0",
