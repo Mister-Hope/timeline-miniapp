@@ -35,8 +35,8 @@
     "prepare": "husky install"
   },
   "nano-staged": {
+    "**/*": "prettier --write --ignore-unknown",
     "*.{js,ts}": "eslint --fix",
-    "*.{js,ts,json,yaml,yml,md}": "prettier --write",
     "*.wxss": "stylelint --fix",
     "*.wxml": "prettier --parser html --write",
     "*.wxs": "prettier --parser babel-flow --write"
@@ -77,9 +77,8 @@
   "packageManager": "pnpm@8.14.3",
   "pnpm": {
     "overrides": {
-      "cacache": "^17.0.5",
       "chokidar": "^3.5.3",
-      "css": "npm:@adobe/css-tools@^4.3.0",
+      "css": "npm:@adobe/css-tools@^4.3.2",
       "glob-parent": "^6.0.2",
       "glob-stream": "^7.0.0",
       "micromatch": "^4.0.5",
