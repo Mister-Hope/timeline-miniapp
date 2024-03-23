@@ -74,7 +74,7 @@
     "stylelint-order": "6.0.4",
     "typescript": "5.4.3"
   },
-  "packageManager": "pnpm@8.15.4",
+  "packageManager": "pnpm@8.15.5",
   "pnpm": {
     "overrides": {
       "chokidar": "^3.5.3",
