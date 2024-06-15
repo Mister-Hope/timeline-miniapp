@@ -35,8 +35,8 @@ importers:
         specifier: 7.12.0
         version: 7.12.0(eslint@8.57.0)(typescript@5.4.5)
       cz-git:
-        specifier: 1.9.2
-        version: 1.9.2
+        specifier: 1.9.3
+        version: 1.9.3
       del:
         specifier: 7.1.0
         version: 7.1.0
@@ -266,6 +266,7 @@ packages:
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
     engines: {node: '>=10.10.0'}
+    deprecated: Use @eslint/config-array instead
 
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
@@ -273,6 +274,7 @@ packages:
 
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
+    deprecated: Use @eslint/object-schema instead
 
   '@mr-hope/gulp-sass@3.1.1':
     resolution: {integrity: sha512-QfEMLR3C6etfTydy/arqb/1dJrjhuS2fWOsdYaxVWImjdhzQ7j6ej2u80DODbog7IMhlm85HN28ndBOSDqiDUQ==}
@@ -761,8 +763,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cz-git@1.9.2:
-    resolution: {integrity: sha512-HqwSIZBl/Vtlq56wsHuQHhQ0CF7rABEvhvbSAaGViLeM5YucLu5o+U2XLow1Y2bwIAfAIKZHfgg9fxP7P3XU3Q==}
+  cz-git@1.9.3:
+    resolution: {integrity: sha512-v7+vYOparImLLo6J5tAsi/cz+EAK7FI/TDnemi11xgEax4k+ZVqxsmkiEc68n+MJLp1l5THhB2KTDhjpW+ellg==}
     engines: {node: '>=v12.20.0'}
 
   d@1.0.2:
@@ -3451,7 +3453,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cz-git@1.9.2: {}
+  cz-git@1.9.3: {}
 
   d@1.0.2:
     dependencies:
