@@ -1,4 +1,10 @@
+/* eslint-disable */
 declare namespace WechatMiniprogram {
+  interface RequestOption {
+    /** 是否启用高性能模式 */
+    useHighPerformanceMode?: boolean;
+  }
+
   /** 地图设置 */
   interface MapSettings {
     /** 倾斜角度，范围 0 ~ 40 , 关于 z 轴的倾角.默认为 0 */
@@ -51,6 +57,11 @@ declare namespace WechatMiniprogram {
     scrollTop?: number;
   }
 
+  type Canvas2DNode = NodeRectInfo &
+    NodeSizeInfo & {
+      getContext: (type: string) => CanvasRenderingContext2D;
+    };
+
   type NodeInfo = Partial<
     NodeRectInfo &
       NodeSizeInfo &
@@ -60,10 +71,7 @@ declare namespace WechatMiniprogram {
         dataset: IAnyObject;
         properties: string[];
         computedStyle: string[];
-        node: {
-          getContext: (type: string) => CanvasContext;
-        } & NodeRectInfo &
-          NodeSizeInfo;
+        node: Canvas2DNode;
       }
   >;
 }
