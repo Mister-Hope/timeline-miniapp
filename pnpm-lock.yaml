@@ -69,8 +69,8 @@ importers:
         specifier: 16.8.0
         version: 16.8.0(typescript@5.5.4)
       stylelint-config-hope:
-        specifier: 7.0.2
-        version: 7.0.2(postcss@8.4.40)(stylelint@16.8.0(typescript@5.5.4))
+        specifier: 7.0.4
+        version: 7.0.4(postcss@8.4.40)(stylelint@16.8.0(typescript@5.5.4))
       stylelint-order:
         specifier: 6.0.4
         version: 6.0.4(stylelint@16.8.0(typescript@5.5.4))
@@ -1024,6 +1024,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   esniff@2.0.1:
@@ -2416,10 +2417,10 @@ packages:
     resolution: {integrity: sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==}
     engines: {node: '>=8'}
 
-  stylelint-config-hope@7.0.2:
-    resolution: {integrity: sha512-p4VsKQMcDvXtyH8Xj2LFDowvTayG/eYvDnhdvUoFjZ1Rwzrten/zA4P4fOk4dl4xEQ4hIOY9X0w9DLq8XUXbvg==}
+  stylelint-config-hope@7.0.4:
+    resolution: {integrity: sha512-oHbjfckFNuu5poR1WtNQaHfNqsBvcfIhkWpLwJtWbbLJhHHgrIdVuLWKQpZc1ayrDMIai5OZKW/iS089pvz96A==}
     peerDependencies:
-      stylelint: ^16.6.1
+      stylelint: ^16.8.1
 
   stylelint-config-recommended-scss@14.1.0:
     resolution: {integrity: sha512-bhaMhh1u5dQqSsf6ri2GVWWQW5iUjBYgcHkh7SgDDn92ijoItC/cfO/W+fpXshgTQWhwFkP1rVcewcv4jaftRg==}
@@ -5329,7 +5330,7 @@ snapshots:
 
   strip-json-comments@3.1.1: {}
 
-  stylelint-config-hope@7.0.2(postcss@8.4.40)(stylelint@16.8.0(typescript@5.5.4)):
+  stylelint-config-hope@7.0.4(postcss@8.4.40)(stylelint@16.8.0(typescript@5.5.4)):
     dependencies:
       stylelint: 16.8.0(typescript@5.5.4)
       stylelint-config-standard-scss: 13.1.0(postcss@8.4.40)(stylelint@16.8.0(typescript@5.5.4))
