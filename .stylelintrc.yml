@@ -5,6 +5,8 @@ rules:
     - true
     - ignoreShorthands:
         - inset
+        - flex-flow
+        - place-content
   media-feature-range-notation:
     - prefix
   no-descending-specificity: null
@@ -14,4 +16,6 @@ rules:
         - icon
         - page
         - picker
+        - scroll-view
+        - radio
   shorthand-property-no-redundant-values: null

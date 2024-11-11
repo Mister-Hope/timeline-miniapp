@@ -1,7 +1,7 @@
-import type { ItemInfo, MusicInfo } from "./typings";
-import { startup } from "./utils/app";
-import { getTimelineItems } from "./utils/database";
-import { message } from "./utils/message";
+import type { ItemInfo, MusicInfo } from "./typings.js";
+import { startup } from "./utils/app.js";
+import { getTimelineItems } from "./utils/database.js";
+import { message } from "./utils/message.js";
 
 export interface GlobalData {
   /** 版本号 */
@@ -48,9 +48,7 @@ App({
 
     getTimelineItems().then((items) => {
       this.globalData.timeline = items;
-      this.globalData.musicList = items.filter(
-        (item) => item.type === "music",
-      ) as MusicInfo[];
+      this.globalData.musicList = items.filter((item) => item.type === "music");
 
       message.emit("items", items);
       wx.setStorageSync("timeline", items);

@@ -12,9 +12,7 @@ interface EventHandler<T extends any[] = any[]> {
 }
 
 /** 监听器对象 */
-interface EventBus<T extends any[] = any[]> {
-  [props: string]: EventHandler<T>[];
-}
+type EventBus<T extends any[] = any[]> = Record<string, EventHandler<T>[]>;
 
 /** 发布 / 订阅模块 */
 class Message {

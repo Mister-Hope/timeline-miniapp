@@ -1,4 +1,5 @@
-import cloud, {
+import type { DB } from "wx-server-sdk";
+import {
   DYNAMIC_CURRENT_ENV,
   database,
   getWXContext,
@@ -20,7 +21,7 @@ interface LoginResult {
 export const main = async (): Promise<LoginResult> => {
   const { OPENID } = getWXContext();
   const collection = database().collection("admin");
-  const { total } = (await collection.count()) as cloud.DB.ICountResult;
+  const { total } = (await collection.count()) as DB.ICountResult;
 
   const batchTimes = Math.ceil(total / 100);
 
@@ -29,11 +30,11 @@ export const main = async (): Promise<LoginResult> => {
       collection
         .skip(index * MAX_LIMIT)
         .limit(MAX_LIMIT)
-        .get() as Promise<cloud.DB.IQueryResult>,
+        .get() as Promise<DB.IQueryResult>,
   );
 
   const isOwner = (await Promise.all(tasks))
-    .reduce((acc, cur) => acc.concat(cur.data), [] as cloud.DB.IDocumentData[])
+    .reduce<DB.IDocumentData[]>((acc, cur) => acc.concat(cur.data), [])
     .some((item) => item.openid === OPENID);
 
   return {

@@ -1,5 +1,5 @@
-import type { AppOption } from "../../app";
-import type { ArticleInfo } from "../../typings";
+import type { AppOption } from "../../app.js";
+import type { ArticleInfo } from "../../typings.js";
 
 const { globalData } = getApp<AppOption>();
 

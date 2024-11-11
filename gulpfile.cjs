@@ -1,9 +1,9 @@
-const { sass } = require("@mr-hope/gulp-sass");
 const { dest, parallel, src, watch } = require("gulp");
 const rename = require("gulp-rename");
 const replace = require("gulp-replace");
 const sourcemaps = require("gulp-sourcemaps");
 const typescript = require("gulp-typescript");
+const { sass } = require("gulp5-sass-plugin");
 
 const appTSProject = typescript.createProject("tsconfig.app.json");
 const cloudTSProject = typescript.createProject("tsconfig.cloud.json");
@@ -28,10 +28,11 @@ const buildWXSS = () =>
             }),
           },
         ],
+        silenceDeprecations: ["import"],
       }).on("error", sass.logError),
     )
     .pipe(rename({ extname: ".wxss" }))
-    .pipe(dest("dist"));
+    .pipe(dest("dist/app"));
 
 const moveAppFiles = () =>
   src("app/**/*.{wxml,wxs,json,svg,png,webp}").pipe(dest("dist/app"));
@@ -61,12 +62,6 @@ const buildCloudTypescript = () =>
     .pipe(sourcemaps.init())
     .pipe(cloudTSProject())
     .pipe(sourcemaps.write(".", { includeContent: false }))
-    .pipe(
-      replace(
-        '"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n',
-        "",
-      ),
-    )
     .pipe(dest("dist/cloud"));
 
 const watchAppTypescript = () =>

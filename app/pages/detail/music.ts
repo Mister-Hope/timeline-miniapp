@@ -1,9 +1,9 @@
-import type { AppOption } from "../../app";
-import { appName, defaultCover } from "../../config";
-import type { ItemInfo, MusicInfo } from "../../typings";
-import { error } from "../../utils/log";
-import { message } from "../../utils/message";
-import { tip } from "../../utils/wx";
+import type { AppOption } from "../../app.js";
+import { appName, defaultCover } from "../../config.js";
+import type { ItemInfo, MusicInfo } from "../../typings.js";
+import { error } from "../../utils/log.js";
+import { message } from "../../utils/message.js";
+import { tip } from "../../utils/wx.js";
 
 const { globalData } = getApp<AppOption>();
 

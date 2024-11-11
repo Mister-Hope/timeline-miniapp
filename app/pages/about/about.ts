@@ -1,8 +1,8 @@
-import type { AppOption } from "../../app";
-import { owner } from "../../config";
-import { getCurrentDate } from "../../utils/date";
-import { error, info } from "../../utils/log";
-import { modal, uploadCloudFile } from "../../utils/wx";
+import type { AppOption } from "../../app.js";
+import { owner } from "../../config.js";
+import { getCurrentDate } from "../../utils/date.js";
+import { error, info } from "../../utils/log.js";
+import { modal, uploadCloudFile } from "../../utils/wx.js";
 
 const { globalData } = getApp<AppOption>();
 

@@ -1,4 +1,5 @@
-import cloud, { DYNAMIC_CURRENT_ENV, database, init } from "wx-server-sdk";
+import type { DB } from "wx-server-sdk";
+import { DYNAMIC_CURRENT_ENV, database, init } from "wx-server-sdk";
 
 // 初始化 cloud
 init({
@@ -8,14 +9,14 @@ init({
 const MAX_LIMIT = 100;
 
 interface ListResult {
-  data: cloud.DB.IDocumentData[];
+  data: DB.IDocumentData[];
   errMsg: string;
 }
 
 export const main = async (): Promise<ListResult> => {
   const collection = database().collection("items");
 
-  const { total } = (await collection.count()) as cloud.DB.ICountResult;
+  const { total } = (await collection.count()) as DB.ICountResult;
 
   const batchTimes = Math.ceil(total / 100);
 
@@ -24,7 +25,7 @@ export const main = async (): Promise<ListResult> => {
       collection
         .skip(index * MAX_LIMIT)
         .limit(MAX_LIMIT)
-        .get() as Promise<cloud.DB.IQueryResult>,
+        .get() as Promise<DB.IQueryResult>,
   );
 
   const { data, errMsg } = (await Promise.all(tasks)).reduce(

@@ -1,7 +1,7 @@
-import { error, info, warn } from "./log";
-import { message } from "./message";
-import { tip } from "./wx";
-import { GlobalData } from "../app";
+import { error, info, warn } from "./log.js";
+import { message } from "./message.js";
+import { tip } from "./wx.js";
+import type { GlobalData } from "../app.js";
 
 /**
  * 根据用户设置，判断当前小程序是否应启用夜间模式
@@ -55,15 +55,11 @@ export const login = (globalData: GlobalData): void => {
 };
 
 /** 注册全局监听 */
-export const registAction = (): void => {
+export const registerAction = (): void => {
   // 设置内存不足警告
-  wx.onMemoryWarning((res) => {
+  wx.onMemoryWarning(() => {
     tip("内存不足");
     warn("onMemoryWarningReceive");
-    wx.reportAnalytics("memory_warning", {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      memory_warning: res && res.level ? res.level : 0,
-    });
   });
 
   // 监听网络状态
@@ -135,6 +131,6 @@ export const startup = (globalData: GlobalData): void => {
     },
   });
 
-  registAction();
+  registerAction();
   login(globalData);
 };

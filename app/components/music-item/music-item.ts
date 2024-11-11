@@ -1,4 +1,4 @@
-import { avatar } from "../../config";
+import { avatar } from "../../config.js";
 
 Component({
   properties: {

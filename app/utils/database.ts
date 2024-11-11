@@ -1,5 +1,5 @@
-import { info } from "./log";
-import type { ItemInfo } from "../typings";
+import { info } from "./log.js";
+import type { ItemInfo } from "../typings.js";
 
 export const getTimelineItems = (): Promise<ItemInfo[]> => {
   // 获取项目列表

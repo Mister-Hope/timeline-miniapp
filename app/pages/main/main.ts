@@ -1,6 +1,6 @@
 import type { AppOption } from "../../app";
 import { appName } from "../../config";
-import type { ItemInfo, MusicInfo } from "../../typings";
+import type { ItemInfo } from "../../typings";
 import { getTimelineItems } from "../../utils/database";
 import { error } from "../../utils/log";
 import { message } from "../../utils/message";
@@ -53,9 +53,7 @@ Page({
   onPullDownRefresh() {
     getTimelineItems().then((timeline) => {
       globalData.timeline = timeline;
-      globalData.musicList = timeline.filter(
-        (item) => item.type === "music",
-      ) as MusicInfo[];
+      globalData.musicList = timeline.filter((item) => item.type === "music");
       this.setTimeline(timeline);
 
       wx.stopPullDownRefresh();
