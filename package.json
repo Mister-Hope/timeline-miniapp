@@ -63,7 +63,7 @@
     "miniprogram-api-typings": "4.0.2",
     "nano-staged": "0.8.0",
     "postcss": "8.4.49",
-    "prettier": "3.3.3",
+    "prettier": "3.4.1",
     "stylelint": "16.10.0",
     "stylelint-config-hope": "7.0.4",
     "stylelint-order": "6.0.4",
