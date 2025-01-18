@@ -60,7 +60,7 @@
     "gulp-typescript": "6.0.0-alpha.1",
     "gulp5-sass-plugin": "2.0.4",
     "husky": "9.1.7",
-    "miniprogram-api-typings": "4.0.2",
+    "miniprogram-api-typings": "4.0.4",
     "nano-staged": "0.8.0",
     "postcss": "8.4.49",
     "prettier": "3.4.2",
