@@ -30,8 +30,8 @@ importers:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
       eslint-config-mister-hope:
-        specifier: 0.3.0
-        version: 0.3.0(@typescript-eslint/utils@8.23.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(prettier@3.5.1)(typescript@5.7.3)
+        specifier: 0.4.1
+        version: 0.4.1(eslint@9.20.1(jiti@2.4.2))(prettier@3.5.1)(typescript@5.7.3)
       gulp:
         specifier: 5.0.0
         version: 5.0.0
@@ -984,11 +984,11 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  eslint-config-mister-hope@0.3.0:
-    resolution: {integrity: sha512-CntbuzJycf1ooc72MMJLA0NvuzPbdNukGX9Ksem09Rqta2sHXVzNDRlnb3F7iCGBrVfqbMy2Ws17Ie/tlsWLlg==}
+  eslint-config-mister-hope@0.4.1:
+    resolution: {integrity: sha512-W3Vktrb0qGEYGYZxGnT+nAD1lGXre0rpGV35EtyA4bHAofaw2ggpqlGr0DfCGEe9X2gRnsXJ8R5YhH8Iy64/Ng==}
     peerDependencies:
-      eslint: ^9.8.0
-      eslint-plugin-vue: ^9.27.0
+      eslint: ^9.17.0
+      eslint-plugin-vue: ^9.32.0
       vue-eslint-parser: ^9.4.3
     peerDependenciesMeta:
       eslint-plugin-vue:
@@ -3565,9 +3565,10 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-config-mister-hope@0.3.0(@typescript-eslint/utils@8.23.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(prettier@3.5.1)(typescript@5.7.3):
+  eslint-config-mister-hope@0.4.1(eslint@9.20.1(jiti@2.4.2))(prettier@3.5.1)(typescript@5.7.3):
     dependencies:
       '@eslint/js': 9.20.0
+      '@typescript-eslint/utils': 8.23.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       '@vitest/eslint-plugin': 1.1.27(@typescript-eslint/utils@8.23.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3))(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
       eslint: 9.20.1(jiti@2.4.2)
       eslint-config-prettier: 9.1.0(eslint@9.20.1(jiti@2.4.2))
@@ -3578,7 +3579,6 @@ snapshots:
       typescript-eslint: 8.23.0(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)
     transitivePeerDependencies:
       - '@types/eslint'
-      - '@typescript-eslint/utils'
       - eslint-plugin-import
       - prettier
       - supports-color
