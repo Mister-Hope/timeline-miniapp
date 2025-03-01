@@ -67,7 +67,7 @@
     "stylelint": "16.15.0",
     "stylelint-config-hope": "8.0.0",
     "stylelint-order": "6.0.4",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   },
   "packageManager": "pnpm@10.2.1",
   "pnpm": {
