@@ -64,7 +64,7 @@
     "nano-staged": "0.8.0",
     "postcss": "8.5.3",
     "prettier": "3.5.3",
-    "stylelint": "16.16.0",
+    "stylelint": "16.17.0",
     "stylelint-config-hope": "8.0.0",
     "stylelint-order": "6.0.4",
     "typescript": "5.8.2"
