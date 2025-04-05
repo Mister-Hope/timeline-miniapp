@@ -13,13 +13,13 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: 19.8.0
-        version: 19.8.0(@types/node@22.13.14)(typescript@5.8.3)
+        version: 19.8.0(@types/node@22.14.0)(typescript@5.8.3)
       '@commitlint/config-conventional':
         specifier: 19.8.0
         version: 19.8.0
       '@types/node':
-        specifier: 22.13.14
-        version: 22.13.14
+        specifier: 22.14.0
+        version: 22.14.0
       cz-git:
         specifier: 1.11.1
         version: 1.11.1
@@ -443,8 +443,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.13.14':
-    resolution: {integrity: sha512-Zs/Ollc1SJ8nKUAgc7ivOEdIBM8JAKgrqqUYi2J997JuKO7/tpQC+WCetQ1sypiKCQWHdvdg9wBNpUPEWZae7w==}
+  '@types/node@22.14.0':
+    resolution: {integrity: sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==}
 
   '@types/vinyl@2.0.12':
     resolution: {integrity: sha512-Sr2fYMBUVGYq8kj3UthXFAu5UN6ZW+rYr4NACjZQJvHvj+c8lYv0CahmZ2P/r7iUkN44gGUBwqxZkrKXYPb7cw==}
@@ -2496,8 +2496,8 @@ packages:
     resolution: {integrity: sha512-tO/bf30wBbTsJ7go80j0RzA2rcwX6o7XPBpeFcb+jzoeb4pfMM2zUeSDIkY1AWqeZabWxaQZ/h8N9t35QKDLPQ==}
     engines: {node: '>=10.13.0'}
 
-  undici-types@6.20.0:
-    resolution: {integrity: sha512-Ny6QZ2Nju20vw1SRHe3d9jVu6gJ+4e3+MMpqu7pqE5HT6WsTSlce++GQmK5UXS8mzV8DSYHrQH+Xrf2jVcuKNg==}
+  undici-types@6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
   unicorn-magic@0.1.0:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
@@ -2678,11 +2678,11 @@ snapshots:
       is-stream: 2.0.1
       url: 0.11.4
 
-  '@commitlint/cli@19.8.0(@types/node@22.13.14)(typescript@5.8.3)':
+  '@commitlint/cli@19.8.0(@types/node@22.14.0)(typescript@5.8.3)':
     dependencies:
       '@commitlint/format': 19.8.0
       '@commitlint/lint': 19.8.0
-      '@commitlint/load': 19.8.0(@types/node@22.13.14)(typescript@5.8.3)
+      '@commitlint/load': 19.8.0(@types/node@22.14.0)(typescript@5.8.3)
       '@commitlint/read': 19.8.0
       '@commitlint/types': 19.8.0
       tinyexec: 0.3.2
@@ -2729,7 +2729,7 @@ snapshots:
       '@commitlint/rules': 19.8.0
       '@commitlint/types': 19.8.0
 
-  '@commitlint/load@19.8.0(@types/node@22.13.14)(typescript@5.8.3)':
+  '@commitlint/load@19.8.0(@types/node@22.14.0)(typescript@5.8.3)':
     dependencies:
       '@commitlint/config-validator': 19.8.0
       '@commitlint/execute-rule': 19.8.0
@@ -2737,7 +2737,7 @@ snapshots:
       '@commitlint/types': 19.8.0
       chalk: 5.4.1
       cosmiconfig: 9.0.0(typescript@5.8.3)
-      cosmiconfig-typescript-loader: 6.1.0(@types/node@22.13.14)(cosmiconfig@9.0.0(typescript@5.8.3))(typescript@5.8.3)
+      cosmiconfig-typescript-loader: 6.1.0(@types/node@22.14.0)(cosmiconfig@9.0.0(typescript@5.8.3))(typescript@5.8.3)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -2993,7 +2993,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.14.0
 
   '@types/doctrine@0.0.9': {}
 
@@ -3003,14 +3003,14 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.13.14':
+  '@types/node@22.14.0':
     dependencies:
-      undici-types: 6.20.0
+      undici-types: 6.21.0
 
   '@types/vinyl@2.0.12':
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 22.13.14
+      '@types/node': 22.14.0
 
   '@typescript-eslint/eslint-plugin@8.23.0(@typescript-eslint/parser@8.23.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
@@ -3382,9 +3382,9 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@6.1.0(@types/node@22.13.14)(cosmiconfig@9.0.0(typescript@5.8.3))(typescript@5.8.3):
+  cosmiconfig-typescript-loader@6.1.0(@types/node@22.14.0)(cosmiconfig@9.0.0(typescript@5.8.3))(typescript@5.8.3):
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.14.0
       cosmiconfig: 9.0.0(typescript@5.8.3)
       jiti: 2.4.2
       typescript: 5.8.3
@@ -4031,7 +4031,7 @@ snapshots:
 
   gulp-replace@1.1.4:
     dependencies:
-      '@types/node': 22.13.14
+      '@types/node': 22.14.0
       '@types/vinyl': 2.0.12
       istextorbinary: 3.3.0
       replacestream: 4.0.3
@@ -4663,7 +4663,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 22.13.14
+      '@types/node': 22.14.0
       long: 5.2.4
 
   psl@1.15.0:
@@ -5182,7 +5182,7 @@ snapshots:
       last-run: 2.0.0
       undertaker-registry: 2.0.0
 
-  undici-types@6.20.0: {}
+  undici-types@6.21.0: {}
 
   unicorn-magic@0.1.0: {}
 
