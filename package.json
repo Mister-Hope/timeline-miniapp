@@ -51,7 +51,7 @@
     "@types/node": "22.14.0",
     "cz-git": "1.11.1",
     "del": "8.0.0",
-    "eslint": "9.23.0",
+    "eslint": "9.24.0",
     "eslint-config-mister-hope": "0.3.0",
     "gulp": "5.0.0",
     "gulp-rename": "2.0.0",
