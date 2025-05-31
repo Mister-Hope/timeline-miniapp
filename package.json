@@ -62,7 +62,7 @@
     "husky": "9.1.7",
     "miniprogram-api-typings": "4.0.7",
     "nano-staged": "0.8.0",
-    "postcss": "8.5.3",
+    "postcss": "8.5.4",
     "prettier": "3.5.3",
     "stylelint": "16.19.1",
     "stylelint-config-hope": "9.0.0",
