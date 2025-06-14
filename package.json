@@ -49,7 +49,7 @@
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@types/node": "22.15.31",
-    "cz-git": "1.11.1",
+    "cz-git": "1.11.2",
     "del": "8.0.0",
     "eslint": "9.28.0",
     "eslint-config-mister-hope": "0.3.0",
