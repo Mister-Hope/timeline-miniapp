@@ -21,8 +21,8 @@ importers:
         specifier: 22.16.3
         version: 22.16.3
       cz-git:
-        specifier: 1.11.2
-        version: 1.11.2
+        specifier: 1.12.0
+        version: 1.12.0
       del:
         specifier: 8.0.0
         version: 8.0.0
@@ -836,8 +836,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cz-git@1.11.2:
-    resolution: {integrity: sha512-e54u6yJc80usJCWRQE9z8egpkqEvlM6aC70lTGjIsGI/ggtzeGU6udNAuHSBvLV+hMyss0ZS4KfodfwO9UJpqQ==}
+  cz-git@1.12.0:
+    resolution: {integrity: sha512-LaZ+8whPPUOo6Y0Zy4nIbf6JOleV3ejp41sT6N4RPKiKKA+ICWf4ueeIlxIO8b6JtdlDxRzHH/EcRji07nDxcg==}
     engines: {node: '>=v12.20.0'}
 
   d@1.0.2:
@@ -3425,7 +3425,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cz-git@1.11.2: {}
+  cz-git@1.12.0: {}
 
   d@1.0.2:
     dependencies:
