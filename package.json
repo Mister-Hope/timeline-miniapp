@@ -46,8 +46,8 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.1",
-    "@commitlint/config-conventional": "19.8.1",
+    "@commitlint/cli": "20.0.0",
+    "@commitlint/config-conventional": "20.0.0",
     "@types/node": "22.18.6",
     "cz-git": "1.12.0",
     "del": "8.0.1",
