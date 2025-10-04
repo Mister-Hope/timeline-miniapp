@@ -13,13 +13,13 @@ importers:
     devDependencies:
       '@commitlint/cli':
         specifier: 20.0.0
-        version: 20.0.0(@types/node@22.18.6)(typescript@5.9.2)
+        version: 20.0.0(@types/node@22.18.8)(typescript@5.9.2)
       '@commitlint/config-conventional':
         specifier: 20.0.0
         version: 20.0.0
       '@types/node':
-        specifier: 22.18.6
-        version: 22.18.6
+        specifier: 22.18.8
+        version: 22.18.8
       cz-git:
         specifier: 1.12.0
         version: 1.12.0
@@ -443,8 +443,8 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@types/node@22.18.6':
-    resolution: {integrity: sha512-r8uszLPpeIWbNKtvWRt/DbVi5zbqZyj1PTmhRMqBMvDnaz1QpmSKujUtJLrqGZeoM8v72MfYggDceY4K1itzWQ==}
+  '@types/node@22.18.8':
+    resolution: {integrity: sha512-pAZSHMiagDR7cARo/cch1f3rXy0AEXwsVsVH09FcyeJVAzCnGgmYis7P3JidtTUjyadhTeSo8TgRPswstghDaw==}
 
   '@types/vinyl@2.0.12':
     resolution: {integrity: sha512-Sr2fYMBUVGYq8kj3UthXFAu5UN6ZW+rYr4NACjZQJvHvj+c8lYv0CahmZ2P/r7iUkN44gGUBwqxZkrKXYPb7cw==}
@@ -2690,11 +2690,11 @@ snapshots:
       is-stream: 2.0.1
       url: 0.11.4
 
-  '@commitlint/cli@20.0.0(@types/node@22.18.6)(typescript@5.9.2)':
+  '@commitlint/cli@20.0.0(@types/node@22.18.8)(typescript@5.9.2)':
     dependencies:
       '@commitlint/format': 20.0.0
       '@commitlint/lint': 20.0.0
-      '@commitlint/load': 20.0.0(@types/node@22.18.6)(typescript@5.9.2)
+      '@commitlint/load': 20.0.0(@types/node@22.18.8)(typescript@5.9.2)
       '@commitlint/read': 20.0.0
       '@commitlint/types': 20.0.0
       tinyexec: 1.0.1
@@ -2741,7 +2741,7 @@ snapshots:
       '@commitlint/rules': 20.0.0
       '@commitlint/types': 20.0.0
 
-  '@commitlint/load@20.0.0(@types/node@22.18.6)(typescript@5.9.2)':
+  '@commitlint/load@20.0.0(@types/node@22.18.8)(typescript@5.9.2)':
     dependencies:
       '@commitlint/config-validator': 20.0.0
       '@commitlint/execute-rule': 20.0.0
@@ -2749,7 +2749,7 @@ snapshots:
       '@commitlint/types': 20.0.0
       chalk: 5.4.1
       cosmiconfig: 9.0.0(typescript@5.9.2)
-      cosmiconfig-typescript-loader: 6.1.0(@types/node@22.18.6)(cosmiconfig@9.0.0(typescript@5.9.2))(typescript@5.9.2)
+      cosmiconfig-typescript-loader: 6.1.0(@types/node@22.18.8)(cosmiconfig@9.0.0(typescript@5.9.2))(typescript@5.9.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -3003,7 +3003,7 @@ snapshots:
 
   '@types/conventional-commits-parser@5.0.1':
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 22.18.8
 
   '@types/doctrine@0.0.9': {}
 
@@ -3013,14 +3013,14 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@types/node@22.18.6':
+  '@types/node@22.18.8':
     dependencies:
       undici-types: 6.21.0
 
   '@types/vinyl@2.0.12':
     dependencies:
       '@types/expect': 1.20.4
-      '@types/node': 22.18.6
+      '@types/node': 22.18.8
 
   '@typescript-eslint/eslint-plugin@8.23.0(@typescript-eslint/parser@8.23.0(eslint@9.36.0(jiti@2.4.2))(typescript@5.9.2))(eslint@9.36.0(jiti@2.4.2))(typescript@5.9.2)':
     dependencies:
@@ -3392,9 +3392,9 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  cosmiconfig-typescript-loader@6.1.0(@types/node@22.18.6)(cosmiconfig@9.0.0(typescript@5.9.2))(typescript@5.9.2):
+  cosmiconfig-typescript-loader@6.1.0(@types/node@22.18.8)(cosmiconfig@9.0.0(typescript@5.9.2))(typescript@5.9.2):
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 22.18.8
       cosmiconfig: 9.0.0(typescript@5.9.2)
       jiti: 2.4.2
       typescript: 5.9.2
@@ -4042,7 +4042,7 @@ snapshots:
 
   gulp-replace@1.1.4:
     dependencies:
-      '@types/node': 22.18.6
+      '@types/node': 22.18.8
       '@types/vinyl': 2.0.12
       istextorbinary: 3.3.0
       replacestream: 4.0.3
@@ -4678,7 +4678,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 22.18.6
+      '@types/node': 22.18.8
       long: 5.2.4
 
   psl@1.15.0:
