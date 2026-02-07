@@ -48,8 +48,8 @@ importers:
         specifier: 6.0.0-alpha.1
         version: 6.0.0-alpha.1(typescript@5.9.3)
       gulp5-sass-plugin:
-        specifier: 2.0.4
-        version: 2.0.4(gulp@5.0.1)
+        specifier: 2.1.0
+        version: 2.1.0(gulp@5.0.1)
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -1359,8 +1359,8 @@ packages:
     peerDependencies:
       typescript: '~2.7.1 || >=2.8.0-dev || >=2.9.0-dev || ~3.0.0 || >=3.0.0-dev || >=3.1.0-dev || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.7.0-dev '
 
-  gulp5-sass-plugin@2.0.4:
-    resolution: {integrity: sha512-Of+3eX4Mh9NJskKelssXOkji5BYBXASCDzy+RgfpOZ+kW2NY0gLzPp+YJfGMGm6azK7ntIwo7T3hs4sS/ajzqw==}
+  gulp5-sass-plugin@2.1.0:
+    resolution: {integrity: sha512-i672SaO/sPeclO0aWNTS3frndxt6qnybcO5vaAjf6yLa6CrjOhfTt4YLddac7icBwSdxM2raKfFCskqCbaKuQw==}
     engines: {node: '>=14'}
     peerDependencies:
       gulp: ^5.0.0
@@ -2170,8 +2170,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sass@1.84.0:
-    resolution: {integrity: sha512-XDAbhEPJRxi7H0SxrnOpiXFQoUJHwkR2u3Zc4el+fK/Tt5Hpzw5kkQ59qVDfvdaUq6gCrEZIbySFBM2T9DNKHg==}
+  sass@1.97.3:
+    resolution: {integrity: sha512-fDz1zJpd5GycprAbu4Q2PV/RprsRtKC/0z82z0JLgdytmcq0+ujJbJ/09bPGDxCLkKY3Np5cRAOcWiVkLXJURg==}
     engines: {node: '>=14.0.0'}
     hasBin: true
 
@@ -2299,6 +2299,10 @@ packages:
 
   strip-ansi@7.1.0:
     resolution: {integrity: sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ==}
+    engines: {node: '>=12'}
+
+  strip-ansi@7.1.2:
+    resolution: {integrity: sha512-gmBGslpoQJtgnMAvOVqGZpEz9dyoKTCzy2nfz/n8aIFhN/jCE/rCmcxabB6jOOHV+0WNnylOxaxBQPSvcWklhA==}
     engines: {node: '>=12'}
 
   strip-bom-string@1.0.0:
@@ -2563,10 +2567,6 @@ packages:
   vinyl@2.2.1:
     resolution: {integrity: sha512-LII3bXRFBZLlezoG5FfZVcXflZgWP/4dCwKtxd5ky9+LOtM4CS3bIRQsmR1KMnMW07jpE8fqR2lcxPZ+8sJIcw==}
     engines: {node: '>= 0.10'}
-
-  vinyl@3.0.0:
-    resolution: {integrity: sha512-rC2VRfAVVCGEgjnxHUnpIVh3AGuk62rP3tqVrn+yab0YH7UULisC085+NYH+mnqf3Wx4SpSi1RQMwudL89N03g==}
-    engines: {node: '>=10.13.0'}
 
   vinyl@3.0.1:
     resolution: {integrity: sha512-0QwqXteBNXgnLCdWdvPQBX6FXRHtIH3VhJPTd5Lwn28tJXc34YqSCWUmkOvtJHBmB3gGoPtrOKk3Ts8/kEZ9aA==}
@@ -4061,16 +4061,16 @@ snapshots:
       vinyl: 2.2.1
       vinyl-fs: 3.0.3
 
-  gulp5-sass-plugin@2.0.4(gulp@5.0.1):
+  gulp5-sass-plugin@2.1.0(gulp@5.0.1):
     dependencies:
       gulp: 5.0.1
       picocolors: 1.1.1
       plugin-error: 2.0.1
       replace-ext: 2.0.0
-      sass: 1.84.0
+      sass: 1.97.3
       source-map-js: 1.2.1
-      strip-ansi: 7.1.0
-      vinyl: 3.0.0
+      strip-ansi: 7.1.2
+      vinyl: 3.0.1
       vinyl-sourcemaps-apply: 0.2.1
 
   gulp@5.0.1:
@@ -4800,7 +4800,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sass@1.84.0:
+  sass@1.97.3:
     dependencies:
       chokidar: 4.0.3
       immutable: 5.0.3
@@ -4939,6 +4939,10 @@ snapshots:
       ansi-regex: 5.0.1
 
   strip-ansi@7.1.0:
+    dependencies:
+      ansi-regex: 6.1.0
+
+  strip-ansi@7.1.2:
     dependencies:
       ansi-regex: 6.1.0
 
@@ -5283,14 +5287,6 @@ snapshots:
       cloneable-readable: 1.1.3
       remove-trailing-separator: 1.1.0
       replace-ext: 1.0.1
-
-  vinyl@3.0.0:
-    dependencies:
-      clone: 2.1.2
-      clone-stats: 1.0.0
-      remove-trailing-separator: 1.1.0
-      replace-ext: 2.0.0
-      teex: 1.0.1
 
   vinyl@3.0.1:
     dependencies:
