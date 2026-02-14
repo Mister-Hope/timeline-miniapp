@@ -54,8 +54,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       miniprogram-api-typings:
-        specifier: 5.0.0
-        version: 5.0.0
+        specifier: 5.0.1
+        version: 5.0.1
       nano-staged:
         specifier: 0.9.0
         version: 0.9.0
@@ -1810,8 +1810,8 @@ packages:
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
-  miniprogram-api-typings@5.0.0:
-    resolution: {integrity: sha512-KQ1ZDk0cK3JrAaZtlFNlC/De/HwqhtToPZTzIYvFzi4FaW0Z8raIBN/qpjZ5QMiBaBNl/hJwTWwD+tfp8BwCZw==}
+  miniprogram-api-typings@5.0.1:
+    resolution: {integrity: sha512-saVtqMRpi5IcuJigswo1fGFlMKwGr5ixvI3wu8AM+4hQrH4v2Hov3YbZRlcvfIATObWt+HhLcmcSXzO52NGG+A==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -4447,7 +4447,7 @@ snapshots:
 
   minimist@1.2.8: {}
 
-  miniprogram-api-typings@5.0.0: {}
+  miniprogram-api-typings@5.0.1: {}
 
   ms@2.1.3: {}
 
