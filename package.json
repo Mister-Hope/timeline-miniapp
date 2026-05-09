@@ -48,7 +48,7 @@
   "devDependencies": {
     "@commitlint/cli": "20.5.3",
     "@commitlint/config-conventional": "20.5.3",
-    "@types/node": "24.12.2",
+    "@types/node": "24.12.3",
     "cz-git": "1.13.0",
     "del": "8.0.1",
     "eslint": "9.39.4",
