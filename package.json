@@ -65,7 +65,7 @@
     "postcss": "8.5.26",
     "prettier": "3.9.6",
     "stylelint": "17.14.1",
-    "stylelint-config-hope": "11.0.0",
+    "stylelint-config-hope": "11.0.1",
     "stylelint-order": "8.1.1",
     "typescript": "5.9.3"
   },
