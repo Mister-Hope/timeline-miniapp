@@ -54,8 +54,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       miniprogram-api-typings:
-        specifier: 5.2.2
-        version: 5.2.2
+        specifier: 5.2.3
+        version: 5.2.3
       nano-staged:
         specifier: 1.0.2
         version: 1.0.2
@@ -1799,8 +1799,8 @@ packages:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
 
-  miniprogram-api-typings@5.2.2:
-    resolution: {integrity: sha512-pg4fHLZxfsuapDnnifdMqs7CGEJYzESa1vJzXb+O7Yz5CtVHB0ugBW+M32EU35p/u++wwPxY9GfHiCuEkq44vg==}
+  miniprogram-api-typings@5.2.3:
+    resolution: {integrity: sha512-KVcNSfR2VmRtz35rxkjLxE92HlsBnbT6NsKyTcDX3ebbTKAsAiTOFO1mRM82Xbe848dnEYqNGzaD48LMEvGytw==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -4438,7 +4438,7 @@ snapshots:
     dependencies:
       brace-expansion: 2.0.1
 
-  miniprogram-api-typings@5.2.2: {}
+  miniprogram-api-typings@5.2.3: {}
 
   ms@2.1.3: {}
 
