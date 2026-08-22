@@ -21,8 +21,8 @@ importers:
         specifier: 24.13.3
         version: 24.13.3
       cz-git:
-        specifier: 1.13.2
-        version: 1.13.2
+        specifier: 1.14.0
+        version: 1.14.0
       del:
         specifier: 8.0.1
         version: 8.0.1
@@ -874,8 +874,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  cz-git@1.13.2:
-    resolution: {integrity: sha512-OZDo8EYvFGNqYUY3y45DLVJAgAKBFRUTQi57Mdo83vGuDfHNWt0u7g6q/VRv3JEDDNNdouC9swKMYQ0QhpUKTQ==}
+  cz-git@1.14.0:
+    resolution: {integrity: sha512-QjwlXZrGWsXQkyregBHhA2qNNGB2TCuf0ovkW1Q5OLgdJDs9Tq1yahfKpSMLyqOBjVRuv1iHBTDP83zJDBlJdg==}
     engines: {node: '>=v12.20.0'}
 
   d@1.0.2:
@@ -1089,6 +1089,7 @@ packages:
   eslint@9.39.5:
     resolution: {integrity: sha512-DgZS62aPLXKlnxILS/AYCoRvHaZeXceIzlXPkkGGzJWSow1aEk0lbTlxUSlyjC8jcaKxAdOnTDz+o1JFSBsyjw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
     peerDependencies:
       jiti: '*'
@@ -3428,7 +3429,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  cz-git@1.13.2: {}
+  cz-git@1.14.0: {}
 
   d@1.0.2:
     dependencies:
